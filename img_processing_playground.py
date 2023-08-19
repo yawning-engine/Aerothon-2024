@@ -44,6 +44,24 @@ def crop_circles(image, circles):
     return cropped_images
 
 
+def template_matching(template, image):
+    if len(image.shape) == 3:
+        image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    else:
+        image_gray = image
+    
+    if template.shape != image_gray.shape:
+        template = cv2.resize(template, (image_gray.shape[1], image_gray.shape[0]))
+    
+    result = cv2.matchTemplate(image_gray, template, cv2.TM_CCOEFF_NORMED)
+    _, _, _, max_loc = cv2.minMaxLoc(result)
+    return max_loc
+    
+    
+# Load the template image of the target
+template_path = 'target.jpeg'  # Change this to your template image's path
+template = cv2.imread(template_path, cv2.IMREAD_GRAYSCALE)
+
 # Initialize webcam capture
 cap = cv2.VideoCapture(0)  # 0 indicates the default webcam
 
@@ -57,14 +75,23 @@ try:
         # Detect circles in the frame
         frame_with_circles, detected_circles = detect_circles(frame.copy())
         
-        # Display the frame with circles
-        cv2.imshow('Frame with Circles', frame_with_circles)
-        
         # Crop out detected circles
         cropped_images = crop_circles(frame, detected_circles)
-        for i, cropped in enumerate(cropped_images):
-            cv2.imshow(f'Cropped Circle {i + 1}', cropped)
         
+        #perform template matching for each matched circle
+        for i, cropped in enumerate(cropped_images):
+            match_location = template_matching(template, cropped)
+            x, y = match_location
+            h, w = template.shape
+            
+            # Draw a rectangle around the matched area
+            cv2.rectangle(cropped, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            
+            cv2.imshow(f'Cropped Circle {i + 1}', cropped)
+            # Display the frame with circles
+            cv2.imshow('Frame with Circles', frame_with_circles)
+            #cv2.imshow('Target', template)
+       
         # Exit the loop on 'q' key press
         if cv2.waitKey(0) & 0xFF == ord('q'):
             break
