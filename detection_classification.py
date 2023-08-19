@@ -1,10 +1,30 @@
-# Function to capture an image from the camera
-def capture_image():
+import cv2
+#import picamera
+#import picamera.array
+import numpy as np
+
+# Function to capture an image from the pi camera
+def capture_image_pi():
     with picamera.PiCamera() as camera:
         camera.resolution = (320, 240)  # Reduce resolution for optimization
         with picamera.array.PiRGBArray(camera) as output:
             camera.capture(output, format="bgr")
             return output.array
+
+
+# Function to capture an image from the pc camera
+def capture_image_pc():
+    cap = cv2.VideoCapture(0)  # 0 corresponds to the default webcam
+    if not cap.isOpened():
+        return None  # Return None if webcam is not available
+
+    ret, frame = cap.read()  # Read a frame from the webcam
+    if not ret:
+        return None  # Return None if reading frame fails
+
+    cap.release()  # Release the webcam
+    return frame
+
 
 # Function to detect the archery circle-like target and hotspots using Hough Circle Detection
 def detect_circles(image):
@@ -61,8 +81,9 @@ def detect_target_and_hotspots(image, circles):
 if __name__ == "__main__":
     while True:
         # Capture image from the camera
-        image = capture_image()
-
+        #image = capture_image_pi()
+        image = capture_image_pc()
+        '''
         # Detect circles in the image using Hough Circle Detection
         detected_circles = detect_circles(image)
 
@@ -79,7 +100,7 @@ if __name__ == "__main__":
             for circle in detected_circles:
                 x, y, radius = circle[0], circle[1], circle[2]
                 cv2.circle(image, (x, y), radius, (0, 255, 0), 2)
-
+        ''' 
         cv2.imshow("Image with Detected Circles", image)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
