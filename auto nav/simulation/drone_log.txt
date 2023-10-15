@@ -1,15 +1,4 @@
 
-Current Heading: 0.0028733445797115564
-
-Yawing NORTH
-Current Heading: -0.0006532873958349228
-New location coordinates: LocationGlobalRelative:lat=-35.3630818842358,lon=149.16545677754826,alt=20
-New location coordinates: LocationGlobalRelative:lat=-35.3630818842358,lon=149.16545677754826,alt=30
-
-Going to waypoint:LocationGlobalRelative:lat=-35.3630818842358,lon=149.16545677754826,alt=30
-Ground Speed:0.000000
-
-Distance to waypoint:7.911490
 Distance to waypoint:7.911490
 Distance to waypoint:7.902867
 Distance to waypoint:7.871540
@@ -76,3 +65,4 @@ Current Heading: -0.0016413627890869975
 
 Yawing NORTH
 Current Heading: 0.00508104357868433
+dojme
