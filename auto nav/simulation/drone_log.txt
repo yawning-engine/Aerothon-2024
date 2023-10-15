@@ -1,0 +1,78 @@
+
+Current Heading: 0.0028733445797115564
+
+Yawing NORTH
+Current Heading: -0.0006532873958349228
+New location coordinates: LocationGlobalRelative:lat=-35.3630818842358,lon=149.16545677754826,alt=20
+New location coordinates: LocationGlobalRelative:lat=-35.3630818842358,lon=149.16545677754826,alt=30
+
+Going to waypoint:LocationGlobalRelative:lat=-35.3630818842358,lon=149.16545677754826,alt=30
+Ground Speed:0.000000
+
+Distance to waypoint:7.911490
+Distance to waypoint:7.911490
+Distance to waypoint:7.902867
+Distance to waypoint:7.871540
+Distance to waypoint:7.650676
+Distance to waypoint:7.454116
+Distance to waypoint:7.193307
+Distance to waypoint:6.546455
+Distance to waypoint:6.160458
+Distance to waypoint:5.734525
+Distance to waypoint:5.261726
+Distance to waypoint:4.269641
+Distance to waypoint:3.772868
+Distance to waypoint:3.291886
+Distance to waypoint:2.844718
+Distance to waypoint:2.435747
+Distance to waypoint:1.746567
+Distance to waypoint:1.466876
+Distance to waypoint:1.229122
+Distance to waypoint:1.039052
+Distance to waypoint:0.741067
+Distance to waypoint:0.629796
+Distance to waypoint:0.537770
+Current Heading: -0.0014607022749260068
+
+Yawing NORTH
+Current Heading: 0.0006449098000302911
+New location coordinates: LocationGlobalRelative:lat=-35.36312481576421,lon=149.16539972248373,alt=20
+
+Going to waypoint:LocationGlobalRelative:lat=-35.36312481576421,lon=149.16539972248373,alt=20
+Ground Speed:0.220000
+
+Distance to waypoint:7.911488
+Distance to waypoint:7.942813
+Distance to waypoint:7.974139
+Distance to waypoint:7.942813
+Distance to waypoint:7.887200
+Distance to waypoint:7.777564
+Distance to waypoint:7.627986
+Distance to waypoint:7.241917
+Distance to waypoint:7.036740
+Distance to waypoint:6.824586
+Distance to waypoint:6.619428
+Distance to waypoint:6.184791
+Distance to waypoint:5.972709
+Distance to waypoint:5.751946
+Distance to waypoint:5.531199
+Distance to waypoint:5.058505
+Distance to waypoint:4.806583
+Distance to waypoint:4.561526
+Distance to waypoint:4.309681
+Distance to waypoint:3.804066
+Distance to waypoint:3.543501
+Distance to waypoint:3.282977
+Distance to waypoint:3.024827
+Distance to waypoint:2.506897
+Distance to waypoint:2.240632
+Distance to waypoint:1.984142
+Distance to waypoint:1.719229
+Distance to waypoint:1.208726
+Distance to waypoint:0.964884
+Distance to waypoint:0.741064
+Distance to waypoint:0.565515
+Current Heading: -0.0016413627890869975
+
+Yawing NORTH
+Current Heading: 0.00508104357868433
