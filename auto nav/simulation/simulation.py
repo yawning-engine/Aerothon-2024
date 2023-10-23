@@ -58,7 +58,7 @@ def goto_wp(vehicle, wp, f=f):
 
     vehicle.simple_goto(wp, groundspeed=ground_speed)
     
-    while distance_to_wp(vehicle, wp) > 0.2:
+    while distance_to_wp(vehicle, wp) > 1:
         dist = distance_to_wp(vehicle, wp)
         if dist > 0.05:
             print("Distance to waypoint:%f" % dist)
@@ -98,11 +98,11 @@ def get_location_metres(vehicle, dNorth, dEast , alt=30, f=f):
 
     print("New location coordinates: %s"%str(targetlocation))
     f.write("\nNew location coordinates: %s"%str(targetlocation))
-
+    print("target format",targetlocation)
     return targetlocation
 
 
-def condition_yaw(vehicle=vehicle, heading=0, f=f, relative=False):
+def condition_yaw(vehicle=vehicle, heading=180, f=f, relative=False):
     """
     This function yaws the drone towards north
     """
@@ -175,6 +175,45 @@ def arm_and_takeoff(aTargetAltitude):
             break
         time.sleep(1)
 
+def take_screenshot():
+    return 0
+
+def drop():
+    return 1
+
+def is_not_duplicate(curr_point, arr):
+    for i in arr:
+        if i in arr:
+            return 1
+
+def its_hotspot(x,y):
+    """
+    x: relative north in meters
+    y: relative East in meters
+    """
+    print("hotspot mission started....")
+    abs_loc=get_location_metres(vehicle,x,y,30)
+    if not abs_loc in hotspot_arr:
+        goto_wp(vehicle, abs_loc)
+        time.sleep(2)
+        take_screenshot()
+    else:
+        print("duplicate, skipping")
+        print("hotspot mission successful")
+    
+
+def its_target(x,y):
+    '''
+    x: relative north in meters
+    y: relative East in meters
+    '''
+    print("target mission started....")
+    goto_wp(vehicle, get_location_metres(vehicle,x,y,20))
+    time.sleep(2)
+    drop()
+    print("target mission successful")
+
+
 vehicle.airspeed=30
 vehicle.groundspeed=30
 
@@ -183,8 +222,15 @@ arm_and_takeoff(10)
 condition_yaw()
 print("relatve to abs :",get_location_metres(vehicle,5,5,20))
 
-goto_wp(vehicle, get_location_metres(vehicle,5,5))
-goto_wp(vehicle ,get_location_metres(vehicle,-5,-5,20))
+hotspot_arr=[get_location_metres(vehicle,10,10)]
+target_arr=[get_location_metres(vehicle,10,-10)]
+arr=[LocationGlobalRelative(-35.3629941,149.1677928,30),LocationGlobalRelative(-35.3628410,149.1706145,30),LocationGlobalRelative(-35.3629941,149.1677928,30),LocationGlobalRelative(-35.3628410,149.1706145,30)]
+
+for i in arr:
+    print("going to", i)
+    goto_wp(vehicle, i)
+    its_hotspot(10,10)
+    its_target(15,-10)
 
 print("changed alt to 10")
 print("Returning to Launch")
