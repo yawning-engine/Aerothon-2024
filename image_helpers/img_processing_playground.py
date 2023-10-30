@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import time
 
 def detect_circles(image):
     # Convert the image to grayscale
@@ -16,21 +17,21 @@ def detect_circles(image):
     
     # Detect circles using Hough Circle Transform
     circles = cv2.HoughCircles(
-        edges, cv2.HOUGH_GRADIENT, dp=1, minDist=120,
+        edges, cv2.HOUGH_GRADIENT, dp=1, minDist=100,
         param1=50, param2=30, minRadius=15, maxRadius=80
     )
     
     if circles is not None:
         circles = np.uint16(np.around(circles))
-        
+        ''''    
         for circle in circles[0, :]:
             center = (circle[0], circle[1])
             radius = circle[2]
             
             # Draw the circle outline
             cv2.circle(image, center, radius, (0, 255, 0), 4)
-    
-    return image, circles
+    '''
+    return circles
 
 
 def crop_circles(image, circles):
@@ -59,7 +60,7 @@ def template_matching(template, image):
     
     return max_val
     
-    
+start_time = time.time()  
 # Load the template image of the target and hotspot
 template_path_target = 'target.png'  # Change this to your target image's path
 template_target = cv2.imread(template_path_target, cv2.IMREAD_GRAYSCALE)
@@ -77,7 +78,7 @@ try:
             break
         
         # Detect circles in the frame
-        frame_with_circles, detected_circles = detect_circles(frame.copy())
+        detected_circles = detect_circles(frame)
         
         # Crop out detected circles
         cropped_images = crop_circles(frame, detected_circles)
@@ -86,34 +87,38 @@ try:
         for i, cropped in enumerate(cropped_images):
             match_target = template_matching(template_target, cropped)
             match_hotspot = template_matching(template_hotspot, cropped)
-            print(match_target)
-            print(match_hotspot)
             # Determine target type based on template matching
-            if match_target > match_hotspot:
-                target_type = "Target"
-                text_color = (0, 255, 0)  # Green color
-            else:
-                target_type = "Hotspot"
-                text_color = (0, 0, 255)  # Red color
+            if max(match_target,match_hotspot) > 0.5:
+                print(i,". Target corr: ",match_target)
+                print(i,". Hotspot corr: ",match_hotspot)
+                if match_target > match_hotspot:
+                    target_type = "Target"
+                    text_color = (0, 255, 0)  # Green color
+                else:
+                    target_type = "Hotspot"
+                    text_color = (0, 0, 255)  # Red color
                 
-            # Calculate the position for the target type text
-            circle_center = detected_circles[0][i][:2]
-            circle_radius = detected_circles[0][i][2]
-            text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
+                # Calculate the position for the target type text
+                circle_center = detected_circles[0][i][:2]
+                circle_radius = detected_circles[0][i][2]
+                #print(circle_center," ",circle_radius)
+                text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
             
-            # Add text indicating target type
-            cv2.putText(frame_with_circles, target_type, text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
-            '''
-            # Save the cropped image with target type in the filename
-            filename = f'Cropped_Circle_{i + 1}_{target_type}.png'
-            cv2.imwrite(filename, cropped)
-            '''
-            cv2.imshow(f'Cropped Circle {i + 1}', cropped)
+                # Add text indicating target type
+                cv2.putText(frame, target_type, text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
+                #draw circles 
+                cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
+                '''
+                # Save the cropped image with target type in the filename
+                filename = f'Cropped_Circle_{i + 1}_{target_type}.png'
+                cv2.imwrite(filename, cropped)
+                '''
+                cv2.imshow(f'Cropped Circle {i + 1}', cropped)
         
         # Display the frame with circles
-        cv2.imshow('Frame with Circles', frame_with_circles)
+        cv2.imshow('Frame with Circles', frame)
         #cv2.imshow('Target', template)
-       
+        #print("\n\n\nExecution time:",time.time()-start_time)
         # Exit the loop on 'q' key press
         if cv2.waitKey(0) & 0xFF == ord('q'):
             break
