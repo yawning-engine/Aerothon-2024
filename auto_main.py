@@ -12,7 +12,7 @@ SEARCH_AREA_SE_LONGITUDE = -122.400603  # Replace with the longitude of the sout
 SEARCH_AREA_ALTITUDE = 30  # Replace with your desired altitude in meters
 TARGET_RADIUS = 50  # Replace with the approximate target radius in pixels
 CIRCLE_DETECTION_THRESHOLD = 100  # Adjust the threshold for circle detection sensitivity
-GRID_STEP_SIZE = 20  # Replace with the step size between grid points (in meters)
+GRID_STEP_SIZE = 20   # Replace with the step size between grid points (in meters)
 
 
 # Function to capture an image from the camera asynchronously
