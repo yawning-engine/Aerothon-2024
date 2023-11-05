@@ -2,6 +2,9 @@
 # Source code from the official PiCamera package
 # http://picamera.readthedocs.io/en/latest/recipes2.html#web-streaming
 
+#Camera stream can be accessed at
+#http://<rpi_ip>:8000
+
 import io
 import picamera
 import logging
@@ -12,11 +15,11 @@ from http import server
 PAGE="""\
 <html>
 <head>
-<title>Raspberry Pi - Surveillance Camera</title>
+<title>Drone Camera</title>
 </head>
 <body>
-<center><h1>Raspberry Pi - Surveillance Camera</h1></center>
-<center><img src="stream.mjpg" width="640" height="480"></center>
+<center><h1>Drone Camera</h1></center>
+<center><img src="stream.mjpg" width="960" height="720"></center>
 </body>
 </html>
 """
