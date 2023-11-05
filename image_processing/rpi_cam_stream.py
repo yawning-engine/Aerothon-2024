@@ -1,5 +1,5 @@
-//Accessing the Raspberry Pi Camera with OpenCV and Python
-//raspistill -o output.jpg
+#Accessing the Raspberry Pi Camera with OpenCV and Python
+#raspistill -o output.jpg
 
 from picamera.array import PiRGBArray
 from picamera import PiCamera
