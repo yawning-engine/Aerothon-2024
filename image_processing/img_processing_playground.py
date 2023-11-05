@@ -2,6 +2,9 @@ import cv2
 import numpy as np
 import time
 
+center_cord = [320,240]
+flt_alt = 15
+
 def detect_circles(image):
     # Convert the image to grayscale
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -17,8 +20,8 @@ def detect_circles(image):
     
     # Detect circles using Hough Circle Transform
     circles = cv2.HoughCircles(
-        edges, cv2.HOUGH_GRADIENT, dp=1, minDist=100,
-        param1=50, param2=30, minRadius=15, maxRadius=80
+        edges, cv2.HOUGH_GRADIENT, dp=1, minDist=80,
+        param1=50, param2=30, minRadius=10, maxRadius=80
     )
     
     if circles is not None:
@@ -68,7 +71,12 @@ template_path_hotspot = 'hotspot.png'  # Change this to your hotspot image's pat
 template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 
 # Initialize webcam capture
+height = 480
+width = 640
+    
 cap = cv2.VideoCapture(0)  # 0 indicates the default webcam
+cap.set(4, height)
+cap.set(3, width)
 
 try:
     while True:
@@ -88,7 +96,7 @@ try:
             match_target = template_matching(template_target, cropped)
             match_hotspot = template_matching(template_hotspot, cropped)
             # Determine target type based on template matching
-            if max(match_target,match_hotspot) > 0.5:
+            if max(match_target,match_hotspot) > 0.3:
                 print(i,". Target corr: ",match_target)
                 print(i,". Hotspot corr: ",match_hotspot)
                 if match_target > match_hotspot:
@@ -103,6 +111,18 @@ try:
                 circle_radius = detected_circles[0][i][2]
                 #print(circle_center," ",circle_radius)
                 text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
+                
+                alt = flt_alt
+                px_width = 560/alt
+                x1=-(center_cord[0]-detected_circles[0][i][0])/px_width
+                y1=(center_cord[1]-detected_circles[0][i][1])/px_width
+                print("\nX:",x1,"Y:",y1,"\n")
+                
+
+                line_thickness = 2
+                cv2.line(frame, (0, 240), (640, 240), (0, 255, 0), thickness=line_thickness)
+                cv2.line(frame, (320, 0), (320, 480), (0, 255, 0), thickness=line_thickness)
+
             
                 # Add text indicating target type
                 cv2.putText(frame, target_type, text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)

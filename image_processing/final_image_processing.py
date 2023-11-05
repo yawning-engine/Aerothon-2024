@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import time
 
+flt_alt = 15
+
 # Load the template image of the target and hotspot
 template_path_target = 'target.png'  # Change this to your target image's path
 template_target = cv2.imread(template_path_target, cv2.IMREAD_GRAYSCALE)
@@ -9,6 +11,47 @@ template_path_hotspot = 'hotspot.png'  # Change this to your hotspot image's pat
 template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 
 centers = list()
+center_cord = [320,240]
+
+
+def get_location_metres(vehicle, dNorth, dEast, f):
+
+    """
+    Returns a LocationGlobal object containing the latitude/longitude `dNorth` and `dEast` metres from the 
+    specified `original_location`. The returned Location has the same `alt` value
+    as `original_location`.
+
+    The function is useful when you want to move the vehicle around specifying locations relative to 
+    the current vehicle position.
+    The algorithm is relatively accurate over small distances (10m within 1km) except close to the poles.
+    For more information see:
+    http://gis.stackexchange.com/questions/2951/algorithm-for-offsetting-a-latitude-longitude-by-some-amount-of-meters
+    """
+    
+    global flt_alt
+    
+    earth_radius = 6378137.0  # Radius of "spherical" earth
+    lat_now = vehicle.location.global_relative_frame.lat
+    lon_now = vehicle.location.global_relative_frame.lon
+    alt_now = vehicle.location.global_relative_frame.alt
+    # Coordinate offsets in radians
+    dLat = dNorth / earth_radius
+    dLon = dEast / (earth_radius * math.cos(math.pi * lat_now / 180))
+
+    # New position in decimal degrees
+    newlat = lat_now + (dLat * 180 / math.pi)
+    newlon = lon_now + (dLon * 180 / math.pi)
+
+    if type(vehicle.location.global_relative_frame) is LocationGlobalRelative:
+        targetlocation = LocationGlobalRelative(newlat, newlon, flt_alt)
+    else:
+        raise Exception("Invalid Location object passed")
+
+    print("New location coordinates: %s"%str(targetlocation))
+    f.write("\nNew location coordinates: %s"%str(targetlocation))
+
+    return targetlocation
+    
 
 def detect_circles(image):
     # Convert the image to grayscale
@@ -25,8 +68,8 @@ def detect_circles(image):
     
     # Detect circles using Hough Circle Transform
     circles = cv2.HoughCircles(
-        edges, cv2.HOUGH_GRADIENT, dp=1, minDist=100,
-        param1=50, param2=30, minRadius=15, maxRadius=80
+        edges, cv2.HOUGH_GRADIENT, dp=1, minDist=80,
+        param1=50, param2=30, minRadius=10, maxRadius=80
     )
     
     if circles is not None:
@@ -70,8 +113,15 @@ def template_matching(template, image):
     
     
 def detect():
+    
     # Initialize webcam capture
+    height = 480
+    width = 640
+    
     cap = cv2.VideoCapture(0)  # 0 indicates the default webcam
+    cap.set(4, height)
+    cap.set(3, width)
+    
     center_frame = []
     try:
         while True:
@@ -103,8 +153,24 @@ def detect():
                     # Calculate the position for the target type text
                     circle_center = detected_circles[0][i][:2]
                     circle_radius = detected_circles[0][i][2]
-                    #print(circle_center," ",circle_radius)
+                    print("Center:",circle_center,"Radius:",circle_radius)
                     text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
+                    
+                    alt = flt_alt
+                    px_width = 560/alt
+                    x1=-(center_cord[0]-detected_circles[0][i][0])/px_width
+                    y1=(center_cord[1]-detected_circles[0][i][1])/px_width
+                    print("\nX:",x1,"Y:",y1,"\n")
+                    
+                    #Rotation of point wrt to drone heading
+                    #Origin at x0,y0, required points at x1,y1 rotated point at x2,y2
+                    
+                    x0,y0 = center_cord[0],center_cord[1]
+                    
+                    x2 = ((x1 - x0) * cos(a)) - ((y1 - y0) * sin(a)) + x0;
+                    y2 = ((x1 - x0) * sin(a)) + ((y1 - y0) * cos(a)) + y0;
+                    
+                    #target_location = get_location_metres(vehicle, x2, y2, f)
                     
                     center_frame.append(circle_center)
             
@@ -117,7 +183,7 @@ def detect():
                     filename = f'Cropped_Circle_{i + 1}_{target_type}.png'
                     cv2.imwrite(filename, cropped)
                     '''
-                    cv2.imshow(f'Cropped Circle {i + 1}', cropped)
+                    #cv2.imshow(f'Cropped Circle {i + 1}', cropped)
         
             # Display the frame with circles
             cv2.imshow('Frame with Circles', frame)
@@ -128,7 +194,8 @@ def detect():
                 break
             
         cv2.destroyAllWindows()
-    except KeyboardInterrupt:
+    except error as e:
+        print(e)
         pass
     finally:
         cap.release()  # Release the webcam
