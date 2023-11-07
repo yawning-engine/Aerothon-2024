@@ -144,10 +144,12 @@ def detect():
                     #print(i,". Target corr: ",match_target)
                     #print(i,". Hotspot corr: ",match_hotspot)
                     if match_target > match_hotspot:
+                        print("Target")
                         target_type = "Target"
                         text_color = (0, 255, 0)  # Green color
                     else:
                         target_type = "Hotspot"
+                        print("Hotspot")
                         text_color = (0, 0, 255)  # Red color
                 
                     # Calculate the position for the target type text
