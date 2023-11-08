@@ -13,10 +13,10 @@ def detect_circles(image):
     
     # Apply bilateral filtering to reduce noise and improve circle detection
     filtered = cv2.bilateralFilter(image, 9, 75, 75)
-    #cv2.imshow('Blurred', filtered)
-    
+    cv2.imshow('Blurred', filtered)
     edges = cv2.Canny(filtered, threshold1=70, threshold2=155)
     cv2.imshow('EDGE', edges)
+    cv2.waitKey(0)
     
     # Detect circles using Hough Circle Transform
     circles = cv2.HoughCircles(
@@ -34,7 +34,7 @@ def detect_circles(image):
             # Draw the circle outline
             cv2.circle(image, center, radius, (0, 255, 0), 4)   
     
-    #cv2.imshow("all_circ",image)
+    cv2.imshow("all_circles",image)
     return circles
 
 
@@ -84,7 +84,7 @@ template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 # Initialize webcam capture
 
 
-img = cv2.imread('tar_hot_close2.png', 1)
+img = cv2.imread('tar_hot_1.png', 1)
 height = int(img.shape[0]*0.5)
 width = int(img.shape[1]*0.5)
 

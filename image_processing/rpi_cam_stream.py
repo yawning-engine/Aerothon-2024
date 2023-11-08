@@ -19,12 +19,14 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	image = frame.array
 	
 	#cv2.WINDOW_NORMAL makes the output window resizealbe
-	cv2.namedWindow('Camera Stream', cv2.WINDOW_NORMAL)
+	#cv2.namedWindow('Camera Stream', cv2.WINDOW_NORMAL)
 	#resize the window according to the screen resolution
-	cv2.resizeWindow('Camera Stream', 800, 600)
+	#cv2.resizeWindow('Camera Stream', 800, 600)
 	
+	image = cv2.circle(image, (320,240), radius=2, color=(0, 0, 255), thickness=-1)
 	# show the frame
 	cv2.imshow("Camera Stream", image)
+	
 	key = cv2.waitKey(1) & 0xFF
 	# clear the stream in preparation for the next frame
 	rawCapture.truncate(0)
