@@ -3,15 +3,13 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 
-center_cord = [320,240]
-flt_alt = 15
-
 def detect_circles(image):
+
     # Convert the image to grayscale
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    #gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # Converting to greyscale caused hotspot to blend into background    
     
     # Apply bilateral filtering to reduce noise and improve circle detection
-    filtered = cv2.bilateralFilter(gray, 9, 75, 75)
+    filtered = cv2.bilateralFilter(image, 9, 75, 75)
     
     cv2.imshow('Blurred', filtered)
     
@@ -67,15 +65,12 @@ def template_matching(template, image):
     
  
 # Load the template image of the target and hotspot
-template_path_target = 'target_real.png'  # Change this to your target image's path
+template_path_target = 'target_digital.png'  # Change this to your target image's path
 template_target = cv2.imread(template_path_target, cv2.IMREAD_GRAYSCALE)
 template_path_hotspot = 'hotspot_digital.png'  # Change this to your hotspot image's path
 template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 
-# Initialize webcam capture
-
-
-img = cv2.imread('tar_hot_close1.png', 1)
+img = cv2.imread('tar_hot_1.png', 1)
 height = int(img.shape[0]*0.5)
 width = int(img.shape[1]*0.5)
 
@@ -93,7 +88,7 @@ try:
         match_target = template_matching(template_target, cropped)
         match_hotspot = template_matching(template_hotspot, cropped)
         # Determine target type based on template matching
-        if max(match_target,match_hotspot) > 0.5:
+        if max(match_target,match_hotspot) > -1:
             print(i,". Target corr: ",match_target)
             print(i,". Hotspot corr: ",match_hotspot)
             if match_target > match_hotspot:
@@ -109,11 +104,6 @@ try:
             #print(circle_center," ",circle_radius)
             text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
                 
-            alt = flt_alt
-            px_width = 560/alt
-            x1=-(center_cord[0]-detected_circles[0][i][0])/px_width
-            y1=(center_cord[1]-detected_circles[0][i][1])/px_width
-            print("\nX:",x1,"Y:",y1,"\n")
                 
             h2 = int(height/2)
             w2 = int(width/2)
