@@ -12,7 +12,7 @@ import numpy as np
 x=0
 y=0
 
-flt_alt = 10
+flt_alt = 5
 drop_alt = 5
 
 ground_speed = 0.5
@@ -20,13 +20,16 @@ ground_speed = 0.5
 
 def connectmycopter():
 
+    '''
     parser = argparse.ArgumentParser(description='commands')
     parser.add_argument('--connect')
     args = parser.parse_args()
     connection_string = args.connect
+    '''
+    connection_string = "/dev/serial0"
     baud_rate = 57600
     print("Connecting to drone...")
-    f.write("\n Connecting to drone...")
+    #f.write("\n Connecting to drone...")
     vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)
     return vehicle
 
@@ -145,6 +148,7 @@ f = open("log_takeoff_land.txt", 'w')
 basic_data(vehicle, f)
 
 home_wp = set_home(vehicle, f)
+time.sleep(2)
 
 arm_and_takeoff(flt_alt, vehicle, f)
 time.sleep(2)
