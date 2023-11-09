@@ -23,7 +23,46 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	#resize the window according to the screen resolution
 	#cv2.resizeWindow('Camera Stream', 800, 600)
 	
-	image = cv2.circle(image, (320,240), radius=2, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (320,240), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (420,240), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (520,240), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (220,240), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (120,240), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (620,240), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (20,240), radius=4, color=(0, 0, 255), thickness=-1)
+	
+	image = cv2.circle(image, (320,140), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (420,140), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (520,140), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (220,140), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (120,140), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (620,140), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (20,140), radius=4, color=(0, 0, 255), thickness=-1)
+	
+	image = cv2.circle(image, (320,340), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (420,340), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (520,340), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (220,340), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (120,340), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (620,340), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (20,340), radius=4, color=(0, 0, 255), thickness=-1)
+	
+	image = cv2.circle(image, (320,40), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (420,40), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (520,40), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (220,40), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (120,40), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (620,40), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (20,40), radius=4, color=(0, 0, 255), thickness=-1)
+	
+	image = cv2.circle(image, (320,440), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (420,440), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (520,440), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (220,440), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (120,440), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (620,440), radius=4, color=(0, 0, 255), thickness=-1)
+	image = cv2.circle(image, (20,440), radius=4, color=(0, 0, 255), thickness=-1)
+	
 	# show the frame
 	cv2.imshow("Camera Stream", image)
 	

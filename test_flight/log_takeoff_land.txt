@@ -1,0 +1,81 @@
+Version: APM:Copter-4.4.2
+Armable: True
+Vehicle Mode: STABILIZE
+Support set attitude from companion: True
+Last Heartbeat: 0.15884006099997805
+
+Home set at: LocationGlobalRelative:lat=12.9418675,lon=77.5666175,alt=-1.514
+Current mode: STABILIZE
+Waiting for vehicle to arm
+
+VEHICLE ARMED
+
+About to takeoff
+
+GUIDED MODE
+
+
+Waiting for vehicle to enter guided mode
+Altitude:-0.059000
+Altitude:-0.065000
+Altitude:-0.078000
+Altitude:-0.088000
+Altitude:-0.028000
+Altitude:0.099000
+Altitude:0.242000
+Altitude:0.426000
+Altitude:0.749000
+Altitude:1.623000
+Altitude:2.067000
+Altitude:2.499000
+Altitude:2.917000
+Altitude:3.300000
+Altitude:3.911000
+Altitude:4.157000
+Altitude:4.382000
+Altitude:4.573000
+Altitude:4.738000
+Altitude:4.940000
+Target altitude reached
+
+Land Mode
+
+
+Altitude:5.015000
+Altitude:5.019000
+Altitude:4.999000
+Altitude:4.905000
+Altitude:4.770000
+Altitude:4.430000
+Altitude:4.269000
+Altitude:4.138000
+Altitude:4.038000
+Altitude:3.927000
+Altitude:3.729000
+Altitude:3.607000
+Altitude:3.473000
+Altitude:3.373000
+Altitude:3.153000
+Altitude:3.006000
+Altitude:2.842000
+Altitude:2.698000
+Altitude:2.582000
+Altitude:2.374000
+Altitude:2.246000
+Altitude:2.139000
+Altitude:2.029000
+Altitude:1.875000
+Altitude:1.529000
+Altitude:1.382000
+Altitude:1.269000
+Altitude:1.164000
+Altitude:1.066000
+Altitude:0.798000
+Altitude:0.681000
+Altitude:0.562000
+Altitude:0.446000
+Altitude:0.334000
+Altitude:0.107000
+Landed Successfully
+
+--------Mission Successfull--------
