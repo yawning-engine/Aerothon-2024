@@ -1,5 +1,7 @@
 import cv2
 
+#Tune threshold for edge detection 
+
 def funcCan(thresh1=0):
     thresh1 = cv2.getTrackbarPos('thresh1', 'canny')
     thresh2 = cv2.getTrackbarPos('thresh2', 'canny')
