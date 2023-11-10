@@ -54,7 +54,7 @@ def goto_wp(vehicle, wp, f=f,ground_speed=3):
     print("\nGround Speed:%f"%vehicle.groundspeed)
     f.write("\nGround Speed:%f\n"%vehicle.groundspeed)
     if distance_to_wp(vehicle, wp)>40:
-        ground_speed=10
+        ground_speed=5
     vehicle.simple_goto(wp, groundspeed=ground_speed)
     
     while distance_to_wp(vehicle, wp) > 1:
@@ -268,15 +268,15 @@ def grid_navigation(points, max_distance):
         x*=-1
         for j in range(num_lon_points+1):
 
-            print("lat step change-",i*lat_angle/num_lat_points)
-            print("lon step change=", (j-1)*lon_angle/num_lon_points)
-
-            if j==0:
-                lat = min_lat + i * lat_step + (j)*lat_angle/(num_lon_points+1)
-                lon = min_lon + 0.5 * lon_step + i*lon_angle/(num_lat_points+1)
+            if j==0 and i==0:
+                lat = min_lat + 0.5*lat_step
+                lon = min_lon + 0.5*lon_step
+            elif j==0:
+                lat = min_lat + 0.5*lat_step + i*lat_step 
+                lon = min_lon + 0.5*lon_step + i*lon_angle/(num_lat_points+1)
             else:
-                lat = min_lat + i * lat_step + (j)*lat_angle/(num_lon_points+1)
-                lon = min_lon + j * lon_step + 0.5 * lon_step +i*lon_angle/(num_lat_points+1)
+                lat = min_lat + 0.5*lat_step + i*lat_step + j*lat_angle/(num_lon_points+1)
+                lon = min_lon + 0.5*lon_step + j*lon_step + i*lon_angle/(num_lat_points+1)
             # lat = min_lat + i * lat_step 
             # lon = min_lon + j * lon_step
 
@@ -303,9 +303,8 @@ def grid_navigation(points, max_distance):
 
 
 def RTL(vehicle):
-    print("changed alt to 10")
     print("Returning to Launch")
-    vehicle.VehicleMode("RTL")
+    vehicle.mode = VehicleMode("RTL")
     while not vehicle.mode.name=="RTL":
         print("Waiting to switch mode to RTL, current mode:",vehicle.mode.name)
         time.sleep(1)

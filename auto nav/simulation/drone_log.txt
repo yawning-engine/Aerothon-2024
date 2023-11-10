@@ -1,3 +1,0 @@
-
-New location coordinates: LocationGlobalRelative:lat=13.39478503152841,lon=77.73194654351862,alt=30
-New location coordinates: LocationGlobalRelative:lat=13.39478503152841,lon=77.73176185648138,alt=30

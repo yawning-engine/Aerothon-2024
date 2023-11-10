@@ -31,14 +31,14 @@ field_2_boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371),
 bms_points= [(12.94135901438728, 77.56516586950416),(12.940433628249703, 77.56571304009111),
              (12.941094992138853, 77.5665069738839),(12.94186353137158, 77.56604026955976)]
 
-arr=drone.grid_navigation(field_2_boundary_points,15)
+arr=drone.grid_navigation(field_1_boundary_points,15)
 
 print(arr)
 
 vehicle.airspeed=2
 vehicle.groundspeed=2
 
-drone.arm_and_takeoff(vehicle,10)
+drone.arm_and_takeoff(vehicle,30)
 
 #drone.condition_yaw()
 print("relatve to abs :",drone.get_gps_location(vehicle,5,5,20))
