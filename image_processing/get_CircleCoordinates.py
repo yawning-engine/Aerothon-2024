@@ -5,55 +5,80 @@ import math
 import matplotlib.pyplot as plt
 
 flt_alt = 15
-center_cord = (320,240)
+center_cord = [320,240]
 
+def coordinate_rotation(x_cart,y_cart):
 
-def get_coordinates(cx,cy):
+                    
+   #Rotation of point wrt to drone heading
+   #Origin at 0,0 required points at x_cart,y_cart rotated point at xr,yr
+   
+   delta_deg = 0 # Offset angle in Radians
+   delta_rad = delta_deg*math.pi/180 # Offset angle in Radians
+ 
+   xc,yc = center_cord[0],center_cord[1]
+                    
+   xr = int(((x_cart) * math.cos(delta_rad)) - ((y_cart) * math.sin(delta_rad)));
+   yr = int(((x_cart) * math.sin(delta_rad)) + ((y_cart) * math.cos(delta_rad)));
+   
+   print("Rotated Coordinates:","x:",xr,"y:",yr,"\n")
+   print("Delta rad:", delta_rad, "\t\tDelta deg:",delta_deg)
+      
+
+   return (xr,yr)
+   
+   
+def get_coordinates(circle_x,circle_y):
 
     h = flt_alt
-    x1 = cx - w2
-    y1 = h2 - cy
+    x_cart = circle_x - center_cord[0]
+    y_cart = center_cord[1] - circle_y
     
-    print("Cartesian Coordinates:","x:",x1,"y:",y1,"\n")
+    print("Cartesian Coordinates:","x:",x_cart,"y:",y_cart)
     
-    theta_rad = math.atan(10.3/109)
-    theta_deg = theta_rad*180/math.pi
+    xr,yr = coordinate_rotation(x_cart,y_cart)
+    
+    theta_rad = round(math.atan(10.3/109),5)
+    theta_deg = round(theta_rad*180/math.pi,5)
     print("Theta rad:", theta_rad, "\t\tTheta deg:",theta_deg)
     
-    if x1 == 0:
-        phi_rad = math.pi/2
+    if x_cart == 0:
+        phi_rad = round(math.pi/2,5)
     else:
-       phi_rad = math.atan(y1/x1)
+       phi_rad = round(math.atan(yr/xr),5)
     
-    phi_deg = phi_rad*180/math.pi
-    print("Phi rad:", phi_rad, "\t\tPhi deg:",phi_deg)
+    phi_deg = round(phi_rad*180/math.pi,5)
+    print("Phi rad:", phi_rad, "\t\tPhi deg:",phi_deg,"\n")
     
-    Rp = math.sqrt(math.pow(x1,2)+math.pow(y1,2)) # Rp is pixel distance
-    print("\nRp:",Rp)
+    Rp = round(math.sqrt(math.pow(xr,2)+math.pow(yr,2)),5) # Rp is pixel distance
+    print("Rp (Pixel distance):",Rp)
     
-    Rd = h*math.tan(theta_rad) # Rd is real world distance for 50 pixels
-    print("Rd:",Rd)
+    Rd = round(h*math.tan(theta_rad),5) # Rd is real world distance for 50 pixels
+    print("Rd (Real world distance for 50 pixels):",Rd)
     
-    d = (Rp*Rd)/50.0
+    d = round((Rp*Rd)/50.0,5) # Real world distance in meters per pixel at height h (flight altitude).
+    print("D (Real world Distance to point):",d)
     
-    x = round(abs(d*math.cos(phi_rad)),5)
-    y = round(abs(d*math.sin(phi_rad)),5)
-    print("\nX:",x,"Y:",y,"\n")
+    xd = round(abs(d*math.cos(phi_rad)),5) # Real world distance along x axis (EAST) in meters.
+    yd = round(abs(d*math.sin(phi_rad)),5) # Real world distance along y axis (NORTH) in meters.
     
-    return (x,y)
+    if xr < 0:
+    	xd = xd*-1
+    if yr < 0:
+    	yd = yd*-1
+    print("\nX (Distance along East):",xd,"|| Y (Distance along North):",yd,"\n\n\n")
+    
+    return (xd,yd)
     
     
 def detect_circles(image):
 
-    # Convert the image to grayscale
-    #gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # Converting to greyscale caused hotspot to blend into background
-    
     # Apply bilateral filtering to reduce noise and improve circle detection
     filtered = cv2.bilateralFilter(image, 9, 75, 75)
-    cv2.imshow('Blurred', filtered)
+    #cv2.imshow('Blurred', filtered)
     edges = cv2.Canny(filtered, threshold1=70, threshold2=155)
-    cv2.imshow('EDGE', edges)
-   # cv2.waitKey(0)
+    #cv2.imshow('EDGE', edges)
+    #cv2.waitKey(0)
     
     # Detect circles using Hough Circle Transform
     circles = cv2.HoughCircles(
@@ -122,8 +147,8 @@ template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 img = cv2.imread('tar_hot_1.png', 1)
 height = int(img.shape[0]*0.5)
 width = int(img.shape[1]*0.5)
-h2 = int(height/2)
-w2 = int(width/2)
+center_cord[1] = int(height/2)
+center_cord[0] = int(width/2)
 
 frame = cv2.resize(img, (width, height), interpolation = cv2.INTER_LINEAR)
 
@@ -158,19 +183,19 @@ try:
             circle_center = detected_circles[0][i][:2]
             circle_radius = detected_circles[0][i][2]
             #print(circle_center," ",circle_radius)
+            
             text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
             
             print("\nTarget Type:",target_type)
             print("Pixel Coordinates","X:",circle_center[0],"Y:",circle_center[1])
         
-            x,y = get_coordinates(circle_center[0],circle_center[1])
+            xd,yd = get_coordinates(circle_center[0],circle_center[1])
                 
             line_thickness = 2
             
-            cv2.line(frame, (0,h2), (width, h2), (0, 255, 0), thickness=line_thickness)
-            cv2.line(frame, (w2, 0), (w2, height), (0, 255, 0), thickness=line_thickness)
+            cv2.line(frame, (0,center_cord[1]), (width, center_cord[1]), (0, 255, 0), thickness=line_thickness)
+            cv2.line(frame, (center_cord[0], 0), (center_cord[0], height), (0, 255, 0), thickness=line_thickness)
 
-            
             # Add text indicating target type
             cv2.putText(frame, target_type, text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
             # Draw circles 
