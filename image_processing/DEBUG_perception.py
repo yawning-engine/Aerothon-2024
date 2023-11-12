@@ -1,19 +1,27 @@
-# import the necessary packages
+# Import necessary packages
+from dronekit import connect, VehicleMode, LocationGlobalRelative
+import socket
+import argparse
+import dronekit_sitl
+import pymavlink
+from pymavlink import mavutil
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import cv2
 import time
 import numpy as np
 import matplotlib.pyplot as plt
+import time
+import math
 
 flt_alt = 15
-Center_cord = list()
+center_cord = list()
+poi = list()
 
 # Initialize Picam capture
 width = 640
 height = 480
-center_cord[0] = int(width/2)
-center_cord[1] = int(height/2)
+center_cord = [int(width/2),int(height/2)]
     
 # Load the template image of the target and hotspot
 template_path_target1 = 'target_real.png'  # Change this to your target image's path
@@ -100,7 +108,7 @@ def detect_circles(image):
     filtered = cv2.bilateralFilter(image, 9, 75, 75)
     #cv2.imshow('Blurred', filtered)
     edges = cv2.Canny(filtered, threshold1=70, threshold2=155)
-    #cv2.imshow('EDGE', edges)
+    cv2.imshow('EDGE', edges)
     #cv2.waitKey(0)
     
     # Detect circles using Hough Circle Transform
@@ -127,7 +135,6 @@ def detect_circles(image):
 def crop_circles(image, circles):
 
     cropped_images = []
-    
     for circle in circles[0]:
         x, y, r = circle
         ymr = int(y)-int(r)
@@ -182,6 +189,11 @@ def detect():
         # Detect circles in the frame
         detected_circles = detect_circles(frame.copy())
         
+        if detected_circles is None:
+            print("\nNo Circles Found\n")
+            POI.append([0,0,"No_circles_found"])      
+            return poi
+              
         # Crop out detected circles
         cropped_images = crop_circles(frame.copy(), detected_circles)
      
