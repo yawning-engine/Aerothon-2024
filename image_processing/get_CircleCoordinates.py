@@ -187,17 +187,6 @@ template_path_hotspot = 'hotspot_real.png'  # Change this to your hotspot image'
 template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 
 img = cv2.imread('tar_hot_1.png', 1)
-# converting the image to HSV format 
-hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV) 
-Lower_hsv = np.array([0, 0, 0]) 
-Upper_hsv = np.array([116, 56, 255]) 
-  
-# creating the mask 
-Mask = cv2.inRange(hsv, Lower_hsv, Upper_hsv) 
-  
-# Inverting the mask  
-mask_yellow = cv2.bitwise_not(Mask) 
-img = cv2.bitwise_and(img, img, mask = mask_yellow) 
 
 height = int(img.shape[0]*0.5)
 width = int(img.shape[1]*0.5)

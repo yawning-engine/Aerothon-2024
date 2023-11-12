@@ -2,6 +2,6 @@ Version: APM:Copter-4.4.2
 Armable: False
 Vehicle Mode: STABILIZE
 Support set attitude from companion: True
-Last Heartbeat: 0.7095797629999652
+Last Heartbeat: 0.05297533100019791
 
 --------Mission Successfull--------

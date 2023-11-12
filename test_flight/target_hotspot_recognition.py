@@ -42,7 +42,7 @@ template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 def connectmycopter():
 
     connection_string = "/dev/serial0"
-    baud_rate = 912600
+    baud_rate = 57600
     print("Connecting to drone...")
     #f.write("\n Connecting to drone...")
     vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)
@@ -192,9 +192,12 @@ def coordinate_rotation(yaw_angle, x_cart, y_cart):
 def get_coordinates(yaw_angle, f, circle_x, circle_y):
 
     h = flt_alt
+    if h < 0:
+        h = 30   
     x_cart = circle_x - center_cord[0]
     y_cart = center_cord[1] - circle_y
     
+    print("Current Altitude:",h)
     print("Cartesian Coordinates:","x:",x_cart,"y:",y_cart)
     
     xr,yr = coordinate_rotation(yaw_angle, x_cart, y_cart)
@@ -247,7 +250,7 @@ def detect_circles(image):
     # Detect circles using Hough Circle Transform
     circles = cv2.HoughCircles(
         edges, cv2.HOUGH_GRADIENT, dp=1, minDist=50,
-        param1=50, param2=30, minRadius=10, maxRadius=100
+        param1=50, param2=30, minRadius=10, maxRadius=120
     )
     '''
     if circles is not None:
@@ -306,7 +309,7 @@ def detect(yaw_angle, f):
     
     camera = PiCamera()
     camera.resolution = (width, height)
-    #camera.vflip = True
+    camera.vflip = True
     
     rawCapture = PiRGBArray(camera, size=(width, height))
     
@@ -315,6 +318,8 @@ def detect(yaw_angle, f):
 
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
+    
+    cv2.imwrite("drone_shot.jpg",frame)
     
     poi = list()
     
@@ -338,7 +343,7 @@ def detect(yaw_angle, f):
         
             match_hotspot = template_matching(template_hotspot, cropped)
         
-            if max(match_target1,match_target2,match_hotspot) >= -1:
+            if max(match_target1,match_target2,match_hotspot) >= 0.4:
                 print(i,". Target_smol corr: ",match_target1)
                 print(i,". Target_full corr: ",match_target2)
             
@@ -361,8 +366,8 @@ def detect(yaw_angle, f):
             
                 text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
             
-                print("\nTarget Type:",target_type)
-                print("Pixel Coordinates","X:",circle_center[0],type(circle_center[0]),"Y:",circle_center[1])
+                print("\nTarget Type:",target_type,i)
+                print("Pixel Coordinates","X:",circle_center[0],"Y:",circle_center[1])
         
                 xd,yd = get_coordinates(yaw_angle, f, circle_center[0], circle_center[1])
                 
@@ -375,18 +380,14 @@ def detect(yaw_angle, f):
                 cv2.line(frame, (center_cord[0], 0), (center_cord[0], height), (0, 255, 0), thickness=line_thickness)
 
                 # Add text indicating target type
-                cv2.putText(frame, target_type, text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
+                cv2.putText(frame, target_type+str(i), text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
                 # Draw circles 
                 cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
-            
-            else:
-                target_type = "Unknown"
-                text_color = (148, 7, 173) # Purple color
-
+                
         # Display the frame with circles   
-        cv2.imshow('Frame with Circles', frame)
+        #cv2.imshow('Frame with Circles', frame)
         cv2.imwrite("drone_frame.jpg", frame)
-        cv2.waitKey(0)        
+        #cv2.waitKey(0)        
         cv2.destroyAllWindows()
     
     except Exception as e:
@@ -414,7 +415,8 @@ if __name__== '__main__':
     #arm_and_takeoff(flt_alt, vehicle, f)
     #time.sleep(2)
     
-    yaw_angle = get_yaw(vehicle,f)
+    yaw_angle = vehicle.attitude.yaw
+    flt_alt = vehicle.location.global_relative_frame.alt
 
     poi = detect(yaw_angle, f)
     
