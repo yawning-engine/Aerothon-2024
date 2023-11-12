@@ -1,7 +1,51 @@
 Version: APM:Copter-4.4.2
-Armable: False
+Armable: True
 Vehicle Mode: STABILIZE
 Support set attitude from companion: True
-Last Heartbeat: 0.5023384020005324
+Last Heartbeat: 0.8709472989999085
 
-Home set at: LocationGlobalRelative:lat=0.0,lon=0.0,alt=15.375
+Home set at: LocationGlobalRelative:lat=12.9418907,lon=77.5665884,alt=0.858
+Current mode: STABILIZE
+Waiting for vehicle to arm
+
+VEHICLE ARMED
+
+About to takeoff
+
+GUIDED MODE
+
+
+Waiting for vehicle to enter guided mode
+Altitude:-0.007000
+Altitude:-0.002000
+Altitude:-0.012000
+Altitude:-0.019000
+Altitude:0.199000
+Altitude:0.343000
+Altitude:0.523000
+Altitude:0.760000
+Altitude:1.038000
+Altitude:1.747000
+Altitude:2.187000
+Altitude:2.686000
+Altitude:3.234000
+Altitude:3.817000
+Altitude:5.070000
+Altitude:5.710000
+Altitude:6.330000
+Altitude:6.966000
+Altitude:7.619000
+Altitude:8.868000
+Altitude:9.476000
+Altitude:10.077000
+Altitude:10.651000
+Altitude:11.691000
+Altitude:12.138000
+Altitude:12.564000
+Altitude:12.965000
+Altitude:13.324000
+Altitude:13.985000
+Altitude:14.277000
+Altitude:14.535000
+Altitude:14.769000
+Target altitude reached

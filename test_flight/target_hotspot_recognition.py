@@ -15,7 +15,7 @@ import time
 import math
 
 # Initialize flight variables
-flt_alt = 5
+flt_alt = 15
 drop_alt = 5
 
 ground_speed = 0.5
@@ -31,7 +31,7 @@ center_cord = [int(width/2),int(height/2)]
 def connectmycopter():
 
     connection_string = "/dev/serial0"
-    baud_rate = 912600
+    baud_rate = 57600
     print("Connecting to drone...")
     #f.write("\n Connecting to drone...")
     vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)
@@ -381,9 +381,9 @@ def detect(yaw_angle, f):
                 text_color = (148, 7, 173) # Purple color
 
         # Display the frame with circles   
-        cv2.imshow('Frame with Circles', frame)
+        #cv2.imshow('Frame with Circles', frame)
         
-        cv2.waitKey(0)        
+        #cv2.waitKey(0)        
         cv2.destroyAllWindows()
     
     except KeyboardInterrupt:
@@ -398,6 +398,7 @@ def detect(yaw_angle, f):
 if __name__== '__main__':
     
     vehicle = connectmycopter()
+    poi = list()
 
     f = open("log_target_hotspot_recognition.txt", 'w')
 
@@ -406,15 +407,15 @@ if __name__== '__main__':
     home_wp = set_home(vehicle, f)
     time.sleep(2)
 
-    #arm_and_takeoff(flt_alt, vehicle, f)
-    #time.sleep(2)
+    arm_and_takeoff(flt_alt, vehicle, f)
+    time.sleep(2)
     
     yaw_angle = get_yaw(vehicle,f)
 
     poi = detect(yaw_angle, f)
     
-    #land_copter(vehicle, f)
-    #time.sleep(3)
+    land_copter(vehicle, f)
+    time.sleep(3)
 
     print("\n--------Mission Successfull--------\n")
     f.write("\n--------Mission Successfull--------")
