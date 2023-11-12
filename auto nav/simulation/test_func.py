@@ -47,8 +47,21 @@ def grid_navigation(points, max_distance=25):
     return grid_points
 
 # Example usage:
-boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371), (13.393385, 77.7318823), (13.39454, 77.7320772)]
+#boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371), (13.393385, 77.7318823), (13.39454, 77.7320772)]
 
-grid_points = grid_navigation(boundary_points, max_distance=10)
+#grid_points = grid_navigation(boundary_points, max_distance=10)
 #print(grid_points)
 # grid_points now contains a list of GPS points forming a grid within the specified boundary.
+
+def calculate_distance(point1=(13.393506,77.7314371), point2=(13.393385,77.7318823)):
+    # Calculate the Euclidean distance between two GPS points.
+    lat1, lon1 = point1
+    lat2, lon2 = point2
+    earth_radius = 6371000  # Earth's radius in meters
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = math.sin(dlat / 2) * math.sin(dlat / 2) + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2) * math.sin(dlon / 2)
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    distance = earth_radius * c
+
+print(calculate_distance())

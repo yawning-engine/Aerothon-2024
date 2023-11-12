@@ -7,27 +7,16 @@ from dronekit import connect, VehicleMode, LocationGlobalRelative
 from pymavlink import mavutil
 
 
-# Set up option parsing to get connection string
-
-import dronekit_sitl
-
 f = open("drone_log.txt", 'w')
-sitl = None
-def connect_simulation_dorne(connection_string):
+vehicle = None
+def connect_dorne(connection_string):
     
-    
-
-    # Start SITL if no connection string specified
-    if not connection_string:
-        
-        sitl = dronekit_sitl.start_default()
-        connection_string = sitl.connection_string()
-
-
-    # Connect to the Vehicle
     print('Connecting to vehicle on: %s' % connection_string)
     vehicle = connect(connection_string, wait_ready=True)
+
     return vehicle
+
+
 def distance_to_wp(vehicle , wp):
 
     dist = 0.0
@@ -43,6 +32,7 @@ def distance_to_wp(vehicle , wp):
     dist = math.sqrt((latdiff * latdiff) + (londiff * londiff)) * 1.113195e5
 
     return dist
+
 
 def goto_wp(vehicle, wp, f=f,ground_speed=3):
  
@@ -174,27 +164,35 @@ def arm_and_takeoff(vehicle,aTargetAltitude):
             break
         time.sleep(1)
 
-def take_screenshot():
-    return 0
+# def take_screenshot():
+#     return 0
 
-def drop():
-    return 1
+# def drop():
+#     return 1
 
 def is_not_duplicate(curr_point, arr):
-    for i in arr:
-        if i in arr:
-            return 1
+    """
+    curr_point : detected point
+    arr : array of already detected points
+
+    """
+    for locs in arr:
+        if abs(calculate_distance(curr_point,locs))<5:
+            return False
+        
+    return True
 
 def its_hotspot(vehicle,x,y):
     """
     x: relative north in meters
     y: relative East in meters
+
     """
-    print("hotspot mission started....")
-    abs_loc=get_gps_location(vehicle,x,y,30)
+    
+    abs_loc=get_gps_location(vehicle,x,y,20)
     goto_wp(vehicle, abs_loc)
     time.sleep(2)
-    take_screenshot()
+    # take_screenshot()
     
 
 def its_target(vehicle,x,y):
@@ -205,8 +203,9 @@ def its_target(vehicle,x,y):
     print("target mission started....")
     goto_wp(vehicle, get_gps_location(vehicle,x,y,20))
     time.sleep(2)
-    drop()
+    # drop()
     print("target mission successful")
+    
 
 
 import math

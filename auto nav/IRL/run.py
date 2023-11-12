@@ -13,11 +13,13 @@ parser.add_argument('--connect',
                         SITL automatically started and used.''')
 args = parser.parse_args()
 
-connection_string = args.connect
-vehicle = drone.connect_simulation_dorne(connection_string)
+file =  open("drone_log.txt","a") 
 
-hotspot_arr=[drone.get_gps_location(vehicle,10,10)]
-target_arr=[drone.get_gps_location(vehicle,10,-10)]
+
+
+connection_string = args.connect
+vehicle = drone.connect_dorne(connection_string)
+
 boundries=[drone.LocationGlobalRelative(13.394727,77.7311024,30),
      drone.LocationGlobalRelative(13.393622,77.7309197,30),
      drone.LocationGlobalRelative(13.39352,77.7313704,30),
@@ -39,15 +41,47 @@ vehicle.airspeed=2
 vehicle.groundspeed=2
 
 drone.arm_and_takeoff(vehicle,30)
-
+file.write("Take off successfule , pos=",drone.get_gps_location(vehicle,0,0,0))
 #drone.condition_yaw()
 print("relatve to abs :",drone.get_gps_location(vehicle,5,5,20))
 print(arr)
+target_count = 0
+hotspot_count = 0
+
+detected_array = []
+
 for i in arr:
     print("going to", drone.LocationGlobalRelative(i[0],i[1],i[2]))
+
     drone.goto_wp(vehicle, drone.LocationGlobalRelative(i[0],i[1],i[2]))
+    file.write("reached wp-",i)
 
+    # poi= 
+    # if len(poi)==0:
+    #     continue
+    
+    # elif(len(poi)>0):
+    #     for points in poi:
+    #         N,E,type = points
+    #         gps_loc = drone.get_gps_location(vehicle,N,E)
 
+    #         if( drone.is_not_duplicate(gps_loc,detected_array) ):
+
+    #             if type.lower() == "target" :
+
+    #                 file.write("Target detected at -",gps_loc)
+    #                 detected_array.append(gps_loc)
+    #                 drone.its_target(vehicle,N,E)
+    #                 file.write("Target dropped at -",drone.get_gps_location(vehicle,0,0,0))
+
+    #             if type.lower() == "hotspot":
+
+    #                 file.write("Hotspot detected at -", gps_loc)
+    #                 detected_array.append(gps_loc)
+    #                 drone.its_hotspot(vehicle,N,E)
+    #                 file.write("Hotspot captured at-",drone.get_gps_location(vehicle,0,0,0))
+
+        
 
     # if not drone.get_gps_location(vehicle,10,10) in hotspot_arr:
     #     drone.its_hotspot(vehicle,10,10)
