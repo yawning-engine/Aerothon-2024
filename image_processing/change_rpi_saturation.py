@@ -1,16 +1,12 @@
 import cv2
 import numpy as np
 import time
-from picamera.array import PiRGBArray
-from picamera import PiCamera
 
 
 def callback(x):
  pass
 
-cap = cv2.VideoCapture(0)
 cv2.namedWindow('image')
-
 ilowH = 0
 ihighH = 179
 
@@ -32,7 +28,8 @@ cv2.createTrackbar('highV','image',ihighV,255,callback)
 
 
 while(1):
- ret, frame = cap.read()
+ frame=cv2.imread("dronecam.jpg")
+	
  hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
  cv2.imshow('hsv', hsv)
  lower_hsv = np.array([ilowH, ilowS, ilowV])
@@ -46,5 +43,4 @@ while(1):
 
 
 cv2.destroyAllWindows()
-cap.release()
 

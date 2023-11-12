@@ -182,6 +182,19 @@ def detect():
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
     
+    # converting the image to HSV format 
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV) 
+    Lower_hsv = np.array([0, 0, 0]) 
+    Upper_hsv = np.array([116, 56, 255]) 
+  
+    # creating the mask 
+    Mask = cv2.inRange(hsv, Lower_hsv, Upper_hsv) 
+  
+    # Inverting the mask  
+    mask_yellow = cv2.bitwise_not(Mask)  
+    img = cv2.bitwise_and(img, img, mask = mask_yellow) 
+
+    
     POI = list()
 
     try:
