@@ -149,15 +149,18 @@ def land_copter(vehicle, f):
 	return None
 
 
-def coordinate_rotation(x_cart,y_cart):
+def coordinate_rotation(vehicle,f,x_cart,y_cart):
 
                     
-   #Rotation of point wrt to drone heading
-   #Origin at 0,0 required points at x_cart,y_cart rotated point at xr,yr
+   # Rotation of point wrt to drone heading
+   # Origin at 0,0 required points at x_cart,y_cart rotated point at xr,yr
    
-   # Replace delta with current heading of drone (YAW angle W.R.T North)
-   delta_deg = 0 # Offset angle in Radians
-   delta_rad = delta_deg*math.pi/180 # Offset angle in Radians
+   # Delta is current heading of drone (YAW angle W.R.T North), replace with 0 for testing.
+   delta_rad = vehicle.attitude.yaw # Offset angle in Radians
+   delta_deg = delta_rad*180/math.pi
+   
+   #delta_deg = 0
+   #delta_rad = delta_deg*math.pi/180 # Offset angle in Radians
  
    xc,yc = center_cord[0],center_cord[1]
                     
@@ -171,7 +174,7 @@ def coordinate_rotation(x_cart,y_cart):
    return (xr,yr)
    
    
-def get_coordinates(circle_x,circle_y):
+def get_coordinates(vehicle,f,circle_x,circle_y):
 
     h = flt_alt
     x_cart = circle_x - center_cord[0]
@@ -284,7 +287,7 @@ def template_matching(template, image):
     return max_val
     
     
-def detect():
+def detect(vehicle,f):
     
     camera = PiCamera()
     camera.resolution = (width, height)
@@ -339,7 +342,7 @@ def detect():
                 print("\nTarget Type:",target_type)
                 print("Pixel Coordinates","X:",circle_center[0],"Y:",circle_center[1])
         
-                xd,yd = get_coordinates(circle_center[0],circle_center[1])
+                xd,yd = get_coordinates(vehicle,f,circle_center[0],circle_center[1])
                 
                 # Append all detections to an array
                 POI.append([xd,yd,target_type])
@@ -387,8 +390,7 @@ if __name__== '__main__':
     arm_and_takeoff(flt_alt, vehicle, f)
     time.sleep(2)
     
-    poi = detect()
-    #print(poi)
+    poi = detect(vehicle.f)
     
     land_copter(vehicle, f)
     time.sleep(3)
