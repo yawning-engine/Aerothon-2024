@@ -22,12 +22,15 @@ def connectmycopter():
     print("Connecting to drone...")
     #f.write("\n Connecting to drone...")
     vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)
+    
     return vehicle
+
 
 def get_yaw(vehicle,f):
 
     print("Attitude:",vehicle.attitude)
     print("YAW:",vehicle.attitude.yaw)
+
     
 def basic_data(vehicle, f):
 

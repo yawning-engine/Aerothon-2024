@@ -22,27 +22,16 @@ ground_speed = 0.5
 
 yaw_angle = 0
 
-
 # Initialize Picam capture
 width = 640
 height = 480
 center_cord = [int(width/2),int(height/2)]
-    
-# Load the template image of the target and hotspot
-template_path_target1 = 'target_real.png'  # Change this to your target image's path
-template_path_target2 = 'target_real_full.png'  # Change this to your target image's path
-
-template_target1 = cv2.imread(template_path_target1, cv2.IMREAD_GRAYSCALE)
-template_target2 = cv2.imread(template_path_target2, cv2.IMREAD_GRAYSCALE)
-
-template_path_hotspot = 'hotspot_real.png'  # Change this to your hotspot image's path
-template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 
 
 def connectmycopter():
 
     connection_string = "/dev/serial0"
-    baud_rate = 57600
+    baud_rate = 912600
     print("Connecting to drone...")
     #f.write("\n Connecting to drone...")
     vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)
@@ -164,7 +153,7 @@ def land_copter(vehicle, f):
 	return None
 
 
-def coordinate_rotation(yaw_angle, f, x_cart, y_cart):
+def coordinate_rotation(yaw_angle, x_cart, y_cart):
 
                     
    # Rotation of point wrt to drone heading
@@ -197,7 +186,7 @@ def get_coordinates(yaw_angle, f, circle_x, circle_y):
     
     print("Cartesian Coordinates:","x:",x_cart,"y:",y_cart)
     
-    xr,yr = coordinate_rotation(yaw_angle, x_cart,y_cart)
+    xr,yr = coordinate_rotation(yaw_angle, x_cart, y_cart)
     
     theta_rad = round(math.atan(10.3/109),5)
     theta_deg = round(theta_rad*180/math.pi,5)
@@ -316,6 +305,17 @@ def detect(yaw_angle, f):
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
     
+        
+    # Load the template image of the target and hotspot
+    template_path_target1 = 'target_real.png'  # Change this to your target image's path
+    template_path_target2 = 'target_real_full.png'  # Change this to your target image's path
+
+    template_target1 = cv2.imread(template_path_target1, cv2.IMREAD_GRAYSCALE)
+    template_target2 = cv2.imread(template_path_target2, cv2.IMREAD_GRAYSCALE)
+
+    template_path_hotspot = 'hotspot_real.png'  # Change this to your hotspot image's path
+    template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
+
     POI = list()
 
     try:
@@ -350,6 +350,10 @@ def detect(yaw_angle, f):
                 # Calculate the position for the target type text
                 circle_center = detected_circles[0][i][:2]
                 circle_radius = detected_circles[0][i][2]
+                circle_center[0] =  int(circle_center[0])
+                circle_center[1] =  int(circle_center[1])
+                circle_radius =  int(circle_radius)
+                
                 #print(circle_center," ",circle_radius)
             
                 text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
@@ -368,9 +372,9 @@ def detect(yaw_angle, f):
                 cv2.line(frame, (center_cord[0], 0), (center_cord[0], height), (0, 255, 0), thickness=line_thickness)
 
                 # Add text indicating target type
-                cv2.putText(frame, target_type, text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
+                #cv2.putText(frame, target_type, text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
                 # Draw circles 
-                cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
+                #cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
             
             else:
                 target_type = "Unknown"
@@ -395,7 +399,7 @@ if __name__== '__main__':
     
     vehicle = connectmycopter()
 
-    f = open("log_takeoff_land.txt", 'w')
+    f = open("log_target_hotspot_recognition.txt", 'w')
 
     basic_data(vehicle, f)
 
