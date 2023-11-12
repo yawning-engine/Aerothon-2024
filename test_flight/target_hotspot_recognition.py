@@ -309,7 +309,7 @@ def detect(yaw_angle, f):
     
     camera = PiCamera()
     camera.resolution = (width, height)
-    camera.vflip = True
+    #camera.vflip = True
     
     rawCapture = PiRGBArray(camera, size=(width, height))
     
@@ -319,7 +319,7 @@ def detect(yaw_angle, f):
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
     
-    cv2.imwrite("drone_shot.jpg",frame)
+    cv2.imwrite("drone_shot2.jpg",frame)
     
     poi = list()
     
@@ -386,7 +386,7 @@ def detect(yaw_angle, f):
                 
         # Display the frame with circles   
         #cv2.imshow('Frame with Circles', frame)
-        cv2.imwrite("drone_frame.jpg", frame)
+        cv2.imwrite("drone_frame2.jpg", frame)
         #cv2.waitKey(0)        
         cv2.destroyAllWindows()
     

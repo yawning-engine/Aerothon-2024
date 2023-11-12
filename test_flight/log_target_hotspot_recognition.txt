@@ -2,7 +2,7 @@ Version: APM:Copter-4.4.2
 Armable: True
 Vehicle Mode: POSHOLD
 Support set attitude from companion: True
-Last Heartbeat: 0.8741075609999598
+Last Heartbeat: 0.6966135339999937
 
-Home set at: LocationGlobalRelative:lat=12.9418985,lon=77.5665913,alt=15.185
+Home set at: LocationGlobalRelative:lat=12.9419186,lon=77.5665563,alt=17.118
 --------Mission Successfull--------
