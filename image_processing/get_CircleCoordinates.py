@@ -17,7 +17,7 @@ center_cord = [320,240]
 def connectmycopter():
 
     connection_string = "/dev/serial0"
-    baud_rate = 912600
+    baud_rate = 57600
     print("Connecting to drone...")
     #f.write("\n Connecting to drone...")
     vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)

@@ -15,18 +15,18 @@ import time
 import math
 
 # Initialize flight variables
-flt_alt = 5
+flt_alt = 15
 drop_alt = 5
 
 ground_speed = 0.5
 
 yaw_angle = 0
 
-
 # Initialize Picam capture
 width = 640
 height = 480
 center_cord = [int(width/2),int(height/2)]
+
     
 # Load the template image of the target and hotspot
 template_path_target1 = 'target_real.png'  # Change this to your target image's path
@@ -42,7 +42,7 @@ template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 def connectmycopter():
 
     connection_string = "/dev/serial0"
-    baud_rate = 57600
+    baud_rate = 912600
     print("Connecting to drone...")
     #f.write("\n Connecting to drone...")
     vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)
@@ -164,7 +164,7 @@ def land_copter(vehicle, f):
 	return None
 
 
-def coordinate_rotation(yaw_angle, f, x_cart, y_cart):
+def coordinate_rotation(yaw_angle, x_cart, y_cart):
 
                     
    # Rotation of point wrt to drone heading
@@ -197,7 +197,7 @@ def get_coordinates(yaw_angle, f, circle_x, circle_y):
     
     print("Cartesian Coordinates:","x:",x_cart,"y:",y_cart)
     
-    xr,yr = coordinate_rotation(yaw_angle, x_cart,y_cart)
+    xr,yr = coordinate_rotation(yaw_angle, x_cart, y_cart)
     
     theta_rad = round(math.atan(10.3/109),5)
     theta_deg = round(theta_rad*180/math.pi,5)
@@ -238,10 +238,10 @@ def detect_circles(image):
     # Gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # Converting to greyscale caused hotspot to blend into background
     
     # Apply bilateral filtering to reduce noise and improve circle detection
-    filtered = cv2.bilateralFilter(image, 9, 75, 75)
+    #filtered = cv2.bilateralFilter(image, 9, 75, 75)
     #cv2.imshow('Blurred', filtered)
-    edges = cv2.Canny(filtered, threshold1=70, threshold2=155)
-    #cv2.imshow('EDGE', edges)
+    edges = cv2.Canny(image, threshold1=70, threshold2=155)
+    cv2.imshow('EDGE', edges)
     #cv2.waitKey(0)
     
     # Detect circles using Hough Circle Transform
@@ -316,12 +316,16 @@ def detect(yaw_angle, f):
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
     
-    POI = list()
-
+    poi = list()
+    
     try:
         
         # Detect circles in the frame
         detected_circles = detect_circles(frame.copy())
+        if detected_circles is None:
+            print("\nNo Circles Found\n")
+            poi.append([0,0,"No_circles_found"])      
+            return poi
         
         # Crop out detected circles
         cropped_images = crop_circles(frame.copy(), detected_circles)
@@ -334,7 +338,7 @@ def detect(yaw_angle, f):
         
             match_hotspot = template_matching(template_hotspot, cropped)
         
-            if max(match_target1,match_target2,match_hotspot) >= 0.5:
+            if max(match_target1,match_target2,match_hotspot) >= -1:
                 print(i,". Target_smol corr: ",match_target1)
                 print(i,". Target_full corr: ",match_target2)
             
@@ -350,17 +354,20 @@ def detect(yaw_angle, f):
                 # Calculate the position for the target type text
                 circle_center = detected_circles[0][i][:2]
                 circle_radius = detected_circles[0][i][2]
+                circle_center = np.int64(circle_center)
+                circle_radius = np.int64(circle_radius)
+                
                 #print(circle_center," ",circle_radius)
             
                 text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
             
                 print("\nTarget Type:",target_type)
-                print("Pixel Coordinates","X:",circle_center[0],"Y:",circle_center[1])
+                print("Pixel Coordinates","X:",circle_center[0],type(circle_center[0]),"Y:",circle_center[1])
         
                 xd,yd = get_coordinates(yaw_angle, f, circle_center[0], circle_center[1])
                 
                 # Append all detections to an array
-                POI.append([xd,yd,target_type])
+                poi.append([xd,yd,target_type])
                 
                 line_thickness = 2
             
@@ -378,11 +385,12 @@ def detect(yaw_angle, f):
 
         # Display the frame with circles   
         cv2.imshow('Frame with Circles', frame)
-        
+        cv2.imwrite("drone_frame.jpg", frame)
         cv2.waitKey(0)        
         cv2.destroyAllWindows()
     
-    except KeyboardInterrupt:
+    except Exception as e:
+        print(e)
         pass
     
     finally:
@@ -394,8 +402,9 @@ def detect(yaw_angle, f):
 if __name__== '__main__':
     
     vehicle = connectmycopter()
+    poi = list()
 
-    f = open("log_takeoff_land.txt", 'w')
+    f = open("log_target_hotspot_recognition.txt", 'w')
 
     basic_data(vehicle, f)
 
