@@ -100,8 +100,8 @@ def detect_circles(image):
     filtered = cv2.bilateralFilter(image, 9, 75, 75)
     #cv2.imshow('Blurred', filtered)
     edges = cv2.Canny(filtered, threshold1=70, threshold2=155)
-    #cv2.imshow('EDGE', edges)
-    #cv2.waitKey(0)
+    cv2.imshow('EDGE', edges)
+    cv2.waitKey(0)
     
     # Detect circles using Hough Circle Transform
     circles = cv2.HoughCircles(
