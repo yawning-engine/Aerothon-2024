@@ -1,167 +1,43 @@
 
-New location coordinates: LocationGlobalRelative:lat=12.941217431528411,lon=77.56603917264998,alt=30
-New location coordinates: LocationGlobalRelative:lat=12.941217431528411,lon=77.56585482735001,alt=30
-New location coordinates: LocationGlobalRelative:lat=12.941173215764207,lon=77.56599208632512,alt=20
+New location coordinates: LocationGlobalRelative:lat=13.394789831528412,lon=77.73194234352044,alt=30
+New location coordinates: LocationGlobalRelative:lat=13.394789831528412,lon=77.73175765647954,alt=30
+New location coordinates: LocationGlobalRelative:lat=13.3947,lon=77.73185,alt=0
+New location coordinates: LocationGlobalRelative:lat=13.394744915764207,lon=77.73189617176023,alt=15
 
-Going to waypoint:LocationGlobalRelative:lat=12.94118941450555,lon=77.56595421106643,alt=30
-Ground Speed:0.070000
+Going to waypoint:LocationGlobalRelative:lat=13.393587055555557,lon=77.7313369,alt=15
+Ground Speed:0.000000
 
-Distance to waypoint:6.864365
-Distance to waypoint:6.873927
-Distance to waypoint:6.872474
-Distance to waypoint:6.848959
-Distance to waypoint:6.792331
-Distance to waypoint:6.510627
-Distance to waypoint:6.286965
-Distance to waypoint:6.019154
-Distance to waypoint:5.727838
-Distance to waypoint:5.018032
-Distance to waypoint:4.623122
-Distance to waypoint:4.206180
-Distance to waypoint:3.764685
-Distance to waypoint:2.916537
-Distance to waypoint:2.510549
-Distance to waypoint:2.139439
-Distance to waypoint:1.805811
-Distance to waypoint:1.271952
-Distance to waypoint:1.078368
-Current Heading: 0.19849005341529846
-
-Yawing NORTH
-Current Heading: 0.18145853281021118
-
-Going to waypoint:LocationGlobalRelative:lat=12.941040411783515,lon=77.56596493990145,alt=30
-Ground Speed:0.580000
-
-Distance to waypoint:16.317826
-Distance to waypoint:16.505776
-Distance to waypoint:16.571790
-Distance to waypoint:16.615938
-Distance to waypoint:16.615588
-Distance to waypoint:16.470943
-Distance to waypoint:16.326655
-Distance to waypoint:16.149006
-Distance to waypoint:15.926873
-Distance to waypoint:15.393271
-Distance to waypoint:15.093330
-Distance to waypoint:14.748065
-Distance to waypoint:14.358737
-Distance to waypoint:13.501815
-Distance to waypoint:13.034675
-Distance to waypoint:12.545322
-Distance to waypoint:12.033765
-Distance to waypoint:10.975301
-Distance to waypoint:10.428381
-Distance to waypoint:9.881039
-Distance to waypoint:9.344524
-Distance to waypoint:8.216906
-Distance to waypoint:7.648517
-Distance to waypoint:7.057694
-Distance to waypoint:6.467198
-Distance to waypoint:5.264237
-Distance to waypoint:4.651869
-Distance to waypoint:4.039625
-Distance to waypoint:3.449973
-Distance to waypoint:2.372202
-Distance to waypoint:1.906630
-Distance to waypoint:1.485874
-Distance to waypoint:1.122144
-Current Heading: -3.138819932937622
-
-Yawing NORTH
-Current Heading: -3.1389031410217285
-
-Going to waypoint:LocationGlobalRelative:lat=12.940995972357955,lon=77.56626266507376,alt=30
-Ground Speed:0.590000
-
-Distance to waypoint:33.341917
-Distance to waypoint:33.316552
-Distance to waypoint:33.302497
-Distance to waypoint:33.204004
-Distance to waypoint:33.094305
-Distance to waypoint:32.931008
-Distance to waypoint:32.723624
-Distance to waypoint:32.190417
-Distance to waypoint:31.863114
-Distance to waypoint:31.513736
-Distance to waypoint:31.129820
-Distance to waypoint:30.261227
-Distance to waypoint:29.776549
-Distance to waypoint:29.280838
-Distance to waypoint:28.763044
-Distance to waypoint:27.697106
-Distance to waypoint:27.136524
-Distance to waypoint:26.564898
-Distance to waypoint:25.982228
-Distance to waypoint:24.793409
-Distance to waypoint:24.198301
-Distance to waypoint:23.593546
-Distance to waypoint:22.977751
-Distance to waypoint:21.722680
-Distance to waypoint:21.083400
-Distance to waypoint:20.433079
-Distance to waypoint:19.782758
-Distance to waypoint:18.468246
-Distance to waypoint:17.794428
-Distance to waypoint:17.131654
-Distance to waypoint:16.446796
-Distance to waypoint:15.088124
-Distance to waypoint:14.392223
-Distance to waypoint:13.707367
-Distance to waypoint:13.010078
-Distance to waypoint:11.594815
-Distance to waypoint:10.886511
-Distance to waypoint:10.179572
-Distance to waypoint:9.471290
-Distance to waypoint:8.054805
-Distance to waypoint:7.335559
-Distance to waypoint:6.627421
-Distance to waypoint:5.918164
-Distance to waypoint:4.524659
-Distance to waypoint:3.862499
-Distance to waypoint:3.233899
-Distance to waypoint:2.650976
-Distance to waypoint:1.677712
-Distance to waypoint:1.287422
-Current Heading: 3.1409435272216797
-
-Yawing NORTH
-Current Heading: -3.138223886489868
-
-Going to waypoint:LocationGlobalRelative:lat=12.941137132858843,lon=77.56631362704019,alt=30
-Ground Speed:0.570000
-
-Distance to waypoint:16.883547
-Distance to waypoint:16.865937
-Distance to waypoint:16.805725
-Distance to waypoint:16.741048
-Distance to waypoint:16.617236
-Distance to waypoint:16.426778
-Distance to waypoint:15.894809
-Distance to waypoint:15.567371
-Distance to waypoint:15.204795
-Distance to waypoint:14.807084
-Distance to waypoint:13.941489
-Distance to waypoint:13.487627
-Distance to waypoint:13.012622
-Distance to waypoint:12.523679
-Distance to waypoint:11.496241
-Distance to waypoint:10.978917
-Distance to waypoint:10.447674
-Distance to waypoint:9.919758
-Distance to waypoint:8.846823
-Distance to waypoint:8.305111
-Distance to waypoint:7.749617
-Distance to waypoint:7.172892
-Distance to waypoint:6.019806
-Distance to waypoint:5.419101
-Distance to waypoint:4.815882
-Distance to waypoint:4.226914
-Distance to waypoint:3.084686
-Distance to waypoint:2.559049
-Distance to waypoint:2.083692
-Distance to waypoint:1.646694
-Current Heading: -3.1385443210601807
-
-Yawing NORTH
-Current Heading: 3.1401100158691406
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
+Distance to waypoint:136.425076
