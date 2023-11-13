@@ -28,12 +28,12 @@ field_1_boundary_points = [(13.394727, 77.7311024), (13.393622, 77.7309197),
 
 field_2_boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371),
                            (13.393385, 77.7318823), (13.39454, 77.7320772)]
-bms_points= [(12.94135901438728, 77.56516586950416),(12.940433628249703, 77.56571304009111),
-             (12.941094992138853, 77.5665069738839),(12.94186353137158, 77.56604026955976)]
+bms_points= [(12.94118941450555, 77.56595421106643),(12.941040411783515, 77.56596493990145),
+             (12.940995972357955, 77.56626266507376),(12.941137132858843, 77.56631362704019)]
 
-arr=drone.grid_navigation(field_1_boundary_points,15)
+#arr=drone.grid_navigation(bms_points,5)
 
-print(arr)
+#print(arr)
 
 vehicle.airspeed=2
 vehicle.groundspeed=2
@@ -42,10 +42,10 @@ drone.arm_and_takeoff(vehicle,30)
 
 #drone.condition_yaw()
 print("relatve to abs :",drone.get_gps_location(vehicle,5,5,20))
-print(arr)
-for i in arr:
-    print("going to", drone.LocationGlobalRelative(i[0],i[1],i[2]))
-    drone.goto_wp(vehicle, drone.LocationGlobalRelative(i[0],i[1],i[2]))
+#print(arr)
+for i in bms_points:
+    print("going to", drone.LocationGlobalRelative(i[0],i[1],30))
+    drone.goto_wp(vehicle, drone.LocationGlobalRelative(i[0],i[1],30))
 
 
 

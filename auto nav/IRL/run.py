@@ -1,25 +1,18 @@
 import drone_controller as drone
-import argparse
-import time
+
 # field 1-
 # dronekit-sitl copter --home=13.394622,77.731250,0,180
 
 # filed 2-
 # dronekit-sitl copter --home=13.394700,77.731850,0,180
 
-parser = argparse.ArgumentParser(description='Commands vehicle using vehicle.simple_goto.')
-parser.add_argument('--connect',
-                        help='''Vehicle connection target string. If not specified, 
-                        SITL automatically started and used.''')
-args = parser.parse_args()
+
 
 file =  open("drone_log.txt","a") 
 
 
-
-connection_string = args.connect
-vehicle = drone.connect_dorne(connection_string)
-
+vehicle = drone.connect_dorne()
+'''
 boundries=[drone.LocationGlobalRelative(13.394727,77.7311024,30),
      drone.LocationGlobalRelative(13.393622,77.7309197,30),
      drone.LocationGlobalRelative(13.39352,77.7313704,30),
@@ -30,8 +23,8 @@ field_1_boundary_points = [(13.394727, 77.7311024), (13.393622, 77.7309197),
 
 field_2_boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371),
                            (13.393385, 77.7318823), (13.39454, 77.7320772)]
-bms_points= [(12.94135901438728, 77.56516586950416),(12.940433628249703, 77.56571304009111),
-             (12.941094992138853, 77.5665069738839),(12.94186353137158, 77.56604026955976)]
+bms_points= [(12.94118941450555, 77.56595421106643),(12.941040411783515, 77.56596493990145),
+             (12.940995972357955, 77.56626266507376),(12.941137132858843, 77.56631362704019)]
 
 arr=drone.grid_navigation(field_1_boundary_points,15)
 
@@ -40,10 +33,10 @@ print(arr)
 vehicle.airspeed=2
 vehicle.groundspeed=2
 
-drone.arm_and_takeoff(vehicle,30)
+drone.arm_and_takeoff(vehicle,20)
 file.write("Take off successfule , pos=",drone.get_gps_location(vehicle,0,0,0))
 #drone.condition_yaw()
-print("relatve to abs :",drone.get_gps_location(vehicle,5,5,20))
+print("relatve to abs :",drone.get_gps_location(vehicle,5,5,15))
 print(arr)
 target_count = 0
 hotspot_count = 0
@@ -51,7 +44,7 @@ hotspot_count = 0
 detected_array = []
 
 for i in arr:
-    print("going to", drone.LocationGlobalRelative(i[0],i[1],i[2]))
+    print("going to", drone.LocationGlobalRelative(i[0],i[1],15))
 
     drone.goto_wp(vehicle, drone.LocationGlobalRelative(i[0],i[1],i[2]))
     file.write("reached wp-",i)
@@ -94,3 +87,4 @@ for i in arr:
 
 drone.RTL(vehicle)
 
+'''
