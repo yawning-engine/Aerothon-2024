@@ -1,20 +1,62 @@
-import cv2
-import numpy as np
+from dronekit import connect, VehicleMode, LocationGlobalRelative
 import time
 import math
+import cv2
+import socket
+import argparse
+import dronekit_sitl
+import pymavlink
+from pymavlink import mavutil
+import numpy as np
 import matplotlib.pyplot as plt
 
 flt_alt = 15
 center_cord = [320,240]
 
-def coordinate_rotation(x_cart,y_cart):
+
+def connectmycopter():
+
+    connection_string = "/dev/serial0"
+    baud_rate = 912600
+    print("Connecting to drone...")
+    #f.write("\n Connecting to drone...")
+    vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)
+    return vehicle
+
+def get_yaw(vehicle,f):
+
+    print("Attitude:",vehicle.attitude)
+    print("YAW:",vehicle.attitude.yaw)
+    
+    return vehicle.attitude.yaw
+  
+    
+def basic_data(vehicle, f):
+
+    print("Version: %s" % vehicle.version)
+    print("Armable: %s" % vehicle.is_armable)
+    print("Vehicle Mode: %s" % vehicle.mode.name)
+    print("Support set attitude from companion: %s" % vehicle.capabilities.set_attitude_target_local_ned)
+    print("Last Heartbeat: %s" % vehicle.last_heartbeat)
+    f.write("Version: %s" % vehicle.version)
+    f.write("\nArmable: %s" % vehicle.is_armable)
+    f.write("\nVehicle Mode: %s" % vehicle.mode.name)
+    f.write("\nSupport set attitude from companion: %s" % vehicle.capabilities.set_attitude_target_local_ned)
+    f.write("\nLast Heartbeat: %s\n" % vehicle.last_heartbeat)
+
+
+def coordinate_rotation(yaw_angle,x_cart,y_cart):
 
                     
    #Rotation of point wrt to drone heading
    #Origin at 0,0 required points at x_cart,y_cart rotated point at xr,yr
    
-   delta_deg = 0 # Offset angle in Radians
-   delta_rad = delta_deg*math.pi/180 # Offset angle in Radians
+   # Delta is current heading of drone (YAW angle W.R.T North), replace with 0 for testing.
+   delta_rad = yaw_angle # Offset angle in Radians
+   delta_deg = delta_rad*180/math.pi
+   
+   #delta_deg = 0 # Offset angle in Radians
+   #delta_rad = delta_deg*math.pi/180 # Offset angle in Radians
  
    xc,yc = center_cord[0],center_cord[1]
                     
@@ -28,7 +70,7 @@ def coordinate_rotation(x_cart,y_cart):
    return (xr,yr)
    
    
-def get_coordinates(circle_x,circle_y):
+def get_coordinates(yaw_angle,circle_x,circle_y):
 
     h = flt_alt
     x_cart = circle_x - center_cord[0]
@@ -36,7 +78,7 @@ def get_coordinates(circle_x,circle_y):
     
     print("Cartesian Coordinates:","x:",x_cart,"y:",y_cart)
     
-    xr,yr = coordinate_rotation(x_cart,y_cart)
+    xr,yr = coordinate_rotation(yaw_angle,x_cart,y_cart)
     
     theta_rad = round(math.atan(10.3/109),5)
     theta_deg = round(theta_rad*180/math.pi,5)
@@ -145,6 +187,7 @@ template_path_hotspot = 'hotspot_real.png'  # Change this to your hotspot image'
 template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 
 img = cv2.imread('tar_hot_1.png', 1)
+
 height = int(img.shape[0]*0.5)
 width = int(img.shape[1]*0.5)
 center_cord[1] = int(height/2)
@@ -153,6 +196,14 @@ center_cord[0] = int(width/2)
 frame = cv2.resize(img, (width, height), interpolation = cv2.INTER_LINEAR)
 
 try:
+    yaw_angle = 0
+    vehicle = connectmycopter()
+
+    f = open("log_get_CircleCoordinates.txt", 'w')
+
+    basic_data(vehicle, f)
+    yaw_angle = get_yaw(vehicle,f)
+
     # Detect circles in the frame
     detected_circles = detect_circles(frame.copy())
         
@@ -189,7 +240,7 @@ try:
             print("\nTarget Type:",target_type)
             print("Pixel Coordinates","X:",circle_center[0],"Y:",circle_center[1])
         
-            xd,yd = get_coordinates(circle_center[0],circle_center[1])
+            xd,yd = get_coordinates(yaw_angle,circle_center[0],circle_center[1])
                 
             line_thickness = 2
             
@@ -213,4 +264,9 @@ except KeyboardInterrupt:
     
 finally:
     cv2.destroyAllWindows()  # Close any OpenCV windows
+    print("\n--------Mission Successfull--------\n")
+    f.write("\n--------Mission Successfull--------")
+
+    vehicle.armed = False
+    vehicle.close()
 

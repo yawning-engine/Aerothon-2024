@@ -1,4 +1,4 @@
-# Import necessary packages
+# import the necessary packages
 from dronekit import connect, VehicleMode, LocationGlobalRelative
 import socket
 import argparse
@@ -14,14 +14,19 @@ import matplotlib.pyplot as plt
 import time
 import math
 
+# Initialize flight variables
 flt_alt = 15
-center_cord = list()
-poi = list()
+drop_alt = 5
+
+ground_speed = 0.5
+
+yaw_angle = 0
 
 # Initialize Picam capture
 width = 640
 height = 480
 center_cord = [int(width/2),int(height/2)]
+
     
 # Load the template image of the target and hotspot
 template_path_target1 = 'target_real.png'  # Change this to your target image's path
@@ -34,15 +39,143 @@ template_path_hotspot = 'hotspot_real.png'  # Change this to your hotspot image'
 template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 
 
-def coordinate_rotation(x_cart,y_cart):
+def connectmycopter():
+
+    connection_string = "/dev/serial0"
+    baud_rate = 57600
+    print("Connecting to drone...")
+    #f.write("\n Connecting to drone...")
+    vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)
+    return vehicle
+
+
+def basic_data(vehicle, f):
+
+    print("Version: %s" % vehicle.version)
+    print("Armable: %s" % vehicle.is_armable)
+    print("Vehicle Mode: %s" % vehicle.mode.name)
+    print("Support set attitude from companion: %s" % vehicle.capabilities.set_attitude_target_local_ned)
+    print("Last Heartbeat: %s" % vehicle.last_heartbeat)
+    f.write("Version: %s" % vehicle.version)
+    f.write("\nArmable: %s" % vehicle.is_armable)
+    f.write("\nVehicle Mode: %s" % vehicle.mode.name)
+    f.write("\nSupport set attitude from companion: %s" % vehicle.capabilities.set_attitude_target_local_ned)
+    f.write("\nLast Heartbeat: %s\n" % vehicle.last_heartbeat)
+    
+    
+def get_yaw(vehicle,f):
+
+    print("Attitude:",vehicle.attitude)
+    print("YAW:",vehicle.attitude.yaw)
+    
+    return vehicle.attitude.yaw
+    
+    
+def get_position(vehicle, f):
+
+    print("\nPosition: %s" % vehicle.location.global_relative_frame)
+    f.write("\nPosition: %s" % vehicle.location.global_relative_frame)
+    return None
+
+
+def set_home(vehicle, f):
+
+    global flt_alt
+    
+    home = vehicle.location.global_relative_frame
+    home.alt = flt_alt
+    
+    print("\nHome set at: %s" % vehicle.location.global_relative_frame)
+    f.write("\nHome set at: %s" % vehicle.location.global_relative_frame)
+    
+    return home
+
+
+def arm_and_takeoff(targetaltitude, vehicle, f):
+
+    while vehicle.is_armable == False:
+        print("Waiting for vehicle to become armable")
+        f.write("Waiting for vehicle to become armable")
+        time.sleep(1)
+
+    vehicle.mode = VehicleMode("STABILIZE")
+    print("Current mode: %s" % vehicle.mode.name)
+    f.write("\nCurrent mode: %s" % vehicle.mode.name)
+
+    vehicle.armed = True
+    while vehicle.armed == False:
+        print("Waiting for vehicle to arm")
+        f.write("\nWaiting for vehicle to arm")
+        time.sleep(1)
+
+    print("VEHICLE ARMED")
+    f.write("\n\nVEHICLE ARMED\n")
+    print("About to takeoff")
+    f.write("\nAbout to takeoff")
+
+    time.sleep(2)
+
+    vehicle.mode = VehicleMode("GUIDED")
+    print("\n\nGuided mode\n\n")
+    f.write("\n\nGUIDED MODE\n\n")
+    	
+    while vehicle.mode != "GUIDED":
+        print("Waiting for vehicle to enter guided mode")
+        f.write("\nWaiting for vehicle to enter guided mode")
+        time.sleep(0.3)
+    
+    time.sleep(3)
+    vehicle.simple_takeoff(targetaltitude)
+
+    while True:
+        alt_now = vehicle.location.global_relative_frame.alt
+        print("Altitude:%f" % alt_now)
+        f.write("\nAltitude:%f" % alt_now)
+        if alt_now >= flt_alt * 0.98:
+            break
+        time.sleep(0.3)
+
+    time.sleep(2)
+    print("Target altitude reached")
+    f.write("\nTarget altitude reached")
+
+    return None
+
+
+def land_copter(vehicle, f):
+	
+	vehicle.mode = VehicleMode("LAND")
+	print("\n\nLand Mode\n\n")
+	f.write("\n\nLand Mode\n\n")
+	
+	while True:
+		alt_now = vehicle.location.global_relative_frame.alt
+		print("Altitude:%f"%alt_now)
+		f.write("\nAltitude:%f"%alt_now)
+		if alt_now <= 0.15:
+			break
+		time.sleep(0.3)
+	
+	time.sleep(3)
+
+	print("Landed successfully")
+	f.write("\nLanded Successfully\n")
+
+	return None
+
+
+def coordinate_rotation(yaw_angle, x_cart, y_cart):
 
                     
-   #Rotation of point wrt to drone heading
-   #Origin at 0,0 required points at x_cart,y_cart rotated point at xr,yr
+   # Rotation of point wrt to drone heading
+   # Origin at 0,0 required points at x_cart,y_cart rotated point at xr,yr
    
-   # Replace delta with current heading of drone (YAW angle W.R.T North)
-   delta_deg = 0 # Offset angle in Radians
-   delta_rad = delta_deg*math.pi/180 # Offset angle in Radians
+   # Delta is current heading of drone (YAW angle W.R.T North), replace with 0 for testing.
+   delta_rad = yaw_angle # Offset angle in Radians
+   delta_deg = delta_rad*180/math.pi
+   
+   #delta_deg = 0
+   #delta_rad = delta_deg*math.pi/180 # Offset angle in Radians
  
    xc,yc = center_cord[0],center_cord[1]
                     
@@ -56,15 +189,18 @@ def coordinate_rotation(x_cart,y_cart):
    return (xr,yr)
    
    
-def get_coordinates(circle_x,circle_y):
+def get_coordinates(yaw_angle, f, circle_x, circle_y):
 
     h = flt_alt
+    if h < 0:
+        h = 30   
     x_cart = circle_x - center_cord[0]
     y_cart = center_cord[1] - circle_y
     
+    print("Current Altitude:",h)
     print("Cartesian Coordinates:","x:",x_cart,"y:",y_cart)
     
-    xr,yr = coordinate_rotation(x_cart,y_cart)
+    xr,yr = coordinate_rotation(yaw_angle, x_cart, y_cart)
     
     theta_rad = round(math.atan(10.3/109),5)
     theta_deg = round(theta_rad*180/math.pi,5)
@@ -105,16 +241,16 @@ def detect_circles(image):
     # Gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # Converting to greyscale caused hotspot to blend into background
     
     # Apply bilateral filtering to reduce noise and improve circle detection
-    filtered = cv2.bilateralFilter(image, 9, 75, 75)
+    #filtered = cv2.bilateralFilter(image, 9, 75, 75)
     #cv2.imshow('Blurred', filtered)
-    edges = cv2.Canny(filtered, threshold1=70, threshold2=155)
+    edges = cv2.Canny(image, threshold1=70, threshold2=155)
     cv2.imshow('EDGE', edges)
     #cv2.waitKey(0)
     
     # Detect circles using Hough Circle Transform
     circles = cv2.HoughCircles(
         edges, cv2.HOUGH_GRADIENT, dp=1, minDist=50,
-        param1=50, param2=30, minRadius=10, maxRadius=100
+        param1=50, param2=30, minRadius=10, maxRadius=120
     )
     '''
     if circles is not None:
@@ -135,6 +271,7 @@ def detect_circles(image):
 def crop_circles(image, circles):
 
     cropped_images = []
+    
     for circle in circles[0]:
         x, y, r = circle
         ymr = int(y)-int(r)
@@ -168,7 +305,7 @@ def template_matching(template, image):
     return max_val
     
     
-def detect():
+def detect(yaw_angle, f):
     
     camera = PiCamera()
     camera.resolution = (width, height)
@@ -182,31 +319,19 @@ def detect():
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
     
-    # converting the image to HSV format 
-    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV) 
-    Lower_hsv = np.array([0, 0, 0]) 
-    Upper_hsv = np.array([116, 56, 255]) 
-  
-    # creating the mask 
-    Mask = cv2.inRange(hsv, Lower_hsv, Upper_hsv) 
-  
-    # Inverting the mask  
-    mask_yellow = cv2.bitwise_not(Mask)  
-    img = cv2.bitwise_and(img, img, mask = mask_yellow) 
-
+    cv2.imwrite("drone_shot2.jpg",frame)
     
-    POI = list()
-
+    poi = list()
+    
     try:
         
         # Detect circles in the frame
         detected_circles = detect_circles(frame.copy())
-        
         if detected_circles is None:
             print("\nNo Circles Found\n")
-            POI.append([0,0,"No_circles_found"])      
+            poi.append([0,0,"No_circles_found"])      
             return poi
-              
+        
         # Crop out detected circles
         cropped_images = crop_circles(frame.copy(), detected_circles)
      
@@ -218,7 +343,7 @@ def detect():
         
             match_hotspot = template_matching(template_hotspot, cropped)
         
-            if max(match_target1,match_target2,match_hotspot) >= 0.5:
+            if max(match_target1,match_target2,match_hotspot) >= 0.4:
                 print(i,". Target_smol corr: ",match_target1)
                 print(i,". Target_full corr: ",match_target2)
             
@@ -234,17 +359,20 @@ def detect():
                 # Calculate the position for the target type text
                 circle_center = detected_circles[0][i][:2]
                 circle_radius = detected_circles[0][i][2]
+                circle_center = np.int64(circle_center)
+                circle_radius = np.int64(circle_radius)
+                
                 #print(circle_center," ",circle_radius)
             
                 text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
             
-                print("\nTarget Type:",target_type)
+                print("\nTarget Type:",target_type,i)
                 print("Pixel Coordinates","X:",circle_center[0],"Y:",circle_center[1])
         
-                xd,yd = get_coordinates(circle_center[0],circle_center[1])
+                xd,yd = get_coordinates(yaw_angle, f, circle_center[0], circle_center[1])
                 
                 # Append all detections to an array
-                POI.append([xd,yd,target_type])
+                poi.append([xd,yd,target_type])
                 
                 line_thickness = 2
             
@@ -252,21 +380,18 @@ def detect():
                 cv2.line(frame, (center_cord[0], 0), (center_cord[0], height), (0, 255, 0), thickness=line_thickness)
 
                 # Add text indicating target type
-                cv2.putText(frame, target_type, text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
+                cv2.putText(frame, target_type+str(i), text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
                 # Draw circles 
                 cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
-            
-            else:
-                target_type = "Unknown"
-                text_color = (148, 7, 173) # Purple color
-
+                
         # Display the frame with circles   
-        cv2.imshow('Frame with Circles', frame)
-        
-        cv2.waitKey(0)        
+        #cv2.imshow('Frame with Circles', frame)
+        cv2.imwrite("drone_frame2.jpg", frame)
+        #cv2.waitKey(0)        
         cv2.destroyAllWindows()
     
-    except KeyboardInterrupt:
+    except Exception as e:
+        print(e)
         pass
     
     finally:
@@ -277,6 +402,30 @@ def detect():
      
 if __name__== '__main__':
     
-    poi = detect()
-    #print(poi)
+    vehicle = connectmycopter()
+    poi = list()
+
+    f = open("log_target_hotspot_recognition.txt", 'w')
+
+    basic_data(vehicle, f)
+
+    home_wp = set_home(vehicle, f)
+    time.sleep(2)
+
+    #arm_and_takeoff(flt_alt, vehicle, f)
+    #time.sleep(2)
     
+    yaw_angle = vehicle.attitude.yaw
+    flt_alt = vehicle.location.global_relative_frame.alt
+
+    poi = detect(yaw_angle, f)
+    
+    #land_copter(vehicle, f)
+    #time.sleep(3)
+
+    print("\n--------Mission Successfull--------\n")
+    f.write("\n--------Mission Successfull--------")
+
+    vehicle.armed = False
+    vehicle.close()
+
