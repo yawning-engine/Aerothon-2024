@@ -9,11 +9,13 @@ from pymavlink import mavutil
 
 f = open("drone_log.txt", 'w')
 vehicle = None
-def connect_dorne(connection_string):
-    
-    print('Connecting to vehicle on: %s' % connection_string)
-    vehicle = connect(connection_string, wait_ready=True)
+def connectdrone():
 
+    connection_string = "/dev/serial0"
+    baud_rate = 57600
+    print("Connecting to drone...")
+    #f.write("\n Connecting to drone...")
+    vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)
     return vehicle
 
 

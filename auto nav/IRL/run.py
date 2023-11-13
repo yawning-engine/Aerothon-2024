@@ -7,18 +7,9 @@ import time
 # filed 2-
 # dronekit-sitl copter --home=13.394700,77.731850,0,180
 
-parser = argparse.ArgumentParser(description='Commands vehicle using vehicle.simple_goto.')
-parser.add_argument('--connect',
-                        help='''Vehicle connection target string. If not specified, 
-                        SITL automatically started and used.''')
-args = parser.parse_args()
-
 file =  open("drone_log.txt","a") 
 
-
-
-connection_string = args.connect
-vehicle = drone.connect_dorne(connection_string)
+vehicle = drone.connectdrone()
 
 boundries=[drone.LocationGlobalRelative(13.394727,77.7311024,30),
      drone.LocationGlobalRelative(13.393622,77.7309197,30),
