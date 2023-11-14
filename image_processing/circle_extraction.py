@@ -14,7 +14,7 @@ def detect_circles(image):
     cv2.imshow('Blurred', filtered)
     edges = cv2.Canny(filtered, threshold1=70, threshold2=155)
     cv2.imshow('EDGE', edges)
-    cv2.waitKey(0)
+    #cv2.waitKey(0)
     
     # Detect circles using Hough Circle Transform
     circles = cv2.HoughCircles(
@@ -50,7 +50,7 @@ def crop_circles(image, circles):
         #print(cropped.shape)
         if cropped.shape[0] >= 10 and cropped.shape[1] >=10:
             cropped_images.append(cropped)
-    
+            
     return cropped_images
 
 
@@ -71,20 +71,23 @@ def template_matching(template, image):
     
  
 # Load the template image of the target and hotspot
-template_path_target1 = 'target_real.png'  # Change this to your target image's path
+template_path_target1 = 'target_real_smol.png'  # Change this to your target image's path
 template_path_target2 = 'target_real_full.png'  # Change this to your target image's path
 
 template_target1 = cv2.imread(template_path_target1, cv2.IMREAD_GRAYSCALE)
 template_target2 = cv2.imread(template_path_target2, cv2.IMREAD_GRAYSCALE)
 
-template_path_hotspot = 'hotspot_real.png'  # Change this to your hotspot image's path
-template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
+template_path_hotspot1 = 'hotspot_real_smol.png'  # Change this to your hotspot image's path
+template_path_hotspot2 = 'hotspot_real_full.png'  # Change this to your hotspot image's path
+template_hotspot1 = cv2.imread(template_path_hotspot1, cv2.IMREAD_GRAYSCALE)
+template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
 
-img = cv2.imread('tar_hot_1.png', 1)
-height = int(img.shape[0]*0.5)
-width = int(img.shape[1]*0.5)
+frame = cv2.imread('hotspot2.png', 1)
+height = int(frame.shape[0])
+width = int(frame.shape[1])
+print("Shape of you?... naah image bruh:",width, height)
 
-frame = cv2.resize(img, (width, height), interpolation = cv2.INTER_LINEAR)
+#frame = cv2.resize(img, (width, height), interpolation = cv2.INTER_LINEAR)
 
 try:
     # Detect circles in the frame
@@ -99,14 +102,17 @@ try:
         match_target1 = template_matching(template_target1, cropped)
         match_target2 = template_matching(template_target2, cropped)
         
-        match_hotspot = template_matching(template_hotspot, cropped)
+        match_hotspot1 = template_matching(template_hotspot1, cropped)
+        match_hotspot2 = template_matching(template_hotspot2, cropped)
         
-        if max(match_target1,match_target2,match_hotspot) >= 0.5:
+        if max(match_target1,match_target2,match_hotspot1,match_hotspot2) >= 0.25:
             print(i,". Target_smol corr: ",match_target1)
             print(i,". Target_full corr: ",match_target2)
             
-            print(i,". Hotspot corr: ",match_hotspot)
-            if max(match_target1,match_target2) > match_hotspot:
+            print(i,". Hotspot_smol corr: ",match_hotspot1)
+            print(i,". Hotspot_full corr: ",match_hotspot2)
+            
+            if max(match_target1,match_target2) > max(match_hotspot1,match_hotspot2):
                 target_type = "Target"
                 text_color = (0, 255, 0)  # Green color
             else:
@@ -132,10 +138,16 @@ try:
 
             
         # Add text indicating target type
-        cv2.putText(frame, target_type, text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
+        cv2.putText(frame, target_type+" "+str(i), text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
         # Draw circles 
         cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
 
+        # Save the cropped image with target type in the filename
+        filename = f'Cropped_Circle_{i + 1}_{target_type}.png'
+        cv2.imwrite(filename, cropped)
+                
+        cv2.imshow(f'Cropped Circle {i + 1}', cropped)
+            
             
     # Display the frame with circles
     cv2.imshow('Frame with Circles', frame)

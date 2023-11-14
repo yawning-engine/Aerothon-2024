@@ -182,19 +182,7 @@ def detect():
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
     
-    # converting the image to HSV format 
-    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV) 
-    Lower_hsv = np.array([0, 0, 0]) 
-    Upper_hsv = np.array([116, 56, 255]) 
-  
-    # creating the mask 
-    Mask = cv2.inRange(hsv, Lower_hsv, Upper_hsv) 
-  
-    # Inverting the mask  
-    mask_yellow = cv2.bitwise_not(Mask)  
-    img = cv2.bitwise_and(img, img, mask = mask_yellow) 
-
-    
+ 
     POI = list()
 
     try:
@@ -255,10 +243,13 @@ def detect():
                 cv2.putText(frame, target_type, text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
                 # Draw circles 
                 cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
-            
+                
+
             else:
                 target_type = "Unknown"
                 text_color = (148, 7, 173) # Purple color
+                
+                                
 
         # Display the frame with circles   
         cv2.imshow('Frame with Circles', frame)

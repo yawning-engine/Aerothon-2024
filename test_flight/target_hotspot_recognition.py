@@ -29,14 +29,16 @@ center_cord = [int(width/2),int(height/2)]
 
     
 # Load the template image of the target and hotspot
-template_path_target1 = 'target_real.png'  # Change this to your target image's path
+template_path_target1 = 'target_real_smol.png'  # Change this to your target image's path
 template_path_target2 = 'target_real_full.png'  # Change this to your target image's path
 
 template_target1 = cv2.imread(template_path_target1, cv2.IMREAD_GRAYSCALE)
 template_target2 = cv2.imread(template_path_target2, cv2.IMREAD_GRAYSCALE)
 
-template_path_hotspot = 'hotspot_real.png'  # Change this to your hotspot image's path
-template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
+template_path_hotspot1 = 'hotspot_real_full2.png'  # Change this to your hotspot image's path
+template_path_hotspot2 = 'hotspot_real_full.png'  # Change this to your hotspot image's path
+template_hotspot1 = cv2.imread(template_path_hotspot1, cv2.IMREAD_GRAYSCALE)
+template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
 
 
 def connectmycopter():
@@ -311,7 +313,7 @@ def detect(yaw_angle, f):
     camera.resolution = (width, height)
     #camera.vflip = True
     
-    shot_no = str(2.14)
+    shot_no = str(3.0)
     
     rawCapture = PiRGBArray(camera, size=(width, height))
     
@@ -343,48 +345,53 @@ def detect(yaw_angle, f):
             match_target1 = template_matching(template_target1, cropped)
             match_target2 = template_matching(template_target2, cropped)
         
-            match_hotspot = template_matching(template_hotspot, cropped)
+            match_hotspot1 = template_matching(template_hotspot1, cropped)
+            match_hotspot2 = template_matching(template_hotspot2, cropped)
         
             if max(match_target1,match_target2,match_hotspot) >= -1:
                 print(i,". Target_smol corr: ",match_target1)
                 print(i,". Target_full corr: ",match_target2)
             
-                print(i,". Hotspot corr: ",match_hotspot)
-                
-                if max(match_target1,match_target2) > match_hotspot:
+                print(i,". Hotspot_full2 corr: ",match_hotspot1)
+                print(i,". Hotspot_full corr: ",match_hotspot2)
+            
+                if max(match_target1,match_target2) > max(match_hotspot1,match_hotspot2):
                     target_type = "Target"
                     text_color = (0, 255, 0)  # Green color
                 else:
                     target_type = "Hotspot"
                     text_color = (0, 0, 255)  # Red color
+            else:
+                target_type = "Unknown"
+                text_color = (148, 7, 173) # Purple color
                 
-                # Calculate the position for the target type text
-                circle_center = detected_circles[0][i][:2]
-                circle_radius = detected_circles[0][i][2]
-                circle_center = np.int64(circle_center)
-                circle_radius = np.int64(circle_radius)
+            # Calculate the position for the target type text
+            circle_center = detected_circles[0][i][:2]
+            circle_radius = detected_circles[0][i][2]
+            circle_center = np.int64(circle_center)
+            circle_radius = np.int64(circle_radius)
                 
-                #print(circle_center," ",circle_radius)
+            #print(circle_center," ",circle_radius)
             
-                text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
+            text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
             
-                print("\nTarget Type:",target_type,i)
-                print("Pixel Coordinates","X:",circle_center[0],"Y:",circle_center[1])
+            print("\nTarget Type:",target_type,i)
+            print("Pixel Coordinates","X:",circle_center[0],"Y:",circle_center[1])
         
-                xd,yd = get_coordinates(yaw_angle, f, circle_center[0], circle_center[1])
+            xd,yd = get_coordinates(yaw_angle, f, circle_center[0], circle_center[1])
                 
-                # Append all detections to an array
-                poi.append([xd,yd,target_type])
+            # Append all detections to an array
+            poi.append([xd,yd,target_type])
                 
-                line_thickness = 2
+            line_thickness = 2
             
-                cv2.line(frame, (0,center_cord[1]), (width, center_cord[1]), (0, 255, 0), thickness=line_thickness)
-                cv2.line(frame, (center_cord[0], 0), (center_cord[0], height), (0, 255, 0), thickness=line_thickness)
+            cv2.line(frame, (0,center_cord[1]), (width, center_cord[1]), (0, 255, 0), thickness=line_thickness)
+            cv2.line(frame, (center_cord[0], 0), (center_cord[0], height), (0, 255, 0), thickness=line_thickness)
 
-                # Add text indicating target type
-                cv2.putText(frame, target_type+str(i), text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
-                # Draw circles 
-                cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
+            # Add text indicating target type
+            cv2.putText(frame, target_type+str(i), text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
+            # Draw circles 
+            cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
                 
         # Display the frame with circles   
         #cv2.imshow('Frame with Circles', frame)

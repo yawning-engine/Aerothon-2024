@@ -1,0 +1,812 @@
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+0 . Target_smol corr:  -0.4545472264289856
+0 . Target_full corr:  0.7283652424812317
+0 . Hotspot corr:  -0.09432238340377808
+
+Target Type: Target 0
+Pixel Coordinates X: 380 Y: 389
+Current Altitude: 15
+Cartesian Coordinates: x: 60 y: -149
+Rotated Coordinates: x: 60 y: -149 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -1.18798 		Phi deg: -68.06624 
+
+Rp (Pixel distance): 160.6269
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 4.55377
+
+X (Distance along East): 1.70099 || Y (Distance along North): -4.22415 
+
+
+
+1 . Target_smol corr:  0.05631237477064133
+1 . Target_full corr:  0.12261433154344559
+1 . Hotspot corr:  0.2188362032175064
+
+Target Type: Hotspot 1
+Pixel Coordinates X: 267 Y: 188
+Current Altitude: 15
+Cartesian Coordinates: x: -53 y: 52
+Rotated Coordinates: x: -53 y: 52 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.77587 		Phi deg: -44.45408 
+
+Rp (Pixel distance): 74.24958
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.10498
+
+X (Distance along East): -1.50256 || Y (Distance along North): 1.4742 
+
+
+
+
+--------Mission Successfull--------
+
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+0 . Target_smol corr:  -0.15855419635772705
+0 . Target_full corr:  0.16227151453495026
+0 . Hotspot corr:  0.014501293189823627
+
+Target Type: Target 0
+Pixel Coordinates X: 284 Y: 148
+Current Altitude: 15
+Cartesian Coordinates: x: -36 y: 92
+Rotated Coordinates: x: -36 y: 92 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -1.19781 		Phi deg: -68.62946 
+
+Rp (Pixel distance): 98.79271
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.80077
+
+X (Distance along East): -1.0206 || Y (Distance along North): 2.6082 
+
+
+
+1 . Target_smol corr:  0.8781988024711609
+1 . Target_full corr:  -0.5067958235740662
+1 . Hotspot corr:  -0.05343447998166084
+
+Target Type: Target 1
+Pixel Coordinates X: 368 Y: 347
+Current Altitude: 15
+Cartesian Coordinates: x: 48 y: -107
+Rotated Coordinates: x: 48 y: -107 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -1.14911 		Phi deg: -65.83915 
+
+Rp (Pixel distance): 117.27319
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.32469
+
+X (Distance along East): 1.36079 || Y (Distance along North): -3.03345 
+
+
+
+
+--------Mission Successfull--------
+
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+0 . Target_smol corr:  -0.16823405027389526
+0 . Target_full corr:  -9.334125024906825e-06
+0 . Hotspot corr:  -0.04962000250816345
+
+Target Type: Target 0
+Pixel Coordinates X: 472 Y: 193
+Current Altitude: 15
+Cartesian Coordinates: x: 152 y: 47
+Rotated Coordinates: x: 152 y: 47 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: 0.29989 		Phi deg: 17.18243 
+
+Rp (Pixel distance): 159.1006
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 4.5105
+
+X (Distance along East): 4.30919 || Y (Distance along North): 1.33247 
+
+
+
+1 . Target_smol corr:  0.5388678312301636
+1 . Target_full corr:  -0.37831947207450867
+1 . Hotspot corr:  -0.25128331780433655
+
+Target Type: Target 1
+Pixel Coordinates X: 467 Y: 436
+Current Altitude: 15
+Cartesian Coordinates: x: 147 y: -196
+Rotated Coordinates: x: 147 y: -196 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.9273 		Phi deg: -53.13038 
+
+Rp (Pixel distance): 245.0
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 6.94575
+
+X (Distance along East): 4.16742 || Y (Distance along North): -5.55662 
+
+
+
+
+--------Mission Successfull--------
+
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+0 . Target_smol corr:  -0.44962385296821594
+0 . Target_full corr:  0.21679547429084778
+0 . Hotspot corr:  0.2546209990978241
+
+Target Type: Hotspot 0
+Pixel Coordinates X: 307 Y: 181
+Current Altitude: 15
+Cartesian Coordinates: x: -13 y: 59
+Rotated Coordinates: x: -13 y: 59 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -1.35392 		Phi deg: -77.5739 
+
+Rp (Pixel distance): 60.41523
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.71277
+
+X (Distance along East): -0.36855 || Y (Distance along North): 1.67265 
+
+
+
+1 . Target_smol corr:  -0.39967119693756104
+1 . Target_full corr:  0.6945435404777527
+1 . Hotspot corr:  -0.10728832334280014
+
+Target Type: Target 1
+Pixel Coordinates X: 476 Y: 339
+Current Altitude: 15
+Cartesian Coordinates: x: 156 y: -99
+Rotated Coordinates: x: 156 y: -99 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.56548 		Phi deg: -32.39962 
+
+Rp (Pixel distance): 184.76201
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 5.238
+
+X (Distance along East): 4.42261 || Y (Distance along North): -2.80663 
+
+
+
+
+--------Mission Successfull--------
+
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+0 . Target_smol corr:  -0.30336087942123413
+0 . Target_full corr:  0.17101022601127625
+0 . Hotspot corr:  0.18077653646469116
+
+Target Type: Hotspot 0
+Pixel Coordinates X: 309 Y: 194
+Current Altitude: 15
+Cartesian Coordinates: x: -11 y: 46
+Rotated Coordinates: x: -11 y: 46 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -1.33607 		Phi deg: -76.55117 
+
+Rp (Pixel distance): 47.29693
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.34087
+
+X (Distance along East): -0.31186 || Y (Distance along North): 1.3041 
+
+
+
+1 . Target_smol corr:  -0.5632681250572205
+1 . Target_full corr:  0.5109444856643677
+1 . Hotspot corr:  0.08827116340398788
+
+Target Type: Target 1
+Pixel Coordinates X: 456 Y: 366
+Current Altitude: 15
+Cartesian Coordinates: x: 136 y: -126
+Rotated Coordinates: x: 136 y: -126 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.74725 		Phi deg: -42.81427 
+
+Rp (Pixel distance): 185.39687
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 5.256
+
+X (Distance along East): 3.85559 || Y (Distance along North): -3.5721 
+
+
+
+2 . Target_smol corr:  0.1927526742219925
+2 . Target_full corr:  -0.06496059894561768
+2 . Hotspot corr:  -0.1940147578716278
+
+Target Type: Target 2
+Pixel Coordinates X: 107 Y: 129
+Current Altitude: 15
+Cartesian Coordinates: x: -213 y: 111
+Rotated Coordinates: x: -213 y: 111 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.48041 		Phi deg: -27.52547 
+
+Rp (Pixel distance): 240.18743
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 6.80931
+
+X (Distance along East): -6.03853 || Y (Distance along North): 3.14687 
+
+
+
+
+--------Mission Successfull--------
+
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+
+0 . Target_smol corr:  -0.43417274951934814
+0 . Target_full corr:  0.5327881574630737
+0 . Hotspot corr:  -0.03270367160439491
+
+Target Type: Target 0
+Pixel Coordinates X: 444 Y: 363
+Current Altitude: 15
+Cartesian Coordinates: x: 124 y: -123
+Rotated Coordinates: x: 124 y: -123 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.78135 		Phi deg: -44.76806 
+
+Rp (Pixel distance): 174.65681
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 4.95152
+
+X (Distance along East): 3.5154 || Y (Distance along North): -3.48705 
+
+
+
+1 . Target_smol corr:  0.4319230914115906
+1 . Target_full corr:  -0.13686197996139526
+1 . Hotspot corr:  -0.21493908762931824
+
+Target Type: Target 1
+Pixel Coordinates X: 334 Y: 169
+Current Altitude: 15
+Cartesian Coordinates: x: 14 y: 71
+Rotated Coordinates: x: 14 y: 71 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: 1.37611 		Phi deg: 78.8453 
+
+Rp (Pixel distance): 72.36712
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.05161
+
+X (Distance along East): 0.3969 || Y (Distance along North): 2.01285 
+
+
+
+
+--------Mission Successfull--------
+
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ 
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+0 . Target_smol corr:  -0.35283389687538147
+0 . Target_full corr:  0.15044230222702026
+0 . Hotspot corr:  0.3044572174549103
+
+Target Type: Hotspot 0
+Pixel Coordinates X: 302 Y: 190
+Current Altitude: 15
+Cartesian Coordinates: x: -18 y: 50
+Rotated Coordinates: x: -18 y: 50 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -1.22524 		Phi deg: -70.20108 
+
+Rp (Pixel distance): 53.14132
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.50656
+
+X (Distance along East): -0.5103 || Y (Distance along North): 1.4175 
+
+
+
+1 . Target_smol corr:  -0.5283275246620178
+1 . Target_full corr:  0.8392290472984314
+1 . Hotspot corr:  -0.09858333319425583
+
+Target Type: Target 1
+Pixel Coordinates X: 395 Y: 348
+Current Altitude: 15
+Cartesian Coordinates: x: 75 y: -108
+Rotated Coordinates: x: 75 y: -108 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.96381 		Phi deg: -55.22225 
+
+Rp (Pixel distance): 131.48764
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.72767
+
+X (Distance along East): 2.12624 || Y (Distance along North): -3.0618 
+
+
+
+2 . Target_smol corr:  -0.03840108588337898
+2 . Target_full corr:  0.04675803333520889
+2 . Hotspot corr:  0.21743164956569672
+
+Target Type: Hotspot 2
+Pixel Coordinates X: 129 Y: 68
+Current Altitude: 15
+Cartesian Coordinates: x: -191 y: 172
+Rotated Coordinates: x: -191 y: 172 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.7331 		Phi deg: -42.00354 
+
+Rp (Pixel distance): 257.03113
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 7.28683
+
+X (Distance along East): -5.41487 || Y (Distance along North): 4.87618 
+
+
+
+
+--------Mission Successfull--------
+
+^[[AMoonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+0 . Target_smol corr:  0.38782885670661926
+0 . Target_full corr:  0.07357975840568542
+0 . Hotspot corr:  -0.19835135340690613
+
+Target Type: Target 0
+Pixel Coordinates X: 387 Y: 228
+Current Altitude: 15
+Cartesian Coordinates: x: 67 y: 12
+Rotated Coordinates: x: 67 y: 12 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: 0.17723 		Phi deg: 10.15453 
+
+Rp (Pixel distance): 68.06614
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.92968
+
+X (Distance along East): 1.89945 || Y (Distance along North): 0.34021 
+
+
+
+1 . Target_smol corr:  -0.29398372769355774
+1 . Target_full corr:  0.2368564009666443
+1 . Hotspot corr:  0.09711021929979324
+
+Target Type: Target 1
+Pixel Coordinates X: 480 Y: 393
+Current Altitude: 15
+Cartesian Coordinates: x: 160 y: -153
+Rotated Coordinates: x: 160 y: -153 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.76304 		Phi deg: -43.71897 
+
+Rp (Pixel distance): 221.37976
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 6.27612
+
+X (Distance along East): 4.53599 || Y (Distance along North): -4.33756 
+
+
+
+
+--------Mission Successfull--------
+
+^[[AMoonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+0 . Target_smol corr:  -0.19215573370456696
+0 . Target_full corr:  0.03982754424214363
+0 . Hotspot corr:  0.26464754343032837
+
+Target Type: Hotspot 0
+Pixel Coordinates X: 411 Y: 210
+Current Altitude: 15
+Cartesian Coordinates: x: 91 y: 30
+Rotated Coordinates: x: 91 y: 30 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: 0.31845 		Phi deg: 18.24584 
+
+Rp (Pixel distance): 95.81753
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.71643
+
+X (Distance along East): 2.57985 || Y (Distance along North): 0.8505 
+
+
+
+1 . Target_smol corr:  0.739739716053009
+1 . Target_full corr:  -0.4320540726184845
+1 . Hotspot corr:  0.030098838731646538
+
+Target Type: Target 1
+Pixel Coordinates X: 520 Y: 376
+Current Altitude: 15
+Cartesian Coordinates: x: 200 y: -136
+Rotated Coordinates: x: 200 y: -136 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.59718 		Phi deg: -34.21589 
+
+Rp (Pixel distance): 241.85946
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 6.85672
+
+X (Distance along East): 5.66999 || Y (Distance along North): -3.85562 
+
+
+
+2 . Target_smol corr:  0.07872932404279709
+2 . Target_full corr:  0.014741851948201656
+2 . Hotspot corr:  0.05096146836876869
+
+Target Type: Target 2
+Pixel Coordinates X: 236 Y: 114
+Current Altitude: 15
+Cartesian Coordinates: x: -84 y: 126
+Rotated Coordinates: x: -84 y: 126 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.98279 		Phi deg: -56.30972 
+
+Rp (Pixel distance): 151.43315
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 4.29313
+
+X (Distance along East): -2.38141 || Y (Distance along North): 3.57209 
+
+
+
+3 . Target_smol corr:  0.0010837791487574577
+3 . Target_full corr:  0.02487812377512455
+3 . Hotspot corr:  -0.2032046765089035
+
+Target Type: Target 3
+Pixel Coordinates X: 47 Y: 230
+Current Altitude: 15
+Cartesian Coordinates: x: -273 y: 10
+Rotated Coordinates: x: -273 y: 10 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.03661 		Phi deg: -2.0976 
+
+Rp (Pixel distance): 273.18309
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 7.74474
+
+X (Distance along East): -7.73955 || Y (Distance along North): 0.28347 
+
+
+
+
+--------Mission Successfull--------
+
+^[[AMoonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+0 . Target_smol corr:  0.5091753005981445
+0 . Target_full corr:  -0.03777242824435234
+0 . Hotspot corr:  -0.26848018169403076
+
+Target Type: Target 0
+Pixel Coordinates X: 365 Y: 222
+Current Altitude: 15
+Cartesian Coordinates: x: 45 y: 18
+Rotated Coordinates: x: 45 y: 18 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: 0.38051 		Phi deg: 21.80162 
+
+Rp (Pixel distance): 48.46648
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.37402
+
+X (Distance along East): 1.27574 || Y (Distance along North): 0.5103 
+
+
+
+1 . Target_smol corr:  0.7830479741096497
+1 . Target_full corr:  -0.41589435935020447
+1 . Hotspot corr:  -0.022932570427656174
+
+Target Type: Target 1
+Pixel Coordinates X: 473 Y: 384
+Current Altitude: 15
+Cartesian Coordinates: x: 153 y: -144
+Rotated Coordinates: x: 153 y: -144 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.7551 		Phi deg: -43.26404 
+
+Rp (Pixel distance): 210.10712
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 5.95654
+
+X (Distance along East): 4.33757 || Y (Distance along North): -4.08238 
+
+
+
+2 . Target_smol corr:  0.06125890463590622
+2 . Target_full corr:  0.014965660870075226
+2 . Hotspot corr:  0.08647410571575165
+
+Target Type: Hotspot 2
+Pixel Coordinates X: 187 Y: 131
+Current Altitude: 15
+Cartesian Coordinates: x: -133 y: 109
+Rotated Coordinates: x: -133 y: 109 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.68655 		Phi deg: -39.33642 
+
+Rp (Pixel distance): 171.9593
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 4.87505
+
+X (Distance along East): -3.77055 || Y (Distance along North): 3.09016 
+
+
+
+3 . Target_smol corr:  -0.12787999212741852
+3 . Target_full corr:  -0.001788115594536066
+3 . Hotspot corr:  0.37157633900642395
+
+Target Type: Hotspot 3
+Pixel Coordinates X: 280 Y: 227
+Current Altitude: 15
+Cartesian Coordinates: x: -40 y: 13
+Rotated Coordinates: x: -40 y: 13 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.31423 		Phi deg: -18.00405 
+
+Rp (Pixel distance): 42.05948
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.19239
+
+X (Distance along East): -1.134 || Y (Distance along North): 0.36855 
+
+
+
+
+--------Mission Successfull--------
+
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+0 . Target_smol corr:  -0.03837191313505173
+0 . Target_full corr:  -0.0769309401512146
+0 . Hotspot corr:  0.06905016303062439
+
+Target Type: Hotspot 0
+Pixel Coordinates X: 346 Y: 221
+Current Altitude: 15
+Cartesian Coordinates: x: 26 y: 19
+Rotated Coordinates: x: 26 y: 19 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: 0.63108 		Phi deg: 36.15822 
+
+Rp (Pixel distance): 32.20248
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 0.91294
+
+X (Distance along East): 0.7371 || Y (Distance along North): 0.53865 
+
+
+
+1 . Target_smol corr:  0.7976758480072021
+1 . Target_full corr:  -0.5366948843002319
+1 . Hotspot corr:  0.026557153090834618
+
+Target Type: Target 1
+Pixel Coordinates X: 480 Y: 354
+Current Altitude: 15
+Cartesian Coordinates: x: 160 y: -114
+Rotated Coordinates: x: 160 y: -114 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.61907 		Phi deg: -35.4701 
+
+Rp (Pixel distance): 196.45865
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 5.5696
+
+X (Distance along East): 4.53599 || Y (Distance along North): -3.23192 
+
+
+
+2 . Target_smol corr:  -0.09569373726844788
+2 . Target_full corr:  0.1162654235959053
+2 . Hotspot corr:  0.08928009867668152
+
+Target Type: Target 2
+Pixel Coordinates X: 156 Y: 167
+Current Altitude: 15
+Cartesian Coordinates: x: -164 y: 73
+Rotated Coordinates: x: -164 y: 73 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.41879 		Phi deg: -23.9949 
+
+Rp (Pixel distance): 179.51323
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 5.0892
+
+X (Distance along East): -4.6494 || Y (Distance along North): 2.06955 
+
+
+
+
+--------Mission Successfull--------
+
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+0 . Target_smol corr:  -0.2937365472316742
+0 . Target_full corr:  0.11493965238332748
+0 . Hotspot corr:  0.2797274887561798
+
+Target Type: Hotspot 0
+Pixel Coordinates X: 361 Y: 224
+Current Altitude: 15
+Cartesian Coordinates: x: 41 y: 16
+Rotated Coordinates: x: 41 y: 16 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: 0.37207 		Phi deg: 21.31804 
+
+Rp (Pixel distance): 44.01136
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.24772
+
+X (Distance along East): 1.16235 || Y (Distance along North): 0.4536 
+
+
+
+1 . Target_smol corr:  -0.43791675567626953
+1 . Target_full corr:  0.29261499643325806
+1 . Hotspot corr:  0.20570996403694153
+
+Target Type: Target 1
+Pixel Coordinates X: 462 Y: 379
+Current Altitude: 15
+Cartesian Coordinates: x: 142 y: -139
+Rotated Coordinates: x: 142 y: -139 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.77472 		Phi deg: -44.38819 
+
+Rp (Pixel distance): 198.70833
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 5.63338
+
+X (Distance along East): 4.02571 || Y (Distance along North): -3.94064 
+
+
+
+2 . Target_smol corr:  -0.08801613748073578
+2 . Target_full corr:  0.12783224880695343
+2 . Hotspot corr:  0.15851804614067078
+
+Target Type: Hotspot 2
+Pixel Coordinates X: 183 Y: 122
+Current Altitude: 15
+Cartesian Coordinates: x: -137 y: 118
+Rotated Coordinates: x: -137 y: 118 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.71103 		Phi deg: -40.73902 
+
+Rp (Pixel distance): 180.81206
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 5.12602
+
+X (Distance along East): -3.88393 || Y (Distance along North): 3.34532 
+
+
+
+
+--------Mission Successfull--------
+
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+^[[A0 . Target_smol corr:  -0.28556838631629944
+0 . Target_full corr:  0.1379908323287964
+0 . Hotspot corr:  0.3346059322357178
+
+Target Type: Hotspot 0
+Pixel Coordinates X: 192 Y: 265
+Current Altitude: 15
+Cartesian Coordinates: x: -128 y: -25
+Rotated Coordinates: x: -128 y: -25 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: 0.19288 		Phi deg: 11.05121 
+
+Rp (Pixel distance): 130.41856
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.69737
+
+X (Distance along East): -3.62881 || Y (Distance along North): -0.70874 
+
+
+
+1 . Target_smol corr:  0.09889792650938034
+1 . Target_full corr:  -0.07733092457056046
+1 . Hotspot corr:  0.002113928087055683
+
+Target Type: Target 1
+Pixel Coordinates X: 181 Y: 208
+Current Altitude: 15
+Cartesian Coordinates: x: -139 y: 32
+Rotated Coordinates: x: -139 y: 32 
+
+Delta rad: 0 		Delta deg: 0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad: -0.22627 		Phi deg: -12.96432 
+
+Rp (Pixel distance): 142.6359
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 4.04373
+
+X (Distance along East): -3.94066 || Y (Distance along North): 0.90719 
+
+
+
+
+--------Mission Successfull--------
+
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ python3 target_hotspot_recognition.py 
+
+No Circles Found
+
+
+--------Mission Successfull--------
+
+Moonpie@raspberrypi:~/Documents/Aerothon-2024/test_flight $ 
+
+
