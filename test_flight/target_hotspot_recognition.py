@@ -35,7 +35,7 @@ template_path_target2 = 'target_real_full.png'  # Change this to your target ima
 template_target1 = cv2.imread(template_path_target1, cv2.IMREAD_GRAYSCALE)
 template_target2 = cv2.imread(template_path_target2, cv2.IMREAD_GRAYSCALE)
 
-template_path_hotspot1 = 'hotspot_real_full2.png'  # Change this to your hotspot image's path
+template_path_hotspot1 = 'hotspot_real_smol.png'  # Change this to your hotspot image's path
 template_path_hotspot2 = 'hotspot_real_full.png'  # Change this to your hotspot image's path
 template_hotspot1 = cv2.imread(template_path_hotspot1, cv2.IMREAD_GRAYSCALE)
 template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
@@ -246,7 +246,7 @@ def detect_circles(image):
     #filtered = cv2.bilateralFilter(image, 9, 75, 75)
     #cv2.imshow('Blurred', filtered)
     edges = cv2.Canny(image, threshold1=70, threshold2=155)
-    cv2.imshow('EDGE', edges)
+    #cv2.imshow('EDGE', edges)
     #cv2.waitKey(0)
     
     # Detect circles using Hough Circle Transform
@@ -311,20 +311,24 @@ def detect(yaw_angle, f):
     
     camera = PiCamera()
     camera.resolution = (width, height)
+    camera.iso = 100
+    camera.exposure_mode = 'auto'
+    #camera.exposMoonpieure_compensation = -3
     #camera.vflip = True
     
-    shot_no = str(3.0)
+    shot_no = str(10.15)
+    print("Shot NO:",shot_no)
     
     rawCapture = PiRGBArray(camera, size=(width, height))
     
     # allow the camera to warmup
-    time.sleep(0.1)
+    time.sleep(2)
 
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
     
     cv2.imwrite("drone_shot"+shot_no+".jpg",frame)
-    
+    #cv2.imshow("drone_shot"+shot_no+".jpg",frame)
     poi = list()
     
     try:
@@ -348,13 +352,8 @@ def detect(yaw_angle, f):
             match_hotspot1 = template_matching(template_hotspot1, cropped)
             match_hotspot2 = template_matching(template_hotspot2, cropped)
         
-            if max(match_target1,match_target2,match_hotspot) >= -1:
-                print(i,". Target_smol corr: ",match_target1)
-                print(i,". Target_full corr: ",match_target2)
-            
-                print(i,". Hotspot_full2 corr: ",match_hotspot1)
-                print(i,". Hotspot_full corr: ",match_hotspot2)
-            
+            if max(match_target1,match_target2,match_hotspot1,match_hotspot2) >= 0.2:
+                
                 if max(match_target1,match_target2) > max(match_hotspot1,match_hotspot2):
                     target_type = "Target"
                     text_color = (0, 255, 0)  # Green color
@@ -365,6 +364,12 @@ def detect(yaw_angle, f):
                 target_type = "Unknown"
                 text_color = (148, 7, 173) # Purple color
                 
+            print(i,". Target_smol corr: ",match_target1)
+            print(i,". Target_full corr: ",match_target2)
+            
+            print(i,". Hotspot_smol corr: ",match_hotspot1)
+            print(i,". Hotspot_full corr: ",match_hotspot2)
+            
             # Calculate the position for the target type text
             circle_center = detected_circles[0][i][:2]
             circle_radius = detected_circles[0][i][2]

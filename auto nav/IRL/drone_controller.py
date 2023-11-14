@@ -277,7 +277,7 @@ def grid_navigation(points, max_distance):
     for i in range(num_lat_points):
         line_arr=[]
         x*=-1
-        for j in range(num_lon_points+1):
+        for j in range(num_lon_points):
 
             if j==0 and i==0:
                 lat = min_lat + 0.5*lat_step
