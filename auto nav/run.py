@@ -1,5 +1,4 @@
 import drone_controller as drone
-import argparse
 import time
 # field 1-
 # dronekit-sitl copter --home=13.394622,77.731250,0,180
@@ -10,14 +9,8 @@ import time
 # national clg -
 # dronekit-sitl copter --home=12.950189431098176, 77.5729052662308,0,0
 
-parser = argparse.ArgumentParser(description='Commands vehicle using vehicle.simple_goto.')
-parser.add_argument('--connect',
-                        help='''Vehicle connection target string. If not specified, 
-                        SITL automatically started and used.''')
-args = parser.parse_args()
 
-connection_string = args.connect
-vehicle = drone.connect_simulation_dorne(connection_string)
+vehicle = drone.connect_simulation_drone()
 
 hotspot_arr=[drone.get_gps_location(vehicle,10,10)]
 target_arr=[drone.get_gps_location(vehicle,10,-10)]
@@ -34,10 +27,10 @@ field_2_boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371),
 bms_points= [(12.941209902836812, 77.5659708787648),(12.941037373375236, 77.56592259900712),
              (12.94096417902213, 77.56628737939842),(12.9411497789471, 77.56631688369477)]
 
-national_clg=[(12.9502104499548, 77.57262628627873),(12.949732036664333, 77.57259143004251)
-              ,(12.949729422671844, 77.57288513190167),(12.950210396827655, 77.57289183742355)]
+national_clg=[(12.9509975088598, 77.57268620201272),(12.950826293163624, 77.57268351980396)
+              ,(12.95079884636169, 77.57291016644415),(12.950951764219674, 77.57290614313101)]
 
-arr=drone.grid_navigation(bms_points,10)
+arr=drone.grid_navigation(field_1_boundary_points,10)
 
 #print(arr)
 
@@ -51,6 +44,7 @@ file.write("Take off location , pos="+str(drone.get_gps_location(vehicle,0,0,0))
 #drone.condition_yaw()
 print("relatve to abs :"+str(drone.get_gps_location(vehicle,5,5,15)))
 #print(arr)
+
 for i in arr:
     print("going to", drone.LocationGlobalRelative(i[0],i[1],15))
     drone.goto_wp(vehicle, drone.LocationGlobalRelative(i[0],i[1],15),ground_speed=2)
