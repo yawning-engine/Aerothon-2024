@@ -311,6 +311,8 @@ def detect(yaw_angle, f):
     camera.resolution = (width, height)
     #camera.vflip = True
     
+    shot_no = str(2.14)
+    
     rawCapture = PiRGBArray(camera, size=(width, height))
     
     # allow the camera to warmup
@@ -319,7 +321,7 @@ def detect(yaw_angle, f):
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
     
-    cv2.imwrite("drone_shot2.jpg",frame)
+    cv2.imwrite("drone_shot"+shot_no+".jpg",frame)
     
     poi = list()
     
@@ -343,7 +345,7 @@ def detect(yaw_angle, f):
         
             match_hotspot = template_matching(template_hotspot, cropped)
         
-            if max(match_target1,match_target2,match_hotspot) >= 0.4:
+            if max(match_target1,match_target2,match_hotspot) >= -1:
                 print(i,". Target_smol corr: ",match_target1)
                 print(i,". Target_full corr: ",match_target2)
             
@@ -386,7 +388,7 @@ def detect(yaw_angle, f):
                 
         # Display the frame with circles   
         #cv2.imshow('Frame with Circles', frame)
-        cv2.imwrite("drone_frame2.jpg", frame)
+        cv2.imwrite("drone_frame"+shot_no+".jpg", frame)
         #cv2.waitKey(0)        
         cv2.destroyAllWindows()
     
@@ -402,22 +404,22 @@ def detect(yaw_angle, f):
      
 if __name__== '__main__':
     
-    vehicle = connectmycopter()
+    #vehicle = connectmycopter()
     poi = list()
 
     f = open("log_target_hotspot_recognition.txt", 'w')
 
-    basic_data(vehicle, f)
+    #basic_data(vehicle, f)
 
-    home_wp = set_home(vehicle, f)
-    time.sleep(2)
+    #home_wp = set_home(vehicle, f)
+    #time.sleep(2)
 
     #arm_and_takeoff(flt_alt, vehicle, f)
     #time.sleep(2)
     
-    yaw_angle = vehicle.attitude.yaw
-    flt_alt = vehicle.location.global_relative_frame.alt
-
+    yaw_angle = 0
+    flt_alt = 15
+    
     poi = detect(yaw_angle, f)
     
     #land_copter(vehicle, f)
@@ -426,6 +428,6 @@ if __name__== '__main__':
     print("\n--------Mission Successfull--------\n")
     f.write("\n--------Mission Successfull--------")
 
-    vehicle.armed = False
-    vehicle.close()
+    #vehicle.armed = False
+    #vehicle.close()
 

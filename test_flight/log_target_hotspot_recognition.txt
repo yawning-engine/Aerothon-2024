@@ -1,8 +1,2 @@
-Version: APM:Copter-4.4.2
-Armable: True
-Vehicle Mode: STABILIZE
-Support set attitude from companion: True
-Last Heartbeat: 0.07565708499998891
 
-Home set at: LocationGlobalRelative:lat=12.9412014,lon=77.5660052,alt=1.778
 --------Mission Successfull--------
