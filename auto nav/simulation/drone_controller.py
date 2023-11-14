@@ -246,7 +246,10 @@ def grid_navigation(points, max_distance):
     print("range -", lat_range,lon_range)
     num_lat_points = round(int(lat_range / max_distance)) + 1
     num_lon_points = round(int(lon_range / max_distance)) + 1
-    
+    print("No of lat steps -" ,num_lat_points)
+    print("No of lon steps - ", num_lon_points)
+    lon_angle = points[3][1]-points[2][1]
+    lat_angle = points[1][0]-points[2][0]
     points.sort(key=lambda p: (p[0], p[1]))  # Sort by latitude and then longitude
     min_lat, min_lon = points[0]
     max_lat, max_lon = points[-1]
@@ -256,8 +259,7 @@ def grid_navigation(points, max_distance):
     lat_step = (max_lat - min_lat) / num_lat_points
     lon_step = (max_lon - min_lon) / num_lon_points
     # lon angle depens on variation in lon and vise versa
-    lon_angle = points[0][1]-points[3][1]
-    lat_angle = points[1][0]-points[0][0]
+
     print("lat_angle",lat_angle,lon_angle)
     # min_lat, min_lon = points[0]
     # max_lat, max_lon = points[-1]
