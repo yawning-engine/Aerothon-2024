@@ -10,7 +10,7 @@ import time
 # dronekit-sitl copter --home=12.950189431098176, 77.5729052662308,0,0
 
 
-vehicle = drone.connect_simulation_drone()
+vehicle = drone.connect_real_drone()
 
 hotspot_arr=[drone.get_gps_location(vehicle,10,10)]
 target_arr=[drone.get_gps_location(vehicle,10,-10)]
@@ -30,12 +30,12 @@ bms_points= [(12.941209902836812, 77.5659708787648),(12.941037373375236, 77.5659
 national_clg=[(12.9509975088598, 77.57268620201272),(12.950826293163624, 77.57268351980396)
               ,(12.95079884636169, 77.57291016644415),(12.950951764219674, 77.57290614313101)]
 
-arr=drone.grid_navigation(field_1_boundary_points,10)
+arr=drone.grid_navigation(national_clg,10)
 
 #print(arr)
 
-vehicle.airspeed=2
-vehicle.groundspeed=2
+vehicle.airspeed=0.5
+vehicle.groundspeed=0.5
 
 file =  open("drone_log.txt","a") 
 drone.arm_and_takeoff(vehicle,15)
@@ -45,6 +45,8 @@ file.write("Take off location , pos="+str(drone.get_gps_location(vehicle,0,0,0))
 print("relatve to abs :"+str(drone.get_gps_location(vehicle,5,5,15)))
 #print(arr)
 
+drone.goto_wp(vehicle, drone.LocationGlobalRelative(arr[0][0],arr[0][1],15),ground_speed=0.5)
+'''
 for i in arr:
     print("going to", drone.LocationGlobalRelative(i[0],i[1],15))
     drone.goto_wp(vehicle, drone.LocationGlobalRelative(i[0],i[1],15),ground_speed=2)
@@ -59,6 +61,6 @@ for i in arr:
     # if not drone.get_gps_location(vehicle,10,10) in target_arr:
     #     drone.its_target(vehicle,10,10)
     #     target_arr.append(drone.get_gps_location(vehicle,10,10))
-
+'''
 drone.RTL(vehicle)
 

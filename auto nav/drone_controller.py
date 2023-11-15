@@ -62,8 +62,8 @@ def goto_wp(vehicle, wp, f=f,ground_speed=3):
     vehicle.groundspeed = ground_speed
     print("\nGround Speed:%f"%vehicle.groundspeed)
     f.write("\nGround Speed:%f\n"%vehicle.groundspeed)
-    if distance_to_wp(vehicle, wp)>40:
-        ground_speed=5
+    # if distance_to_wp(vehicle, wp)>40:
+    #     ground_speed=5
     vehicle.simple_goto(wp, groundspeed=ground_speed)
     
     while distance_to_wp(vehicle, wp) > 1:
@@ -76,7 +76,6 @@ def goto_wp(vehicle, wp, f=f,ground_speed=3):
             f.write("\nWaypoint %s Reached"%str(wp))
             break
         time.sleep(0.3)
-    condition_yaw(vehicle)
     return None
 
 
@@ -151,8 +150,6 @@ def arm_and_takeoff(vehicle,aTargetAltitude):
         print(" Waiting for vehicle to initialise...")
         time.sleep(1)
     
-
-
     print("Arming motors")
     # Copter should arm in GUIDED mode
     print("\nSet Vehicle.mode = GUIDED (currently: %s)" % vehicle.mode.name) 
@@ -288,7 +285,7 @@ def grid_navigation(points, max_distance):
     for i in range(num_lat_points):
         line_arr=[]
         x*=-1
-        for j in range(num_lon_points+2):
+        for j in range(num_lon_points):
 
             if j==0 and i==0:
                 lat = min_lat + 0.5*lat_step
@@ -329,6 +326,17 @@ def RTL(vehicle):
     vehicle.mode = VehicleMode("RTL")
     while not vehicle.mode.name=="RTL":
         print("Waiting to switch mode to RTL, current mode:",vehicle.mode.name)
+        time.sleep(1)
+        
+    # Close vehicle object before exiting script
+    print("Close vehicle object")
+    vehicle.close()
+
+def Land(vehicle):
+    print("Returning to Launch")
+    vehicle.mode = VehicleMode("LAND")
+    while not vehicle.mode.name=="LAND":
+        print("Waiting to switch mode to LAND, current mode:",vehicle.mode.name)
         time.sleep(1)
         
     # Close vehicle object before exiting script
