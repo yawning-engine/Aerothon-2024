@@ -166,7 +166,7 @@ def land_copter(vehicle, f):
 	return None
 
 
-def coordinate_rotation(yaw_angle, x_cart, y_cart):
+def coordinate_rotation(yaw_angle, x_cart, y_cart,f):
 
                     
    # Rotation of point wrt to drone heading
@@ -186,6 +186,8 @@ def coordinate_rotation(yaw_angle, x_cart, y_cart):
    
    print("Rotated Coordinates:","x:",xr,"y:",yr,"\n")
    print("Delta rad:", delta_rad, "\t\tDelta deg:",delta_deg)
+   f.write("Rotated Coordinates: "+" x: "+str(xr)+" y: "+str(yr)+"\n\n")
+   f.write("Delta rad: " + str(delta_rad) + "\t\tDelta deg:" + str(delta_deg)+'\n')
       
 
    return (xr,yr)
@@ -200,13 +202,17 @@ def get_coordinates(yaw_angle, f, circle_x, circle_y):
     y_cart = center_cord[1] - circle_y
     
     print("Current Altitude:",h)
-    print("Cartesian Coordinates:","x:",x_cart,"y:",y_cart)
+    print("Cartesian Coordinates:","x:",str(x_cart),"y:",str(y_cart))
     
-    xr,yr = coordinate_rotation(yaw_angle, x_cart, y_cart)
+    f.write("Current Altitude :"+str(h)+'\n')
+    f.write("Cartesian Coordinates:"+"x: "+str(x_cart)+" y: "+str(y_cart)+'\n')
+    
+    xr,yr = coordinate_rotation(yaw_angle, x_cart, y_cart,f)
     
     theta_rad = round(math.atan(10.3/109),5)
     theta_deg = round(theta_rad*180/math.pi,5)
     print("Theta rad:", theta_rad, "\t\tTheta deg:",theta_deg)
+    f.write("Theta rad: "+ str(theta_rad)+ " \t\tTheta deg: "+str(theta_deg)+'\n')
     
     if x_cart == 0:
         phi_rad = round(math.pi/2,5)
@@ -215,15 +221,19 @@ def get_coordinates(yaw_angle, f, circle_x, circle_y):
     
     phi_deg = round(phi_rad*180/math.pi,5)
     print("Phi rad:", phi_rad, "\t\tPhi deg:",phi_deg,"\n")
+    f.write("Phi rad "+ str(phi_rad)+ "\t\tPhi deg: "+str(phi_deg)+"\n\n")
     
     Rp = round(math.sqrt(math.pow(xr,2)+math.pow(yr,2)),5) # Rp is pixel distance
     print("Rp (Pixel distance):",Rp)
+    f.write("Rp (Pixel distance):"+str(Rp)+'\n')
     
     Rd = round(h*math.tan(theta_rad),5) # Rd is real world distance for 50 pixels
     print("Rd (Real world distance for 50 pixels):",Rd)
+    f.write("Rd (Real world distance for 50 pixels): "+str(Rd)+'\n')
     
     d = round((Rp*Rd)/50.0,5) # Real world distance in meters per pixel at height h (flight altitude).
     print("D (Real world Distance to point):",d)
+    f.write("D (Real world Distance to point): "+str(d)+'\n')
     
     xd = round(abs(d*math.cos(phi_rad)),5) # Real world distance along x axis (EAST) in meters.
     yd = round(abs(d*math.sin(phi_rad)),5) # Real world distance along y axis (NORTH) in meters.
@@ -233,6 +243,7 @@ def get_coordinates(yaw_angle, f, circle_x, circle_y):
     if yr < 0:
     	yd = yd*-1
     print("\nX (Distance along East):",xd,"|| Y (Distance along North):",yd,"\n\n\n")
+    f.write("\nX (Distance along East): "+str(xd)+" || Y (Distance along North): "+str(yd)+"\n\n\n")
     
     return (xd,yd)
     
@@ -307,17 +318,17 @@ def template_matching(template, image):
     return max_val
     
     
-def detect(yaw_angle, f):
+def detect(yaw_angle, f,i,camera):
     
-    camera = PiCamera()
     camera.resolution = (width, height)
     camera.iso = 100
     camera.exposure_mode = 'auto'
     #camera.exposMoonpieure_compensation = -3
     #camera.vflip = True
     
-    shot_no = str(10.15)
+    shot_no = str("30_")+str(i)
     print("Shot NO:",shot_no)
+    f.write("\nShot NO:"+shot_no+'\n')
     
     rawCapture = PiRGBArray(camera, size=(width, height))
     
@@ -337,6 +348,8 @@ def detect(yaw_angle, f):
         detected_circles = detect_circles(frame.copy())
         if detected_circles is None:
             print("\nNo Circles Found\n")
+            f.write("\nNo Circles Found\n\n")
+            
             poi.append([0,0,"No_circles_found"])      
             return poi
         
@@ -370,6 +383,12 @@ def detect(yaw_angle, f):
             print(i,". Hotspot_smol corr: ",match_hotspot1)
             print(i,". Hotspot_full corr: ",match_hotspot2)
             
+            f.write(str(i)+". Target_smol corr: "+str(match_target1)+'\n')
+            f.write(str(i)+". Target_full corr: "+str(match_target2)+'\n')
+            
+            f.write(str(i)+". Hotspot_smol corr: "+str(match_hotspot1)+'\n')
+            f.write(str(i)+". Hotspot_full corr: "+str(match_hotspot2)+'\n')
+            
             # Calculate the position for the target type text
             circle_center = detected_circles[0][i][:2]
             circle_radius = detected_circles[0][i][2]
@@ -382,6 +401,8 @@ def detect(yaw_angle, f):
             
             print("\nTarget Type:",target_type,i)
             print("Pixel Coordinates","X:",circle_center[0],"Y:",circle_center[1])
+            f.write("\nTarget Type:"+str(target_type)+str(i)+'\n')
+            f.write("Pixel Coordinates"+" X: "+str(circle_center[0])+" Y: "+str(circle_center[1])+'\n')
         
             xd,yd = get_coordinates(yaw_angle, f, circle_center[0], circle_center[1])
                 
@@ -419,7 +440,7 @@ if __name__== '__main__':
     #vehicle = connectmycopter()
     poi = list()
 
-    f = open("log_target_hotspot_recognition.txt", 'w')
+    f = open("log_target_hotspot_recognition_30M.txt", 'w')
 
     #basic_data(vehicle, f)
 
@@ -431,9 +452,15 @@ if __name__== '__main__':
     
     yaw_angle = 0
     flt_alt = 15
+    i = 0
+    camera = PiCamera()
     
-    poi = detect(yaw_angle, f)
-    
+    for i in range(0,20):
+        poi = detect(yaw_angle, f,i,camera)
+        print("sleeping")
+        f.write("\n\nsleeping\n\n")
+        time.sleep(2)
+        
     #land_copter(vehicle, f)
     #time.sleep(3)
 
