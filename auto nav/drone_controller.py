@@ -13,21 +13,30 @@ import dronekit_sitl
 
 f = open("drone_log.txt", 'w')
 sitl = None
-def connect_simulation_dorne(connection_string):
+def connect_simulation_drone():
     
-    
-
-    # Start SITL if no connection string specified
-    if not connection_string:
-        
-        sitl = dronekit_sitl.start_default()
-        connection_string = sitl.connection_string()
-
+    connection_string = "udp:127.0.0.1:14550"
 
     # Connect to the Vehicle
     print('Connecting to vehicle on: %s' % connection_string)
     vehicle = connect(connection_string, wait_ready=True)
     return vehicle
+
+def connect_real_drone():
+    
+    connection_string = "/dev/serial0"
+    baud_rate = 57600
+    print("Connecting to drone...")
+
+    print('Connecting to vehicle on: %s' % connection_string)
+    f.write('Connecting to vehicle on: %s' % connection_string)
+
+    vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)
+    
+    f.write('Connected to vehicle : %s' % connection_string)
+
+    return vehicle
+
 def distance_to_wp(vehicle , wp):
 
     dist = 0.0
@@ -243,21 +252,32 @@ def grid_navigation(points, max_distance):
     
     lat_range = calculate_distance((min_lat, min_lon), (max_lat, min_lon))
     lon_range = calculate_distance((min_lat, min_lon), (min_lat, max_lon))
+
     print("range -", lat_range,lon_range)
-    num_lat_points = round(int(lat_range / max_distance)) + 1
-    num_lon_points = round(int(lon_range / max_distance)) + 1
+
+    num_lat_points = round(lat_range / max_distance) + 1
+    num_lon_points = round(lon_range / max_distance) + 1
+
     print("No of lat steps -" ,num_lat_points)
     print("No of lon steps - ", num_lon_points)
+
     lon_angle = points[3][1]-points[2][1]
     lat_angle = points[1][0]-points[2][0]
+
+
+
     points.sort(key=lambda p: (p[0], p[1]))  # Sort by latitude and then longitude
+
+
     min_lat, min_lon = points[0]
     max_lat, max_lon = points[-1]
+
+    lat_step = (max_lat - min_lat) / num_lat_points
+    lon_step = (max_lon - min_lon)/ num_lon_points
     
     # Generate the grid points
     grid_points = []
-    lat_step = (max_lat - min_lat) / num_lat_points
-    lon_step = (max_lon - min_lon) / num_lon_points
+    
     # lon angle depens on variation in lon and vise versa
 
     print("lat_angle",lat_angle,lon_angle)
@@ -268,17 +288,17 @@ def grid_navigation(points, max_distance):
     for i in range(num_lat_points):
         line_arr=[]
         x*=-1
-        for j in range(num_lon_points+1):
+        for j in range(num_lon_points+2):
 
             if j==0 and i==0:
                 lat = min_lat + 0.5*lat_step
-                lon = min_lon + 0.5*lon_step
+                lon = min_lon + lon_step
             elif j==0:
                 lat = min_lat + 0.5*lat_step + i*lat_step 
-                lon = min_lon + 0.5*lon_step + i*lon_angle/(num_lat_points+1)
+                lon = min_lon + lon_step + i*lon_angle/(num_lat_points+1)
             else:
                 lat = min_lat + 0.5*lat_step + i*lat_step + j*lat_angle/(num_lon_points+1)
-                lon = min_lon + 0.5*lon_step + j*lon_step + i*lon_angle/(num_lat_points+1)
+                lon = min_lon + lon_step + j*lon_step + i*lon_angle/(num_lat_points+1)
             # lat = min_lat + i * lat_step 
             # lon = min_lon + j * lon_step
 
