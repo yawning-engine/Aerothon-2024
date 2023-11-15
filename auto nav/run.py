@@ -1,4 +1,5 @@
 import drone_controller as drone
+from perception import detect
 import time
 
 file =  open("drone_log.txt","a") 
@@ -45,7 +46,7 @@ for i in arr:
     print("going to", grid_point_loc)
     drone.goto_wp(vehicle, grid_point_loc, ground_speed=5)
     
-    poi = [[0,3,"Target"],[3,-5,"TARGET"]]
+    poi = detect(vehicle, )
     if len(poi)==0:
         continue
     
