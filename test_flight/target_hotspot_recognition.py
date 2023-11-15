@@ -326,7 +326,7 @@ def detect(yaw_angle, f,i,camera):
     #camera.exposMoonpieure_compensation = -3
     #camera.vflip = True
     
-    shot_no = str("30_")+str(i)
+    shot_no = str("template")+str(i)
     print("Shot NO:",shot_no)
     f.write("\nShot NO:"+shot_no+'\n')
     
@@ -440,7 +440,7 @@ if __name__== '__main__':
     #vehicle = connectmycopter()
     poi = list()
 
-    f = open("log_target_hotspot_recognition_30M.txt", 'w')
+    f = open("log_target_hotspot_templates_30M.txt", 'w')
 
     #basic_data(vehicle, f)
 
@@ -455,7 +455,7 @@ if __name__== '__main__':
     i = 0
     camera = PiCamera()
     
-    for i in range(0,20):
+    for i in range(0,10):
         poi = detect(yaw_angle, f,i,camera)
         print("sleeping")
         f.write("\n\nsleeping\n\n")
