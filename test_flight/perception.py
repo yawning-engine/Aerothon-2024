@@ -11,6 +11,7 @@ import math
 # Required global variables
 yaw_angle = 0
 img_count = 0
+wp_count = 0
 img_cord_list = list()
 
 # Initialize Picam capture
@@ -38,7 +39,24 @@ template_path_hotspot2 = 'hotspot_real2.png'  # Change this to your hotspot imag
 template_hotspot1 = cv2.imread(template_path_hotspot1, cv2.IMREAD_GRAYSCALE)
 template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
     
-   
+    
+def take_picture():
+    
+    rawimg = PiRGBArray(camera, size=(width, height))
+    
+    # allow the camera to warmup
+    time.sleep(2)
+
+    camera.capture(rawimg, format="bgr")
+    img = rawimg.array
+    
+    print("Image_NO:", img_count)
+    f.write("Image_NO:" + img_count + "\n")
+    
+    cv2.imwrite("Image_NO" + img_count + ".jpg",img)
+    
+    img_count = img_count + 1
+    
 def get_yaw(vehicle, f):
 
     yaw = vehicle.attitude.yaw
@@ -185,9 +203,6 @@ def template_matching(template, image):
 
 def detect(vehicle, f):
     
-    print("Image NO:", img_count)
-    f.write("Image NO:" + img_count + "\n")
-    
     rawCapture = PiRGBArray(camera, size=(width, height))
     
     # allow the camera to warmup
@@ -195,6 +210,13 @@ def detect(vehicle, f):
 
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
+    
+    print("wp_shot NO:", wp_count)
+    f.write("wp_shot NO:" + wp_count + "\n")
+    
+    cv2.imwrite("wp_shot" + wp_count + ".jpg",frame)
+    
+    wp_count = wp_count + 1
     
     # List to store coordinates of all detected circles in frame
     poi = list()
@@ -286,6 +308,4 @@ def detect(vehicle, f):
         cv2.destroyAllWindows()  # Close any OpenCV windows
 
     return poi
-
-
       
