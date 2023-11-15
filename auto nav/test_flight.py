@@ -4,6 +4,9 @@ import time
 f= open("test_log.txt",'a')
 vehicle = drone.connect_real_drone()
 
+vehicle.airspeed=0.5
+vehicle.groundspeed=0.5
+
 drone.arm_and_takeoff(vehicle,5)
 f.write("Take off successful")
 lat = 12.941942516782559 

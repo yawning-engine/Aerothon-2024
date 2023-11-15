@@ -34,8 +34,8 @@ arr=drone.grid_navigation(national_clg,10)
 
 #print(arr)
 
-vehicle.airspeed=1
-vehicle.groundspeed=1
+vehicle.airspeed=0.5
+vehicle.groundspeed=0.5
 
 file =  open("drone_log.txt","a") 
 drone.arm_and_takeoff(vehicle,15)
@@ -45,7 +45,7 @@ file.write("Take off location , pos="+str(drone.get_gps_location(vehicle,0,0,0))
 print("relatve to abs :"+str(drone.get_gps_location(vehicle,5,5,15)))
 #print(arr)
 
-drone.goto_wp(vehicle, drone.LocationGlobalRelative(arr[0][0],arr[0][1],15),ground_speed=1)
+drone.goto_wp(vehicle, drone.LocationGlobalRelative(arr[0][0],arr[0][1],15),ground_speed=0.5)
 '''
 for i in arr:
     print("going to", drone.LocationGlobalRelative(i[0],i[1],15))
