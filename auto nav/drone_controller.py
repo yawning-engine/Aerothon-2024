@@ -76,7 +76,6 @@ def goto_wp(vehicle, wp, f=f,ground_speed=3):
             f.write("\nWaypoint %s Reached"%str(wp))
             break
         time.sleep(0.3)
-    condition_yaw(vehicle)
     return None
 
 
