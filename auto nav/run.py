@@ -29,7 +29,7 @@ national_clg=[(12.9509975088598, 77.57268620201272),(12.950826293163624, 77.5726
               ,(12.95079884636169, 77.57291016644415),(12.950951764219674, 77.57290614313101)]
 
 
-arr=drone.grid_navigation(field_2_boundary_points,15)
+arr=drone.grid_navigation(field_2_boundary_points,10)
 
 vehicle = drone.connect_simulation_drone()
 vehicle.airspeed=0.5
@@ -45,7 +45,7 @@ for i in arr:
     print("going to", grid_point_loc)
     drone.goto_wp(vehicle, grid_point_loc, ground_speed=5)
     
-    poi= [[0,4,"target"],[0,10,"target"]]
+    poi = [[0,3,"Target"],[3,-5,"TARGET"]]
     if len(poi)==0:
         continue
     
@@ -60,7 +60,7 @@ for i in arr:
 
                     file.write("Target detected at -"+str(gps_loc))
                     
-                    drone.its_target(vehicle, gps_loc)
+                    drone.its_target(vehicle, gps_loc, file)
                     detected_array.append(gps_loc)
 
                     file.write("Target dropped at -"+str(drone.get_gps_location(vehicle,0,0,0)))
@@ -69,13 +69,13 @@ for i in arr:
 
                     file.write("Hotspot detected at -"+str(gps_loc))
 
-                    drone.its_hotspot(vehicle,gps_loc)
+                    drone.its_hotspot(vehicle,gps_loc,file)
                     detected_array.append(gps_loc)
 
                     file.write("Hotspot captured at-"+str(drone.get_gps_location(vehicle,0,0,0)))
 
             else:
                 print("duplicate detected .......skipping............")
-
+    
 drone.RTL(vehicle)
 

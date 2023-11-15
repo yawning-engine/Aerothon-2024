@@ -46,17 +46,17 @@ def actuate_servo(vehicle, action, f):
         f.write("drop at:" + str(vehicle.location.global_relative_frame))
         time.sleep(0.5)
 
-	if action == "close":
-		msg = vehicle.message_factory.command_long_encode(0, 0, mavutil.mavlink.MAV_CMD_DO_SET_SERVO, 0, 10, 1995, 0, 0, 0, 0, 0)
-		print("\n\nPayload Secured\n\n")
-		f.write("\n\nPayload Secured\n\n")
-		print("drop at:",vehicle.location.global_relative_frame)	
-		f.write("drop at:" + str(vehicle.location.global_relative_frame))
-		time.sleep(0.5)
+    if action == "close":
+        msg = vehicle.message_factory.command_long_encode(0, 0, mavutil.mavlink.MAV_CMD_DO_SET_SERVO, 0, 10, 1995, 0, 0, 0, 0, 0)
+        print("\n\nPayload Secured\n\n")
+        f.write("\n\nPayload Secured\n\n")
+        print("drop at:",vehicle.location.global_relative_frame)	
+        f.write("drop at:" + str(vehicle.location.global_relative_frame))
+        time.sleep(0.5)
 
-	vehicle.send_mavlink(msg)
+    vehicle.send_mavlink(msg)
 
-	return None
+    return None
 
 
 f = open("log_payload_drop.txt", 'w')
