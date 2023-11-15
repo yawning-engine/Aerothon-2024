@@ -151,8 +151,6 @@ def arm_and_takeoff(vehicle,aTargetAltitude):
         print(" Waiting for vehicle to initialise...")
         time.sleep(1)
     
-
-
     print("Arming motors")
     # Copter should arm in GUIDED mode
     print("\nSet Vehicle.mode = GUIDED (currently: %s)" % vehicle.mode.name) 
@@ -329,6 +327,17 @@ def RTL(vehicle):
     vehicle.mode = VehicleMode("RTL")
     while not vehicle.mode.name=="RTL":
         print("Waiting to switch mode to RTL, current mode:",vehicle.mode.name)
+        time.sleep(1)
+        
+    # Close vehicle object before exiting script
+    print("Close vehicle object")
+    vehicle.close()
+
+def Land(vehicle):
+    print("Returning to Launch")
+    vehicle.mode = VehicleMode("LAND")
+    while not vehicle.mode.name=="LAND":
+        print("Waiting to switch mode to LAND, current mode:",vehicle.mode.name)
         time.sleep(1)
         
     # Close vehicle object before exiting script
