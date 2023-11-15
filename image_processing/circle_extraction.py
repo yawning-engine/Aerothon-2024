@@ -82,7 +82,7 @@ template_path_hotspot2 = 'hotspot_real_full.png'  # Change this to your hotspot 
 template_hotspot1 = cv2.imread(template_path_hotspot1, cv2.IMREAD_GRAYSCALE)
 template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
 
-frame = cv2.imread('hotspot2.png', 1)
+frame = cv2.imread('drone_shot10.15.jpg', 1)
 height = int(frame.shape[0])
 width = int(frame.shape[1])
 print("Shape of you?... naah image bruh:",width, height)
