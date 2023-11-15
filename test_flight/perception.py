@@ -57,6 +57,7 @@ def take_picture():
     
     img_count = img_count + 1
     
+    
 def get_yaw(vehicle, f):
 
     yaw = vehicle.attitude.yaw
@@ -195,6 +196,7 @@ def template_matching(template, image):
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
     
     return max_val
+    
     
 # Returns [xd(float), yd(float), type(string)]
 # xd: Distance to target along East      
