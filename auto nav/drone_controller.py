@@ -62,8 +62,8 @@ def goto_wp(vehicle, wp, f=f,ground_speed=3):
     vehicle.groundspeed = ground_speed
     print("\nGround Speed:%f"%vehicle.groundspeed)
     f.write("\nGround Speed:%f\n"%vehicle.groundspeed)
-    if distance_to_wp(vehicle, wp)>40:
-        ground_speed=5
+    # if distance_to_wp(vehicle, wp)>40:
+    #     ground_speed=5
     vehicle.simple_goto(wp, groundspeed=ground_speed)
     
     while distance_to_wp(vehicle, wp) > 1:
@@ -288,7 +288,7 @@ def grid_navigation(points, max_distance):
     for i in range(num_lat_points):
         line_arr=[]
         x*=-1
-        for j in range(num_lon_points+2):
+        for j in range(num_lon_points):
 
             if j==0 and i==0:
                 lat = min_lat + 0.5*lat_step
