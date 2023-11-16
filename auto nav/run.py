@@ -33,6 +33,9 @@ national_clg=[(12.950192443726669, 77.57267429129706),(12.949852625101393, 77.57
 arr=drone.grid_navigation(national_clg,15)
 
 vehicle = drone.connect_real_drone()
+drone.actuate_servo(vehicle,"open",file)
+
+'''
 vehicle.airspeed=0.5
 vehicle.groundspeed=0.5
 
@@ -46,7 +49,7 @@ for i in arr:
     print("going to", grid_point_loc)
     drone.goto_wp(vehicle, grid_point_loc, ground_speed=2)
     time.sleep(2)
-    '''
+    
     poi = detect(vehicle, file)
     file.write("detected things -"+str(poi))
     if len(poi)==0:
@@ -79,6 +82,6 @@ for i in arr:
 
             else:
                 print("duplicate detected .......skipping............")
-    '''
-drone.RTL(vehicle)
 
+drone.RTL(vehicle)
+'''
