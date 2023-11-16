@@ -30,7 +30,7 @@ national_clg=[(12.950192443726669, 77.57267429129706),(12.949852625101393, 77.57
               ,(12.949857824812549, 77.57303375038539),(12.950228983297505, 77.57300697670405)]
 
 
-arr=drone.grid_navigation(national_clg,10)
+arr=drone.grid_navigation(national_clg,15)
 
 vehicle = drone.connect_simulation_drone()
 vehicle.airspeed=0.5
@@ -45,8 +45,10 @@ for i in arr:
     grid_point_loc = drone.LocationGlobalRelative(i[0],i[1],flight_alt)
     print("going to", grid_point_loc)
     drone.goto_wp(vehicle, grid_point_loc, ground_speed=2)
+    time.sleep(2)
     '''
     poi = detect(vehicle, file)
+    file.write("detected things -"+str(poi))
     if len(poi)==0:
         continue
     
