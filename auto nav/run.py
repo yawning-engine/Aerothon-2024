@@ -1,13 +1,12 @@
 import drone_controller as drone
-# from perception import detect
-from perception import take_picture,get_yaw
+from perception import detect
 import time
 
 file =  open("drone_log.txt","a") 
 
-flight_alt =15
-target_alt = 10
-
+flight_alt =30
+target_alt = 20
+hotspot_alt = 10
 # field 1-
 # dronekit-sitl copter --home=13.394622,77.731250,0,180
 
@@ -34,10 +33,8 @@ national_clg=[(12.950192443726669, 77.57267429129706),(12.949852625101393, 77.57
 arr=drone.grid_navigation(national_clg,15)
 
 vehicle = drone.connect_real_drone()
-take_picture(file)
-get_yaw(vehicle,file)
-vehicle.close()
-'''
+
+
 vehicle.airspeed=0.5
 vehicle.groundspeed=0.5
 
@@ -45,45 +42,75 @@ drone.arm_and_takeoff(vehicle,15)
 file.write("Take off location , pos="+str(drone.get_gps_location(vehicle,0,0,0)))
 
 detected_array = []
+target_detected = False
 
 for i in arr:
     grid_point_loc = drone.LocationGlobalRelative(i[0],i[1],flight_alt)
     print("going to", grid_point_loc)
     drone.goto_wp(vehicle, grid_point_loc, ground_speed=2)
     time.sleep(2)
-    
-    poi = detect(vehicle, file)
-    file.write("detected things -"+str(poi))
-    if len(poi)==0:
-        continue
-    
-    elif(len(poi)>0):
-        for points in poi:
-            N,E,type = points
-            gps_loc = drone.get_relative_gps_location(grid_point_loc, N, E, target_alt)
+    try:
+        poi = detect(vehicle, file)
+        file.write("detected things -"+str(poi))
+        if len(poi) == 0:
+            continue
+        
+        elif(len(poi) > 0):
+            for points in poi:
+                N,E,type = points
+                if type.lower() == "target" and not target_detected:
+                    gps_loc = drone.get_relative_gps_location(grid_point_loc, N, E, target_alt)
 
-            if( drone.is_not_duplicate(gps_loc, detected_array) ):
+                elif type.lower() == "target" and target_detected:
+                    gps_loc = drone.get_relative_gps_location(grid_point_loc, N, E, hotspot_alt)
 
-                if type.lower() == "target" :
+                elif type.lower() == "hotspot":
+                    gps_loc = drone.get_relative_gps_location(grid_point_loc, N, E, hotspot_alt)
 
-                    file.write("Target detected at -"+str(gps_loc))
+                if( drone.is_not_duplicate(gps_loc, detected_array) ):
                     
-                    drone.its_target(vehicle, gps_loc, file)
-                    detected_array.append(gps_loc)
+                    ####### first detection of hotspot########
+                    if type.lower() == "target"  and not target_detected:
+                        
+                        file.write("Target detected at -"+str(gps_loc))
+                        
+                        drone.its_target(vehicle, gps_loc, file)
+                        detected_array.append(gps_loc)
+                        target_detected = True
+                        file.write("target detected val changed to-"+str(target_detected))
+                        file.write("Target dropped at -"+str(drone.get_gps_location(vehicle,0,0,0)))
+                
+                    ###### false detection of hotspot as target##################
+                    
 
-                    file.write("Target dropped at -"+str(drone.get_gps_location(vehicle,0,0,0)))
+                    if type.lower() == "target"  and  target_detected:
 
-                if type.lower() == "hotspot":
+                        file.write("hotspot detected at -"+str(gps_loc))
+                            
+                        drone.its_hotspot(vehicle, gps_loc, file)
+                        detected_array.append(gps_loc)
 
-                    file.write("Hotspot detected at -"+str(gps_loc))
+                        file.write("hotspot captured at -"+str(drone.get_gps_location(vehicle,0,0,0)))
+                        file.write("false detection of above hotspot as target")
 
-                    drone.its_hotspot(vehicle,gps_loc,file)
-                    detected_array.append(gps_loc)
 
-                    file.write("Hotspot captured at-"+str(drone.get_gps_location(vehicle,0,0,0)))
+                    ########truly detected hotspot##########
 
-            else:
-                print("duplicate detected .......skipping............")
+                    if type.lower() == "hotspot":
+
+                        file.write("Hotspot detected at -"+str(gps_loc))
+
+                        drone.its_hotspot(vehicle,gps_loc,file)
+                        detected_array.append(gps_loc)
+
+                        file.write("Hotspot captured at-"+str(drone.get_gps_location(vehicle,0,0,0)))
+
+                else:
+                    print("duplicate detected .......skipping............")
+    except Exception as e:
+        print("error occured during detection-"+str(e))
+        file.write("error occured during detection-"+str(e))
+        continue
 
 drone.RTL(vehicle)
-'''
+
