@@ -9,12 +9,15 @@ vehicle.groundspeed=0.5
 
 drone.arm_and_takeoff(vehicle,5)
 f.write("Take off successful")
-lat = 12.941942516782559 
-lon = 77.56657882884068
+lat = 12.950108655161891 
+lon = 77.57291198864498
 
-# f.write("going to wp lat ,lon ", lat, lon)
-# drone.goto_wp(vehicle,drone.LocationGlobalRelative(lat,lon,5),0.5)
+
+
+
+f.write("going to wp lat ,lon "+str( lat)+str( lon))
+drone.goto_wp(vehicle,drone.LocationGlobalRelative(lat,lon,10),ground_speed=1)
 
 f.write("changing mode to LAND")
-drone.Land(vehicle)
+drone.RTL(vehicle)
 f.write("Mode changed to LAND")
