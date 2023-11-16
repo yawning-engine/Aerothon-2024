@@ -43,6 +43,7 @@ template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
     
 def take_picture(f):
     
+    global img_count
     rawimg = PiRGBArray(camera, size=(width, height))
     
     # allow the camera to warmup
@@ -52,9 +53,9 @@ def take_picture(f):
     img = rawimg.array
     
     print("Image_NO:", img_count)
-    f.write("Image_NO:" + img_count + "\n")
+    f.write("Image_NO:" + str(img_count) + "\n")
     
-    cv2.imwrite("Image_NO" + img_count + ".jpg",img)
+    cv2.imwrite("Image_NO" + str(img_count) + ".jpg",img)
     
     img_count = img_count + 1
     

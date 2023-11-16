@@ -1,5 +1,6 @@
 import drone_controller as drone
 # from perception import detect
+import perception
 import time
 
 file =  open("drone_log.txt","a") 
@@ -33,8 +34,8 @@ national_clg=[(12.950192443726669, 77.57267429129706),(12.949852625101393, 77.57
 arr=drone.grid_navigation(national_clg,15)
 
 vehicle = drone.connect_real_drone()
-drone.actuate_servo(vehicle,"open",file)
-
+perception.take_picture(file)
+vehicle.close()
 '''
 vehicle.airspeed=0.5
 vehicle.groundspeed=0.5
