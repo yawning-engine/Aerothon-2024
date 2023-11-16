@@ -5,7 +5,7 @@ import time
 file =  open("drone_log.txt","a") 
 
 flight_alt = 10
-target_alt = 5
+target_alt = 7
 hotspot_alt = 5
 # field 1-
 # dronekit-sitl copter --home=13.394622,77.731250,0,180
@@ -33,11 +33,12 @@ national_clg=[(12.950192443726669, 77.57267429129706),(12.949852625101393, 77.57
               ,(12.949857824812549, 77.57303375038539),(12.950228983297505, 77.57300697670405)]
 
 custom_locs = [(12.941105460631404, 77.56614384175194)]
+# custom_locs = [(12.941134215542096, 77.5660231423459), (12.941092390216353, 77.5662538123219)]
+arr=drone.grid_navigation(bms_points,6)
 
-# arr=drone.grid_navigation(custom_locs,6)
+# vehicle = drone.connect_real_drone()
 
-vehicle = drone.connect_real_drone()
-
+vehicle = drone.connect_simulation_drone()
 
 vehicle.airspeed=0.5
 vehicle.groundspeed=0.5
