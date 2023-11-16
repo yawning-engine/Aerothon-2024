@@ -1,0 +1,1920 @@
+
+Shot NO:30m_0
+0. Target_smol corr: -0.4432351589202881
+0. Target_full corr: 0.5748030543327332
+0. Hotspot_smol corr: -0.1975221037864685
+0. Hotspot_full corr: 0.15521934628486633
+
+Target Type:Target0
+Pixel Coordinates X: 239 Y: 358
+Current Altitude :15
+Cartesian Coordinates:x: -81 y: -118
+Rotated Coordinates:  x: -81 y: -118
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.96923		Phi deg: 55.53279
+
+Rp (Pixel distance):143.12582
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 4.05762
+
+X (Distance along East): -2.29635 || Y (Distance along North): -3.34531
+
+
+1. Target_smol corr: 0.5374826788902283
+1. Target_full corr: -0.3053748309612274
+1. Hotspot_smol corr: 0.5242117643356323
+1. Hotspot_full corr: -0.3422328531742096
+
+Target Type:Target1
+Pixel Coordinates X: 419 Y: 238
+Current Altitude :15
+Cartesian Coordinates:x: 99 y: 2
+Rotated Coordinates:  x: 99 y: 2
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.0202		Phi deg: 1.15737
+
+Rp (Pixel distance):99.0202
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.80722
+
+X (Distance along East): 2.80665 || Y (Distance along North): 0.0567
+
+
+
+
+sleeping
+
+
+Shot NO:30m_1
+0. Target_smol corr: 0.5443471670150757
+0. Target_full corr: -0.3631346523761749
+0. Hotspot_smol corr: 0.4226149022579193
+0. Hotspot_full corr: -0.29180431365966797
+
+Target Type:Target0
+Pixel Coordinates X: 426 Y: 235
+Current Altitude :15
+Cartesian Coordinates:x: 106 y: 5
+Rotated Coordinates:  x: 106 y: 5
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.04713		Phi deg: 2.70035
+
+Rp (Pixel distance):106.11786
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.00844
+
+X (Distance along East): 3.0051 || Y (Distance along North): 0.14174
+
+
+1. Target_smol corr: -0.09460235387086868
+1. Target_full corr: 0.28020310401916504
+1. Hotspot_smol corr: -0.10813889652490616
+1. Hotspot_full corr: 0.24156801402568817
+
+Target Type:Target1
+Pixel Coordinates X: 253 Y: 365
+Current Altitude :15
+Cartesian Coordinates:x: -67 y: -125
+Rotated Coordinates:  x: -67 y: -125
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.07877		Phi deg: 61.80897
+
+Rp (Pixel distance):141.82383
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 4.02071
+
+X (Distance along East): -1.89943 || Y (Distance along North): -3.54376
+
+
+
+
+sleeping
+
+
+Shot NO:30m_2
+0. Target_smol corr: -0.48815324902534485
+0. Target_full corr: 0.5915191769599915
+0. Hotspot_smol corr: -0.22522257268428802
+0. Hotspot_full corr: 0.1565045714378357
+
+Target Type:Target0
+Pixel Coordinates X: 257 Y: 361
+Current Altitude :15
+Cartesian Coordinates:x: -63 y: -121
+Rotated Coordinates:  x: -63 y: -121
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.09076		Phi deg: 62.49594
+
+Rp (Pixel distance):136.41847
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.86746
+
+X (Distance along East): -1.78604 || Y (Distance along North): -3.43035
+
+
+1. Target_smol corr: 0.5424782037734985
+1. Target_full corr: -0.372812420129776
+1. Hotspot_smol corr: 0.43279358744621277
+1. Hotspot_full corr: -0.30589044094085693
+
+Target Type:Target1
+Pixel Coordinates X: 431 Y: 232
+Current Altitude :15
+Cartesian Coordinates:x: 111 y: 8
+Rotated Coordinates:  x: 111 y: 8
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.07195		Phi deg: 4.12243
+
+Rp (Pixel distance):111.28791
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.15501
+
+X (Distance along East): 3.14685 || Y (Distance along North): 0.22681
+
+
+
+
+sleeping
+
+
+Shot NO:30m_3
+0. Target_smol corr: 0.29029175639152527
+0. Target_full corr: -0.10660441964864731
+0. Hotspot_smol corr: 0.04845811799168587
+0. Hotspot_full corr: -0.03243454545736313
+
+Target Type:Target0
+Pixel Coordinates X: 402 Y: 229
+Current Altitude :15
+Cartesian Coordinates:x: 82 y: 11
+Rotated Coordinates:  x: 82 y: 11
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.13335		Phi deg: 7.64039
+
+Rp (Pixel distance):82.73452
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.34552
+
+X (Distance along East): 2.3247 || Y (Distance along North): 0.31185
+
+
+1. Target_smol corr: 0.7826483845710754
+1. Target_full corr: -0.5874769687652588
+1. Hotspot_smol corr: 0.5721598863601685
+1. Hotspot_full corr: -0.2782227694988251
+
+Target Type:Target1
+Pixel Coordinates X: 274 Y: 341
+Current Altitude :15
+Cartesian Coordinates:x: -46 y: -101
+Rotated Coordinates:  x: -46 y: -101
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.14342		Phi deg: 65.51314
+
+Rp (Pixel distance):110.98198
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.14634
+
+X (Distance along East): -1.30411 || Y (Distance along North): -2.86335
+
+
+
+
+sleeping
+
+
+Shot NO:30m_4
+0. Target_smol corr: -0.45560377836227417
+0. Target_full corr: 0.6141672730445862
+0. Hotspot_smol corr: -0.21538054943084717
+0. Hotspot_full corr: 0.1502930074930191
+
+Target Type:Target0
+Pixel Coordinates X: 254 Y: 296
+Current Altitude :15
+Cartesian Coordinates:x: -66 y: -56
+Rotated Coordinates:  x: -66 y: -56
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.70361		Phi deg: 40.31388
+
+Rp (Pixel distance):86.55634
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.45387
+
+X (Distance along East): -1.8711 || Y (Distance along North): -1.58759
+
+
+1. Target_smol corr: 0.6470444798469543
+1. Target_full corr: -0.20396707952022552
+1. Hotspot_smol corr: 0.44206830859184265
+1. Hotspot_full corr: -0.26679760217666626
+
+Target Type:Target1
+Pixel Coordinates X: 370 Y: 199
+Current Altitude :15
+Cartesian Coordinates:x: 50 y: 41
+Rotated Coordinates:  x: 50 y: 41
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.68682		Phi deg: 39.35189
+
+Rp (Pixel distance):64.66065
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.83313
+
+X (Distance along East): 1.4175 || Y (Distance along North): 1.16235
+
+
+2. Target_smol corr: -0.02628023736178875
+2. Target_full corr: 0.07644867151975632
+2. Hotspot_smol corr: -0.03091408498585224
+2. Hotspot_full corr: -0.06435751169919968
+
+Target Type:Unknown2
+Pixel Coordinates X: 337 Y: 297
+Current Altitude :15
+Cartesian Coordinates:x: 17 y: -57
+Rotated Coordinates:  x: 17 y: -57
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.28095		Phi deg: -73.39303
+
+Rp (Pixel distance):59.48109
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.68629
+
+X (Distance along East): 0.48195 || Y (Distance along North): -1.61595
+
+
+3. Target_smol corr: 0.011372033506631851
+3. Target_full corr: 0.015628168359398842
+3. Hotspot_smol corr: -0.10883688181638718
+3. Hotspot_full corr: -0.06748693436384201
+
+Target Type:Unknown3
+Pixel Coordinates X: 287 Y: 202
+Current Altitude :15
+Cartesian Coordinates:x: -33 y: 38
+Rotated Coordinates:  x: -33 y: 38
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.8557		Phi deg: -49.028
+
+Rp (Pixel distance):50.32892
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.42682
+
+X (Distance along East): -0.93555 || Y (Distance along North): 1.07729
+
+
+
+
+sleeping
+
+
+Shot NO:30m_5
+0. Target_smol corr: -0.488495796918869
+0. Target_full corr: 0.4870165288448334
+0. Hotspot_smol corr: -0.18488845229148865
+0. Hotspot_full corr: 0.17441672086715698
+
+Target Type:Target0
+Pixel Coordinates X: 249 Y: 266
+Current Altitude :15
+Cartesian Coordinates:x: -71 y: -26
+Rotated Coordinates:  x: -71 y: -26
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.35103		Phi deg: 20.11254
+
+Rp (Pixel distance):75.61085
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.14357
+
+X (Distance along East): -2.01285 || Y (Distance along North): -0.7371
+
+
+1. Target_smol corr: 0.7201960682868958
+1. Target_full corr: -0.2834312319755554
+1. Hotspot_smol corr: 0.5019218921661377
+1. Hotspot_full corr: -0.31751030683517456
+
+Target Type:Target1
+Pixel Coordinates X: 350 Y: 181
+Current Altitude :15
+Cartesian Coordinates:x: 30 y: 59
+Rotated Coordinates:  x: 30 y: 59
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.10039		Phi deg: 63.0477
+
+Rp (Pixel distance):66.18912
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.87646
+
+X (Distance along East): 0.8505 || Y (Distance along North): 1.67265
+
+
+2. Target_smol corr: -0.03206084668636322
+2. Target_full corr: 0.047094203531742096
+2. Hotspot_smol corr: -0.06573377549648285
+2. Hotspot_full corr: -0.00897263828665018
+
+Target Type:Unknown2
+Pixel Coordinates X: 349 Y: 267
+Current Altitude :15
+Cartesian Coordinates:x: 29 y: -27
+Rotated Coordinates:  x: 29 y: -27
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.7497		Phi deg: -42.95465
+
+Rp (Pixel distance):39.62323
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.12332
+
+X (Distance along East): 0.82215 || Y (Distance along North): -0.76545
+
+
+3. Target_smol corr: -0.03221488371491432
+3. Target_full corr: 0.07563962042331696
+3. Hotspot_smol corr: -0.09259187430143356
+3. Hotspot_full corr: -0.09702446311712265
+
+Target Type:Unknown3
+Pixel Coordinates X: 250 Y: 181
+Current Altitude :15
+Cartesian Coordinates:x: -70 y: 59
+Rotated Coordinates:  x: -70 y: 59
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.70033		Phi deg: -40.12595
+
+Rp (Pixel distance):91.5478
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.59538
+
+X (Distance along East): -1.9845 || Y (Distance along North): 1.67264
+
+
+
+
+sleeping
+
+
+Shot NO:30m_6
+0. Target_smol corr: -0.44746169447898865
+0. Target_full corr: 0.5519039034843445
+0. Hotspot_smol corr: -0.18820124864578247
+0. Hotspot_full corr: 0.15266455709934235
+
+Target Type:Target0
+Pixel Coordinates X: 317 Y: 268
+Current Altitude :15
+Cartesian Coordinates:x: -3 y: -28
+Rotated Coordinates:  x: -3 y: -28
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.46406		Phi deg: 83.88446
+
+Rp (Pixel distance):28.16026
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 0.79834
+
+X (Distance along East): -0.08505 || Y (Distance along North): -0.7938
+
+
+1. Target_smol corr: 0.42133328318595886
+1. Target_full corr: -0.1404157429933548
+1. Hotspot_smol corr: 0.2553476393222809
+1. Hotspot_full corr: -0.26581114530563354
+
+Target Type:Target1
+Pixel Coordinates X: 407 Y: 194
+Current Altitude :15
+Cartesian Coordinates:x: 87 y: 46
+Rotated Coordinates:  x: 87 y: 46
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.48637		Phi deg: 27.86695
+
+Rp (Pixel distance):98.4124
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.78999
+
+X (Distance along East): 2.46645 || Y (Distance along North): 1.3041
+
+
+2. Target_smol corr: -0.007018241565674543
+2. Target_full corr: 0.04937339946627617
+2. Hotspot_smol corr: -0.04173662140965462
+2. Hotspot_full corr: -0.0353132039308548
+
+Target Type:Unknown2
+Pixel Coordinates X: 410 Y: 270
+Current Altitude :15
+Cartesian Coordinates:x: 90 y: -30
+Rotated Coordinates:  x: 90 y: -30
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.32175		Phi deg: -18.43492
+
+Rp (Pixel distance):94.86833
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.68952
+
+X (Distance along East): 2.5515 || Y (Distance along North): -0.8505
+
+
+3. Target_smol corr: -0.01949544996023178
+3. Target_full corr: 0.11793778836727142
+3. Hotspot_smol corr: -0.08413577824831009
+3. Hotspot_full corr: -0.09496590495109558
+
+Target Type:Unknown3
+Pixel Coordinates X: 317 Y: 193
+Current Altitude :15
+Cartesian Coordinates:x: -3 y: 47
+Rotated Coordinates:  x: -3 y: 47
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.50705		Phi deg: -86.3476
+
+Rp (Pixel distance):47.09565
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.33516
+
+X (Distance along East): -0.08505 || Y (Distance along North): 1.33245
+
+
+
+
+sleeping
+
+
+Shot NO:30m_7
+0. Target_smol corr: 0.7304184436798096
+0. Target_full corr: -0.25059428811073303
+0. Hotspot_smol corr: 0.5549509525299072
+0. Hotspot_full corr: -0.3906043469905853
+
+Target Type:Target0
+Pixel Coordinates X: 369 Y: 188
+Current Altitude :15
+Cartesian Coordinates:x: 49 y: 52
+Rotated Coordinates:  x: 49 y: 52
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.81509		Phi deg: 46.70122
+
+Rp (Pixel distance):71.44928
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.02559
+
+X (Distance along East): 1.38916 || Y (Distance along North): 1.4742
+
+
+1. Target_smol corr: 0.2245921641588211
+1. Target_full corr: 0.03877325356006622
+1. Hotspot_smol corr: 0.17418549954891205
+1. Hotspot_full corr: 0.03296671435236931
+
+Target Type:Target1
+Pixel Coordinates X: 280 Y: 269
+Current Altitude :15
+Cartesian Coordinates:x: -40 y: -29
+Rotated Coordinates:  x: -40 y: -29
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.62731		Phi deg: 35.94222
+
+Rp (Pixel distance):49.40648
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.40067
+
+X (Distance along East): -1.134 || Y (Distance along North): -0.82215
+
+
+2. Target_smol corr: -0.03379267826676369
+2. Target_full corr: 0.10655049234628677
+2. Hotspot_smol corr: -0.09572919458150864
+2. Hotspot_full corr: -0.06999140977859497
+
+Target Type:Unknown2
+Pixel Coordinates X: 279 Y: 188
+Current Altitude :15
+Cartesian Coordinates:x: -41 y: 52
+Rotated Coordinates:  x: -41 y: 52
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.90313		Phi deg: -51.74554
+
+Rp (Pixel distance):66.21933
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.87732
+
+X (Distance along East): -1.16235 || Y (Distance along North): 1.4742
+
+
+
+
+sleeping
+
+
+Shot NO:30m_8
+0. Target_smol corr: 0.47215378284454346
+0. Target_full corr: -0.23887886106967926
+0. Hotspot_smol corr: 0.11114334315061569
+0. Hotspot_full corr: -0.00751863420009613
+
+Target Type:Target0
+Pixel Coordinates X: 358 Y: 183
+Current Altitude :15
+Cartesian Coordinates:x: 38 y: 57
+Rotated Coordinates:  x: 38 y: 57
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.98279		Phi deg: 56.30972
+
+Rp (Pixel distance):68.50547
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.94213
+
+X (Distance along East): 1.07731 || Y (Distance along North): 1.61595
+
+
+1. Target_smol corr: 0.865837812423706
+1. Target_full corr: -0.37852010130882263
+1. Hotspot_smol corr: 0.4628607928752899
+1. Hotspot_full corr: -0.3231254518032074
+
+Target Type:Target1
+Pixel Coordinates X: 266 Y: 263
+Current Altitude :15
+Cartesian Coordinates:x: -54 y: -23
+Rotated Coordinates:  x: -54 y: -23
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.40265		Phi deg: 23.07015
+
+Rp (Pixel distance):58.69412
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.66398
+
+X (Distance along East): -1.5309 || Y (Distance along North): -0.65204
+
+
+2. Target_smol corr: -0.028592227026820183
+2. Target_full corr: 0.05039278790354729
+2. Hotspot_smol corr: -0.06971728801727295
+2. Hotspot_full corr: 0.0034804658498615026
+
+Target Type:Unknown2
+Pixel Coordinates X: 362 Y: 262
+Current Altitude :15
+Cartesian Coordinates:x: 42 y: -22
+Rotated Coordinates:  x: 42 y: -22
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.48251		Phi deg: -27.64579
+
+Rp (Pixel distance):47.41308
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.34416
+
+X (Distance along East): 1.1907 || Y (Distance along North): -0.6237
+
+
+3. Target_smol corr: -0.02796306274831295
+3. Target_full corr: 0.11214947700500488
+3. Hotspot_smol corr: -0.08587400615215302
+3. Hotspot_full corr: -0.08715653419494629
+
+Target Type:Unknown3
+Pixel Coordinates X: 266 Y: 186
+Current Altitude :15
+Cartesian Coordinates:x: -54 y: 54
+Rotated Coordinates:  x: -54 y: 54
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.7854		Phi deg: -45.00011
+
+Rp (Pixel distance):76.36753
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.16502
+
+X (Distance along East): -1.5309 || Y (Distance along North): 1.5309
+
+
+
+
+sleeping
+
+
+Shot NO:30m_9
+0. Target_smol corr: 0.713874340057373
+0. Target_full corr: -0.2061004340648651
+0. Hotspot_smol corr: 0.30286967754364014
+0. Hotspot_full corr: -0.23868899047374725
+
+Target Type:Target0
+Pixel Coordinates X: 354 Y: 131
+Current Altitude :15
+Cartesian Coordinates:x: 34 y: 109
+Rotated Coordinates:  x: 34 y: 109
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.26843		Phi deg: 72.67569
+
+Rp (Pixel distance):114.17968
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.23699
+
+X (Distance along East): 0.96391 || Y (Distance along North): 3.09014
+
+
+1. Target_smol corr: -0.0294371135532856
+1. Target_full corr: 0.059222511947155
+1. Hotspot_smol corr: -0.045918360352516174
+1. Hotspot_full corr: -0.04466263949871063
+
+Target Type:Unknown1
+Pixel Coordinates X: 352 Y: 215
+Current Altitude :15
+Cartesian Coordinates:x: 32 y: 25
+Rotated Coordinates:  x: 32 y: 25
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.6632		Phi deg: 37.99856
+
+Rp (Pixel distance):40.60788
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.15123
+
+X (Distance along East): 0.9072 || Y (Distance along North): 0.70875
+
+
+2. Target_smol corr: 0.3040624260902405
+2. Target_full corr: -0.2696775197982788
+2. Hotspot_smol corr: 0.21812961995601654
+2. Hotspot_full corr: -0.08753301203250885
+
+Target Type:Target2
+Pixel Coordinates X: 257 Y: 215
+Current Altitude :15
+Cartesian Coordinates:x: -63 y: 25
+Rotated Coordinates:  x: -63 y: 25
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.37777		Phi deg: -21.64463
+
+Rp (Pixel distance):67.77905
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.92154
+
+X (Distance along East): -1.78605 || Y (Distance along North): 0.70876
+
+
+3. Target_smol corr: -0.03482850268483162
+3. Target_full corr: 0.11552189290523529
+3. Hotspot_smol corr: -0.08572836965322495
+3. Hotspot_full corr: -0.09877166897058487
+
+Target Type:Unknown3
+Pixel Coordinates X: 260 Y: 133
+Current Altitude :15
+Cartesian Coordinates:x: -60 y: 107
+Rotated Coordinates:  x: -60 y: 107
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.05974		Phi deg: -60.71863
+
+Rp (Pixel distance):122.67437
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.47782
+
+X (Distance along East): -1.701 || Y (Distance along North): 3.03345
+
+
+
+
+sleeping
+
+
+Shot NO:30m_10
+0. Target_smol corr: -0.4297736883163452
+0. Target_full corr: 0.47347888350486755
+0. Hotspot_smol corr: -0.18820561468601227
+0. Hotspot_full corr: 0.16881529986858368
+
+Target Type:Target0
+Pixel Coordinates X: 262 Y: 249
+Current Altitude :15
+Cartesian Coordinates:x: -58 y: -9
+Rotated Coordinates:  x: -58 y: -9
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.15394		Phi deg: 8.82011
+
+Rp (Pixel distance):58.69412
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.66398
+
+X (Distance along East): -1.6443 || Y (Distance along North): -0.25514
+
+
+1. Target_smol corr: 0.24514302611351013
+1. Target_full corr: -0.1044044941663742
+1. Hotspot_smol corr: 0.08947458863258362
+1. Hotspot_full corr: -0.09521733224391937
+
+Target Type:Target1
+Pixel Coordinates X: 352 Y: 161
+Current Altitude :15
+Cartesian Coordinates:x: 32 y: 79
+Rotated Coordinates:  x: 32 y: 79
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.18593		Phi deg: 67.94878
+
+Rp (Pixel distance):85.23497
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.41641
+
+X (Distance along East): 0.90721 || Y (Distance along North): 2.23965
+
+
+2. Target_smol corr: -0.017292944714426994
+2. Target_full corr: 0.053213365375995636
+2. Hotspot_smol corr: -0.04206065088510513
+2. Hotspot_full corr: -0.0492880754172802
+
+Target Type:Unknown2
+Pixel Coordinates X: 356 Y: 249
+Current Altitude :15
+Cartesian Coordinates:x: 36 y: -9
+Rotated Coordinates:  x: 36 y: -9
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.24498		Phi deg: -14.03632
+
+Rp (Pixel distance):37.10795
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.05201
+
+X (Distance along East): 1.0206 || Y (Distance along North): -0.25515
+
+
+3. Target_smol corr: 0.08393597602844238
+3. Target_full corr: -0.12112527340650558
+3. Hotspot_smol corr: -0.002541817957535386
+3. Hotspot_full corr: -0.17513974010944366
+
+Target Type:Unknown3
+Pixel Coordinates X: 292 Y: 161
+Current Altitude :15
+Cartesian Coordinates:x: -28 y: 79
+Rotated Coordinates:  x: -28 y: 79
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.23018		Phi deg: -70.48412
+
+Rp (Pixel distance):83.81527
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.37616
+
+X (Distance along East): -0.7938 || Y (Distance along North): 2.23965
+
+
+
+
+sleeping
+
+
+Shot NO:30m_11
+0. Target_smol corr: 0.4210110008716583
+0. Target_full corr: -0.3260595500469208
+0. Hotspot_smol corr: 0.3317914307117462
+0. Hotspot_full corr: -0.1797896772623062
+
+Target Type:Target0
+Pixel Coordinates X: 369 Y: 59
+Current Altitude :15
+Cartesian Coordinates:x: 49 y: 181
+Rotated Coordinates:  x: 49 y: 181
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.30642		Phi deg: 74.85235
+
+Rp (Pixel distance):187.51533
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 5.31606
+
+X (Distance along East): 1.38913 || Y (Distance along North): 5.13136
+
+
+1. Target_smol corr: -0.48303675651550293
+1. Target_full corr: 0.6849672198295593
+1. Hotspot_smol corr: -0.22425894439220428
+1. Hotspot_full corr: 0.1655348688364029
+
+Target Type:Target1
+Pixel Coordinates X: 270 Y: 144
+Current Altitude :15
+Cartesian Coordinates:x: -50 y: 96
+Rotated Coordinates:  x: -50 y: 96
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.09062		Phi deg: -62.48792
+
+Rp (Pixel distance):108.24047
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.06862
+
+X (Distance along East): -1.4175 || Y (Distance along North): 2.7216
+
+
+2. Target_smol corr: 0.008889159187674522
+2. Target_full corr: -0.028833696618676186
+2. Hotspot_smol corr: 0.008596264757215977
+2. Hotspot_full corr: -0.16627076268196106
+
+Target Type:Unknown2
+Pixel Coordinates X: 270 Y: 58
+Current Altitude :15
+Cartesian Coordinates:x: -50 y: 182
+Rotated Coordinates:  x: -50 y: 182
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.30269		Phi deg: -74.63864
+
+Rp (Pixel distance):188.74321
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 5.35087
+
+X (Distance along East): -1.41748 || Y (Distance along North): 5.15971
+
+
+
+
+sleeping
+
+
+Shot NO:30m_12
+0. Target_smol corr: 0.47769811749458313
+0. Target_full corr: -0.05343085527420044
+0. Hotspot_smol corr: 0.3063121736049652
+0. Hotspot_full corr: -0.27232787013053894
+
+Target Type:Target0
+Pixel Coordinates X: 355 Y: 123
+Current Altitude :15
+Cartesian Coordinates:x: 35 y: 117
+Rotated Coordinates:  x: 35 y: 117
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.28012		Phi deg: 73.34547
+
+Rp (Pixel distance):122.12289
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.46218
+
+X (Distance along East): 0.99226 || Y (Distance along North): 3.31694
+
+
+1. Target_smol corr: 0.8803292512893677
+1. Target_full corr: -0.44520217180252075
+1. Hotspot_smol corr: 0.452556848526001
+1. Hotspot_full corr: -0.2634719908237457
+
+Target Type:Target1
+Pixel Coordinates X: 264 Y: 202
+Current Altitude :15
+Cartesian Coordinates:x: -56 y: 38
+Rotated Coordinates:  x: -56 y: 38
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.5962		Phi deg: -34.15974
+
+Rp (Pixel distance):67.6757
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.91861
+
+X (Distance along East): -1.5876 || Y (Distance along North): 1.0773
+
+
+2. Target_smol corr: -0.03848104923963547
+2. Target_full corr: 0.06936734169721603
+2. Hotspot_smol corr: -0.07320800423622131
+2. Hotspot_full corr: -0.016166847199201584
+
+Target Type:Unknown2
+Pixel Coordinates X: 362 Y: 204
+Current Altitude :15
+Cartesian Coordinates:x: 42 y: 36
+Rotated Coordinates:  x: 42 y: 36
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.70863		Phi deg: 40.60151
+
+Rp (Pixel distance):55.31727
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.56824
+
+X (Distance along East): 1.19069 || Y (Distance along North): 1.0206
+
+
+3. Target_smol corr: 0.0010692181531339884
+3. Target_full corr: 0.040965549647808075
+3. Hotspot_smol corr: -0.09899130463600159
+3. Hotspot_full corr: -0.07661385834217072
+
+Target Type:Unknown3
+Pixel Coordinates X: 292 Y: 123
+Current Altitude :15
+Cartesian Coordinates:x: -28 y: 117
+Rotated Coordinates:  x: -28 y: 117
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.3359		Phi deg: -76.54143
+
+Rp (Pixel distance):120.30378
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.41061
+
+X (Distance along East): -0.79379 || Y (Distance along North): 3.31695
+
+
+
+
+sleeping
+
+
+Shot NO:30m_13
+0. Target_smol corr: -0.4277230203151703
+0. Target_full corr: 0.5579476356506348
+0. Hotspot_smol corr: -0.23246927559375763
+0. Hotspot_full corr: 0.16237731277942657
+
+Target Type:Target0
+Pixel Coordinates X: 275 Y: 213
+Current Altitude :15
+Cartesian Coordinates:x: -45 y: 27
+Rotated Coordinates:  x: -45 y: 27
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.54042		Phi deg: -30.96379
+
+Rp (Pixel distance):52.47857
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.48777
+
+X (Distance along East): -1.27575 || Y (Distance along North): 0.76545
+
+
+1. Target_smol corr: 0.33391332626342773
+1. Target_full corr: -0.3570002317428589
+1. Hotspot_smol corr: 0.23300893604755402
+1. Hotspot_full corr: -0.024554811418056488
+
+Target Type:Target1
+Pixel Coordinates X: 367 Y: 132
+Current Altitude :15
+Cartesian Coordinates:x: 47 y: 108
+Rotated Coordinates:  x: 47 y: 108
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.16033		Phi deg: 66.48201
+
+Rp (Pixel distance):117.7837
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.33917
+
+X (Distance along East): 1.33245 || Y (Distance along North): 3.0618
+
+
+2. Target_smol corr: -0.014516663737595081
+2. Target_full corr: -0.016663022339344025
+2. Hotspot_smol corr: -0.07187661528587341
+2. Hotspot_full corr: -0.12057873606681824
+
+Target Type:Unknown2
+Pixel Coordinates X: 302 Y: 132
+Current Altitude :15
+Cartesian Coordinates:x: -18 y: 108
+Rotated Coordinates:  x: -18 y: 108
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.40565		Phi deg: -80.53781
+
+Rp (Pixel distance):109.48973
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.10403
+
+X (Distance along East): -0.51029 || Y (Distance along North): 3.0618
+
+
+3. Target_smol corr: -0.03377123177051544
+3. Target_full corr: 0.04728998616337776
+3. Hotspot_smol corr: -0.07451475411653519
+3. Hotspot_full corr: -0.022378703579306602
+
+Target Type:Unknown3
+Pixel Coordinates X: 338 Y: 214
+Current Altitude :15
+Cartesian Coordinates:x: 18 y: 26
+Rotated Coordinates:  x: 18 y: 26
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.96525		Phi deg: 55.30475
+
+Rp (Pixel distance):31.62278
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 0.89651
+
+X (Distance along East): 0.5103 || Y (Distance along North): 0.7371
+
+
+
+
+sleeping
+
+
+Shot NO:30m_14
+0. Target_smol corr: 0.5730850100517273
+0. Target_full corr: -0.1335800737142563
+0. Hotspot_smol corr: 0.12448437511920929
+0. Hotspot_full corr: -0.14474228024482727
+
+Target Type:Target0
+Pixel Coordinates X: 373 Y: 138
+Current Altitude :15
+Cartesian Coordinates:x: 53 y: 102
+Rotated Coordinates:  x: 53 y: 102
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.09159		Phi deg: 62.5435
+
+Rp (Pixel distance):114.94781
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.25877
+
+X (Distance along East): 1.50254 || Y (Distance along North): 2.89171
+
+
+1. Target_smol corr: -0.09713225811719894
+1. Target_full corr: 0.14775195717811584
+1. Hotspot_smol corr: -0.017057251185178757
+1. Hotspot_full corr: -0.040949370712041855
+
+Target Type:Unknown1
+Pixel Coordinates X: 280 Y: 232
+Current Altitude :15
+Cartesian Coordinates:x: -40 y: 8
+Rotated Coordinates:  x: -40 y: 8
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.1974		Phi deg: -11.31019
+
+Rp (Pixel distance):40.79216
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.15646
+
+X (Distance along East): -1.134 || Y (Distance along North): 0.22681
+
+
+2. Target_smol corr: -0.025057978928089142
+2. Target_full corr: 0.06757570803165436
+2. Hotspot_smol corr: -0.04418153688311577
+2. Hotspot_full corr: -0.04765510931611061
+
+Target Type:Unknown2
+Pixel Coordinates X: 373 Y: 225
+Current Altitude :15
+Cartesian Coordinates:x: 53 y: 15
+Rotated Coordinates:  x: 53 y: 15
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.27581		Phi deg: 15.80275
+
+Rp (Pixel distance):55.08176
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.56157
+
+X (Distance along East): 1.50255 || Y (Distance along North): 0.42526
+
+
+3. Target_smol corr: -0.05155108869075775
+3. Target_full corr: 0.013491814024746418
+3. Hotspot_smol corr: -0.10161952674388885
+3. Hotspot_full corr: -0.07326404005289078
+
+Target Type:Unknown3
+Pixel Coordinates X: 307 Y: 138
+Current Altitude :15
+Cartesian Coordinates:x: -13 y: 102
+Rotated Coordinates:  x: -13 y: 102
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.44403		Phi deg: -82.73682
+
+Rp (Pixel distance):102.82509
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.91509
+
+X (Distance along East): -0.36855 || Y (Distance along North): 2.8917
+
+
+
+
+sleeping
+
+
+Shot NO:30m_15
+0. Target_smol corr: 0.7902413010597229
+0. Target_full corr: -0.4308274984359741
+0. Hotspot_smol corr: 0.395681768655777
+0. Hotspot_full corr: -0.20287694036960602
+
+Target Type:Target0
+Pixel Coordinates X: 260 Y: 227
+Current Altitude :15
+Cartesian Coordinates:x: -60 y: 13
+Rotated Coordinates:  x: -60 y: 13
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.21337		Phi deg: -12.2252
+
+Rp (Pixel distance):61.39218
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.74047
+
+X (Distance along East): -1.701 || Y (Distance along North): 0.36855
+
+
+1. Target_smol corr: 0.18131017684936523
+1. Target_full corr: -0.09534206986427307
+1. Hotspot_smol corr: 0.08047174662351608
+1. Hotspot_full corr: -0.05141596123576164
+
+Target Type:Unknown1
+Pixel Coordinates X: 372 Y: 127
+Current Altitude :15
+Cartesian Coordinates:x: 52 y: 113
+Rotated Coordinates:  x: 52 y: 113
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.13951		Phi deg: 65.28911
+
+Rp (Pixel distance):124.39051
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.52647
+
+X (Distance along East): 1.4742 || Y (Distance along North): 3.20355
+
+
+2. Target_smol corr: -0.04113660007715225
+2. Target_full corr: 0.11046604067087173
+2. Hotspot_smol corr: -0.03722677379846573
+2. Hotspot_full corr: -0.0662800669670105
+
+Target Type:Unknown2
+Pixel Coordinates X: 342 Y: 229
+Current Altitude :15
+Cartesian Coordinates:x: 22 y: 11
+Rotated Coordinates:  x: 22 y: 11
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.46365		Phi deg: 26.56519
+
+Rp (Pixel distance):24.59675
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 0.69732
+
+X (Distance along East): 0.6237 || Y (Distance along North): 0.31185
+
+
+
+
+sleeping
+
+
+Shot NO:30m_16
+0. Target_smol corr: 0.6656869649887085
+0. Target_full corr: -0.17378181219100952
+0. Hotspot_smol corr: 0.33960071206092834
+0. Hotspot_full corr: -0.2862113416194916
+
+Target Type:Target0
+Pixel Coordinates X: 366 Y: 135
+Current Altitude :15
+Cartesian Coordinates:x: 46 y: 105
+Rotated Coordinates:  x: 46 y: 105
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.15789		Phi deg: 66.34221
+
+Rp (Pixel distance):114.6342
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.24988
+
+X (Distance along East): 1.30409 || Y (Distance along North): 2.97676
+
+
+1. Target_smol corr: 0.8818562626838684
+1. Target_full corr: -0.4710661768913269
+1. Hotspot_smol corr: 0.49759402871131897
+1. Hotspot_full corr: -0.2754381597042084
+
+Target Type:Target1
+Pixel Coordinates X: 252 Y: 233
+Current Altitude :15
+Cartesian Coordinates:x: -68 y: 7
+Rotated Coordinates:  x: -68 y: 7
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.10258		Phi deg: -5.8774
+
+Rp (Pixel distance):68.35934
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.93799
+
+X (Distance along East): -1.9278 || Y (Distance along North): 0.19845
+
+
+2. Target_smol corr: -0.032377939671278
+2. Target_full corr: 0.06851671636104584
+2. Hotspot_smol corr: -0.04242320358753204
+2. Hotspot_full corr: -0.055659111589193344
+
+Target Type:Unknown2
+Pixel Coordinates X: 336 Y: 235
+Current Altitude :15
+Cartesian Coordinates:x: 16 y: 5
+Rotated Coordinates:  x: 16 y: 5
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.30288		Phi deg: 17.35375
+
+Rp (Pixel distance):16.76305
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 0.47523
+
+X (Distance along East): 0.4536 || Y (Distance along North): 0.14175
+
+
+
+
+sleeping
+
+
+Shot NO:30m_17
+0. Target_smol corr: 0.07288356125354767
+0. Target_full corr: -0.1541621834039688
+0. Hotspot_smol corr: 0.20440417528152466
+0. Hotspot_full corr: -0.15731920301914215
+
+Target Type:Hotspot0
+Pixel Coordinates X: 405 Y: 128
+Current Altitude :15
+Cartesian Coordinates:x: 85 y: 112
+Rotated Coordinates:  x: 85 y: 112
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.92161		Phi deg: 52.80436
+
+Rp (Pixel distance):140.60228
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.98607
+
+X (Distance along East): 2.40973 || Y (Distance along North): 3.17521
+
+
+1. Target_smol corr: -0.021632593125104904
+1. Target_full corr: 0.06893528997898102
+1. Hotspot_smol corr: -0.035780373960733414
+1. Hotspot_full corr: 0.17248447239398956
+
+Target Type:Unknown1
+Pixel Coordinates X: 271 Y: 235
+Current Altitude :15
+Cartesian Coordinates:x: -49 y: 5
+Rotated Coordinates:  x: -49 y: 5
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.10169		Phi deg: -5.82641
+
+Rp (Pixel distance):49.25444
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.39636
+
+X (Distance along East): -1.38915 || Y (Distance along North): 0.14175
+
+
+
+
+sleeping
+
+
+Shot NO:30m_18
+0. Target_smol corr: -0.4832442104816437
+0. Target_full corr: 0.5290255546569824
+0. Hotspot_smol corr: -0.20401637256145477
+0. Hotspot_full corr: 0.18732605874538422
+
+Target Type:Target0
+Pixel Coordinates X: 262 Y: 253
+Current Altitude :15
+Cartesian Coordinates:x: -58 y: -13
+Rotated Coordinates:  x: -58 y: -13
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.22049		Phi deg: 12.63315
+
+Rp (Pixel distance):59.43904
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.6851
+
+X (Distance along East): -1.6443 || Y (Distance along North): -0.36854
+
+
+1. Target_smol corr: 0.3053525984287262
+1. Target_full corr: -0.2868961691856384
+1. Hotspot_smol corr: 0.2376110851764679
+1. Hotspot_full corr: -0.054164472967386246
+
+Target Type:Target1
+Pixel Coordinates X: 405 Y: 132
+Current Altitude :15
+Cartesian Coordinates:x: 85 y: 108
+Rotated Coordinates:  x: 85 y: 108
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.90401		Phi deg: 51.79596
+
+Rp (Pixel distance):137.43726
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 3.89635
+
+X (Distance along East): 2.40975 || Y (Distance along North): 3.0618
+
+
+
+
+sleeping
+
+
+Shot NO:30m_19
+0. Target_smol corr: -0.448501318693161
+0. Target_full corr: 0.6894906759262085
+0. Hotspot_smol corr: -0.23067991435527802
+0. Hotspot_full corr: 0.14653800427913666
+
+Target Type:Target0
+Pixel Coordinates X: 272 Y: 245
+Current Altitude :15
+Cartesian Coordinates:x: -48 y: -5
+Rotated Coordinates:  x: -48 y: -5
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.10379		Phi deg: 5.94673
+
+Rp (Pixel distance):48.25971
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.36816
+
+X (Distance along East): -1.3608 || Y (Distance along North): -0.14175
+
+
+1. Target_smol corr: 0.44713884592056274
+1. Target_full corr: -0.36207452416419983
+1. Hotspot_smol corr: 0.34691667556762695
+1. Hotspot_full corr: -0.19032718241214752
+
+Target Type:Target1
+Pixel Coordinates X: 425 Y: 126
+Current Altitude :15
+Cartesian Coordinates:x: 105 y: 114
+Rotated Coordinates:  x: 105 y: 114
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.82647		Phi deg: 47.35324
+
+Rp (Pixel distance):154.9871
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 4.39388
+
+X (Distance along East): 2.97675 || Y (Distance along North): 3.23189
+
+
+
+
+sleeping
+
+
+Shot NO:30m_20
+0. Target_smol corr: -0.4669077396392822
+0. Target_full corr: 0.6748430728912354
+0. Hotspot_smol corr: -0.23673269152641296
+0. Hotspot_full corr: 0.16751793026924133
+
+Target Type:Target0
+Pixel Coordinates X: 317 Y: 194
+Current Altitude :15
+Cartesian Coordinates:x: -3 y: 46
+Rotated Coordinates:  x: -3 y: 46
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.50567		Phi deg: -86.26854
+
+Rp (Pixel distance):46.09772
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.30687
+
+X (Distance along East): -0.08505 || Y (Distance along North): 1.3041
+
+
+1. Target_smol corr: 0.3706311881542206
+1. Target_full corr: -0.380702942609787
+1. Hotspot_smol corr: 0.5337009429931641
+1. Hotspot_full corr: -0.2509300112724304
+
+Target Type:Hotspot1
+Pixel Coordinates X: 478 Y: 65
+Current Altitude :15
+Cartesian Coordinates:x: 158 y: 175
+Rotated Coordinates:  x: 158 y: 175
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.8364		Phi deg: 47.92219
+
+Rp (Pixel distance):235.7732
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 6.68417
+
+X (Distance along East): 4.47932 || Y (Distance along North): 4.96123
+
+
+
+
+sleeping
+
+
+Shot NO:30m_21
+0. Target_smol corr: -0.378292441368103
+0. Target_full corr: 0.5845965147018433
+0. Hotspot_smol corr: -0.2633705139160156
+0. Hotspot_full corr: 0.15624159574508667
+
+Target Type:Target0
+Pixel Coordinates X: 270 Y: 235
+Current Altitude :15
+Cartesian Coordinates:x: -50 y: 5
+Rotated Coordinates:  x: -50 y: 5
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.09967		Phi deg: -5.71067
+
+Rp (Pixel distance):50.24938
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.42457
+
+X (Distance along East): -1.4175 || Y (Distance along North): 0.14175
+
+
+1. Target_smol corr: 0.2240043580532074
+1. Target_full corr: -0.21532593667507172
+1. Hotspot_smol corr: 0.32402345538139343
+1. Hotspot_full corr: -0.09253085404634476
+
+Target Type:Hotspot1
+Pixel Coordinates X: 419 Y: 116
+Current Altitude :15
+Cartesian Coordinates:x: 99 y: 124
+Rotated Coordinates:  x: 99 y: 124
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.89704		Phi deg: 51.39661
+
+Rp (Pixel distance):158.67262
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 4.49837
+
+X (Distance along East): 2.80665 || Y (Distance along North): 3.5154
+
+
+
+
+sleeping
+
+
+Shot NO:30m_22
+0. Target_smol corr: 0.8506162166595459
+0. Target_full corr: -0.368123859167099
+0. Hotspot_smol corr: 0.491934210062027
+0. Hotspot_full corr: -0.3660294711589813
+
+Target Type:Target0
+Pixel Coordinates X: 336 Y: 176
+Current Altitude :15
+Cartesian Coordinates:x: 16 y: 64
+Rotated Coordinates:  x: 16 y: 64
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 1.32582		Phi deg: 75.96389
+
+Rp (Pixel distance):65.96969
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.87024
+
+X (Distance along East): 0.4536 || Y (Distance along North): 1.8144
+
+
+
+
+sleeping
+
+
+Shot NO:30m_23
+0. Target_smol corr: -0.4941946566104889
+0. Target_full corr: 0.5496507287025452
+0. Hotspot_smol corr: -0.241789311170578
+0. Hotspot_full corr: 0.20832502841949463
+
+Target Type:Target0
+Pixel Coordinates X: 300 Y: 183
+Current Altitude :15
+Cartesian Coordinates:x: -20 y: 57
+Rotated Coordinates:  x: -20 y: 57
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.23334		Phi deg: -70.66518
+
+Rp (Pixel distance):60.40695
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.71254
+
+X (Distance along East): -0.567 || Y (Distance along North): 1.61595
+
+
+1. Target_smol corr: 0.08365412056446075
+1. Target_full corr: -0.10776648670434952
+1. Hotspot_smol corr: 0.2590366303920746
+1. Hotspot_full corr: -0.013978159055113792
+
+Target Type:Hotspot1
+Pixel Coordinates X: 458 Y: 55
+Current Altitude :15
+Cartesian Coordinates:x: 138 y: 185
+Rotated Coordinates:  x: 138 y: 185
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.92989		Phi deg: 53.27877
+
+Rp (Pixel distance):230.80078
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 6.5432
+
+X (Distance along East): 3.91232 || Y (Distance along North): 5.24473
+
+
+
+
+sleeping
+
+
+Shot NO:30m_24
+0. Target_smol corr: -0.4061427712440491
+0. Target_full corr: 0.32496511936187744
+0. Hotspot_smol corr: -0.22944486141204834
+0. Hotspot_full corr: 0.23861803114414215
+
+Target Type:Target0
+Pixel Coordinates X: 260 Y: 49
+Current Altitude :15
+Cartesian Coordinates:x: -60 y: 191
+Rotated Coordinates:  x: -60 y: 191
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.26642		Phi deg: -72.56052
+
+Rp (Pixel distance):200.2024
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 5.67574
+
+X (Distance along East): -1.70101 || Y (Distance along North): 5.41485
+
+
+1. Target_smol corr: 0.7081924080848694
+1. Target_full corr: -0.4514153301715851
+1. Hotspot_smol corr: 0.4308318495750427
+1. Hotspot_full corr: -0.22551080584526062
+
+Target Type:Target1
+Pixel Coordinates X: 94 Y: 176
+Current Altitude :15
+Cartesian Coordinates:x: -226 y: 64
+Rotated Coordinates:  x: -226 y: 64
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.27596		Phi deg: -15.81134
+
+Rp (Pixel distance):234.88721
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 6.65905
+
+X (Distance along East): -6.4071 || Y (Distance along North): 1.8144
+
+
+
+
+sleeping
+
+
+Shot NO:30m_25
+0. Target_smol corr: 0.5087123513221741
+0. Target_full corr: -0.05921008810400963
+0. Hotspot_smol corr: 0.5474283695220947
+0. Hotspot_full corr: -0.39752689003944397
+
+Target Type:Hotspot0
+Pixel Coordinates X: 273 Y: 280
+Current Altitude :15
+Cartesian Coordinates:x: -47 y: -40
+Rotated Coordinates:  x: -47 y: -40
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.70511		Phi deg: 40.39983
+
+Rp (Pixel distance):61.7171
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 1.74968
+
+X (Distance along East): -1.33245 || Y (Distance along North): -1.134
+
+
+1. Target_smol corr: 0.7987268567085266
+1. Target_full corr: -0.47347918152809143
+1. Hotspot_smol corr: 0.6065278053283691
+1. Hotspot_full corr: -0.4576655328273773
+
+Target Type:Target1
+Pixel Coordinates X: 120 Y: 412
+Current Altitude :15
+Cartesian Coordinates:x: -200 y: -172
+Rotated Coordinates:  x: -200 y: -172
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.71027		Phi deg: 40.69547
+
+Rp (Pixel distance):263.78779
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 7.47838
+
+X (Distance along East): -5.67 || Y (Distance along North): -4.87619
+
+
+
+
+sleeping
+
+
+Shot NO:30m_26
+0. Target_smol corr: 0.4626460671424866
+0. Target_full corr: -0.45904192328453064
+0. Hotspot_smol corr: 0.38239458203315735
+0. Hotspot_full corr: -0.15340763330459595
+
+Target Type:Target0
+Pixel Coordinates X: 272 Y: 170
+Current Altitude :15
+Cartesian Coordinates:x: -48 y: 70
+Rotated Coordinates:  x: -48 y: 70
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -0.96972		Phi deg: -55.56086
+
+Rp (Pixel distance):84.87638
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.40625
+
+X (Distance along East): -1.36081 || Y (Distance along North): 1.9845
+
+
+1. Target_smol corr: 0.7163467407226562
+1. Target_full corr: -0.49151375889778137
+1. Hotspot_smol corr: 0.6258842349052429
+1. Hotspot_full corr: -0.4592311680316925
+
+Target Type:Target1
+Pixel Coordinates X: 119 Y: 302
+Current Altitude :15
+Cartesian Coordinates:x: -201 y: -62
+Rotated Coordinates:  x: -201 y: -62
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.2992		Phi deg: 17.1429
+
+Rp (Pixel distance):210.34495
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 5.96328
+
+X (Distance along East): -5.69835 || Y (Distance along North): -1.75771
+
+
+
+
+sleeping
+
+
+Shot NO:30m_27
+0. Target_smol corr: 0.42170068621635437
+0. Target_full corr: -0.3107154071331024
+0. Hotspot_smol corr: 0.2975606322288513
+0. Hotspot_full corr: -0.09264706075191498
+
+Target Type:Target0
+Pixel Coordinates X: 279 Y: 170
+Current Altitude :15
+Cartesian Coordinates:x: -41 y: 70
+Rotated Coordinates:  x: -41 y: 70
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.04095		Phi deg: -59.64204
+
+Rp (Pixel distance):81.12336
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.29985
+
+X (Distance along East): -1.16235 || Y (Distance along North): 1.98451
+
+
+1. Target_smol corr: -0.444478303194046
+1. Target_full corr: 0.4261195957660675
+1. Hotspot_smol corr: -0.12469042837619781
+1. Hotspot_full corr: 0.16615408658981323
+
+Target Type:Target1
+Pixel Coordinates X: 80 Y: 335
+Current Altitude :15
+Cartesian Coordinates:x: -240 y: -95
+Rotated Coordinates:  x: -240 y: -95
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad 0.37691		Phi deg: 21.59535
+
+Rp (Pixel distance):258.11819
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 7.31765
+
+X (Distance along East): -6.804 || Y (Distance along North): -2.69325
+
+
+
+
+sleeping
+
+
+Shot NO:30m_28
+0. Target_smol corr: 0.36823081970214844
+0. Target_full corr: -0.3996913731098175
+0. Hotspot_smol corr: 0.30114203691482544
+0. Hotspot_full corr: -0.08559605479240417
+
+Target Type:Target0
+Pixel Coordinates X: 282 Y: 149
+Current Altitude :15
+Cartesian Coordinates:x: -38 y: 91
+Rotated Coordinates:  x: -38 y: 91
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.17523		Phi deg: -67.33572
+
+Rp (Pixel distance):98.61541
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.79575
+
+X (Distance along East): -1.07729 || Y (Distance along North): 2.57986
+
+
+
+
+sleeping
+
+
+Shot NO:30m_29
+0. Target_smol corr: 0.3724615275859833
+0. Target_full corr: -0.3899647891521454
+0. Hotspot_smol corr: 0.2874240577220917
+0. Hotspot_full corr: -0.09645102173089981
+
+Target Type:Target0
+Pixel Coordinates X: 285 Y: 156
+Current Altitude :15
+Cartesian Coordinates:x: -35 y: 84
+Rotated Coordinates:  x: -35 y: 84
+
+Delta rad: 0		Delta deg:0.0
+Theta rad: 0.09422 		Theta deg: 5.39841
+Phi rad -1.17601		Phi deg: -67.38041
+
+Rp (Pixel distance):91.0
+Rd (Real world distance for 50 pixels): 1.4175
+D (Real world Distance to point): 2.57985
+
+X (Distance along East): -0.99224 || Y (Distance along North): 2.3814
+
+
+
+
+sleeping
+
+
+--------Mission Successfull--------
