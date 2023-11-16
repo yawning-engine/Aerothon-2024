@@ -50,15 +50,15 @@ def distance_to_wp(vehicle , wp):
 
     return dist
 
-def goto_wp(vehicle, wp, f=f,ground_speed=3):
+def goto_wp(vehicle, wp, f=f,ground_speed=4):
    
     print("Going to waypoint")
     f.write("\n\nGoing to waypoint:%s"%str(wp))
     vehicle.groundspeed = ground_speed
     print("\nGround Speed:%f"%vehicle.groundspeed)
     f.write("\nGround Speed:%f\n"%vehicle.groundspeed)
-    # if distance_to_wp(vehicle, wp)>40:
-    #     ground_speed=5
+    if distance_to_wp(vehicle, wp)>40:
+        ground_speed = 4
     vehicle.simple_goto(wp, groundspeed=ground_speed)
     
     while distance_to_wp(vehicle, wp) > 1:
@@ -221,7 +221,7 @@ def its_hotspot(vehicle,gps_loc,f):
     
     """
     print("hotspot mission started....")
-    goto_wp(vehicle, gps_loc)
+    goto_wp(vehicle, gps_loc,ground_speed=2)
     time.sleep(2)
 
     # take_picture(f)
@@ -234,7 +234,7 @@ def its_target(vehicle,gps_loc,f):
 
     '''
     print("target mission started....")
-    goto_wp(vehicle, gps_loc)
+    goto_wp(vehicle, gps_loc,ground_speed=2)
     time.sleep(2)
     
     # take_picture(f)
