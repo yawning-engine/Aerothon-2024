@@ -12,6 +12,7 @@ import math
 yaw_angle = 0
 img_count = 0
 wp_count = 0
+flt_alt = 30
 img_cord_list = list()
 
 # Initialize Picam capture
@@ -24,7 +25,7 @@ camera.resolution = (width, height)
 camera.iso = 100
 camera.exposure_mode = 'auto'
 #camera.exposMoonpieure_compensation = -3
-#camera.vflip = True
+camera.vflip = True
 
 
 # Load the template image of the target and hotspot
@@ -40,7 +41,7 @@ template_hotspot1 = cv2.imread(template_path_hotspot1, cv2.IMREAD_GRAYSCALE)
 template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
     
     
-def take_picture():
+def take_picture(f):
     
     rawimg = PiRGBArray(camera, size=(width, height))
     
@@ -62,10 +63,20 @@ def get_yaw(vehicle, f):
 
     yaw = vehicle.attitude.yaw
     
-    print("Current heading:",yaw)
+    print("Current heading:", yaw)
     f.write("Current heading:" + str(yaw) + "\n")
     
     return yaw
+
+
+def get_alt(vehicle, f):
+
+    h = vehicle.location.global_relative_frame.alt
+    
+    print("Current altitude:", h)
+    f.write("Current altitude:" + str(h) + "\n")
+    
+    return h
 
 
 def coordinate_rotation(x_cart, y_cart, f):
@@ -236,6 +247,7 @@ def detect(vehicle, f):
             return poi
         
         yaw_angle = get_yaw(vehicle, f)
+        flt_alt = get_alt(vehicle, f)
         
         # Crop out detected circles
         cropped_images = crop_circles(frame.copy(), detected_circles)
@@ -286,7 +298,7 @@ def detect(vehicle, f):
             f.write("\nTarget Type:" + str(target_type) + str(i) + "\n")
             f.write("Pixel Coordinates: " + "X:" + str(circle_center[0]) + " Y:" + str(circle_center[1]) + "\n")
         
-            xd,yd = get_coordinates(yaw_angle, f, circle_center[0], circle_center[1])
+            xd,yd = get_coordinates(flt_alt, yaw_angle, circle_center[0], circle_center[1], f)
                 
             # Append all detections to an array
             poi.append([xd,yd,target_type])

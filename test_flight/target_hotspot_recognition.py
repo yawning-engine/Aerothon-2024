@@ -324,7 +324,7 @@ def detect(yaw_angle, f,i,camera):
     camera.iso = 100
     camera.exposure_mode = 'auto'
     #camera.exposMoonpieure_compensation = -3
-    #camera.vflip = True
+    camera.vflip = True
     
     shot_no = str("template")+str(i)
     print("Shot NO:",shot_no)
@@ -338,7 +338,7 @@ def detect(yaw_angle, f,i,camera):
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
     
-    cv2.imwrite("drone_shot"+shot_no+".jpg",frame)
+    cv2.imwrite("new_temp"+shot_no+".jpg",frame)
     #cv2.imshow("drone_shot"+shot_no+".jpg",frame)
     poi = list()
     
@@ -421,7 +421,7 @@ def detect(yaw_angle, f,i,camera):
                 
         # Display the frame with circles   
         #cv2.imshow('Frame with Circles', frame)
-        cv2.imwrite("drone_frame"+shot_no+".jpg", frame)
+        cv2.imwrite("new_temp_detected"+shot_no+".jpg", frame)
         #cv2.waitKey(0)        
         cv2.destroyAllWindows()
     
@@ -440,7 +440,7 @@ if __name__== '__main__':
     #vehicle = connectmycopter()
     poi = list()
 
-    f = open("log_target_hotspot_templates_30M.txt", 'w')
+    f = open("log_target_hotspot_templates_new.txt", 'w')
 
     #basic_data(vehicle, f)
 
@@ -455,7 +455,7 @@ if __name__== '__main__':
     i = 0
     camera = PiCamera()
     
-    for i in range(0,10):
+    for i in range(0,20):
         poi = detect(yaw_angle, f,i,camera)
         print("sleeping")
         f.write("\n\nsleeping\n\n")
