@@ -105,8 +105,6 @@ def coordinate_rotation(yaw_angle, x_cart, y_cart, f):
    
 def get_coordinates(flt_alt, yaw_angle, circle_x, circle_y, f):
 
-    global flt_alt
-    
     h = flt_alt
     
     x_cart = circle_x - center_cord[0]
