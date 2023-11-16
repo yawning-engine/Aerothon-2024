@@ -3,6 +3,7 @@ import time
 import math
 from dronekit import connect, VehicleMode, LocationGlobalRelative
 from pymavlink import mavutil
+# from perception import take_picture
 
 
 f = open("drone_log.txt", 'w')
@@ -222,7 +223,8 @@ def its_hotspot(vehicle,gps_loc,f):
     print("hotspot mission started....")
     goto_wp(vehicle, gps_loc)
     time.sleep(2)
-    # take_screenshot()
+
+    # take_picture()
     
 
 def its_target(vehicle,gps_loc,f):
@@ -234,6 +236,8 @@ def its_target(vehicle,gps_loc,f):
     print("target mission started....")
     goto_wp(vehicle, gps_loc)
     time.sleep(2)
+    
+    # take_picture()
     actuate_servo(vehicle, "open", f)
     print("target mission successful")
 
