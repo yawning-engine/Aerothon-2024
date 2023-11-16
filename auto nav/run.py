@@ -39,7 +39,7 @@ vehicle.airspeed=0.5
 vehicle.groundspeed=0.5
 
 drone.arm_and_takeoff(vehicle,15)
-file.write("Take off location , pos="+str(drone.get_gps_location(vehicle,0,0,0)))
+file.write("Take off location , pos="+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
 
 detected_array = []
 target_detected = False
@@ -51,7 +51,7 @@ for i in arr:
     time.sleep(2)
     try:
         poi = detect(vehicle, file)
-        file.write("detected things -"+str(poi))
+        file.write("detected things -"+str(poi)+"\n")
         if len(poi) == 0:
             continue
         
@@ -72,13 +72,13 @@ for i in arr:
                     ####### first detection of hotspot########
                     if type.lower() == "target"  and not target_detected:
                         
-                        file.write("Target detected at -"+str(gps_loc))
+                        file.write("Target detected at -"+str(gps_loc)+"\n")
                         
                         drone.its_target(vehicle, gps_loc, file)
                         detected_array.append(gps_loc)
                         target_detected = True
-                        file.write("target detected val changed to-"+str(target_detected))
-                        file.write("Target dropped at -"+str(drone.get_gps_location(vehicle,0,0,0)))
+                        file.write("target detected val changed to-"+str(target_detected)+"\n")
+                        file.write("Target dropped at -"+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
                 
                     ###### false detection of hotspot as target##################
                     
@@ -90,26 +90,26 @@ for i in arr:
                         drone.its_hotspot(vehicle, gps_loc, file)
                         detected_array.append(gps_loc)
 
-                        file.write("hotspot captured at -"+str(drone.get_gps_location(vehicle,0,0,0)))
-                        file.write("false detection of above hotspot as target")
+                        file.write("hotspot captured at -"+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
+                        file.write("false detection of above hotspot as target"+"\n")
 
 
                     ########truly detected hotspot##########
 
                     if type.lower() == "hotspot":
 
-                        file.write("Hotspot detected at -"+str(gps_loc))
+                        file.write("Hotspot detected at -"+str(gps_loc)+"\n")
 
                         drone.its_hotspot(vehicle,gps_loc,file)
                         detected_array.append(gps_loc)
 
-                        file.write("Hotspot captured at-"+str(drone.get_gps_location(vehicle,0,0,0)))
+                        file.write("Hotspot captured at-"+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
 
                 else:
                     print("duplicate detected .......skipping............")
     except Exception as e:
         print("error occured during detection-"+str(e))
-        file.write("error occured during detection-"+str(e))
+        file.write("error occured during detection-"+str(e)+"\n")
         continue
 
 drone.RTL(vehicle)

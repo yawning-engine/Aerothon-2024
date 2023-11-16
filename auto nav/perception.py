@@ -89,11 +89,9 @@ def coordinate_rotation(yaw_angle, x_cart, y_cart, f):
    # Delta is current heading of drone (YAW angle W.R.T North), replace with 0 for testing.
    delta_rad = yaw_angle # Offset angle in Radians
    delta_deg = delta_rad*180/math.pi
-   
-   xc,yc = center_cord[0],center_cord[1]
                     
-   xr = int(((x_cart) * math.cos(delta_rad)) - ((y_cart) * math.sin(delta_rad)));
-   yr = int(((x_cart) * math.sin(delta_rad)) + ((y_cart) * math.cos(delta_rad)));
+   xr = int(((x_cart) * math.cos(delta_rad)) - ((y_cart) * math.sin(delta_rad)))
+   yr = int(((x_cart) * math.sin(delta_rad)) + ((y_cart) * math.cos(delta_rad)))
    
    print("Rotated Coordinates:", "x:", xr, "y:", yr, "\n")
    print("Delta rad:", delta_rad, "\t\tDelta deg:", delta_deg)
@@ -104,6 +102,7 @@ def coordinate_rotation(yaw_angle, x_cart, y_cart, f):
    
    
 def get_coordinates(flt_alt, yaw_angle, circle_x, circle_y, f):
+
 
     h = flt_alt
     
@@ -126,7 +125,7 @@ def get_coordinates(flt_alt, yaw_angle, circle_x, circle_y, f):
     if x_cart == 0:
         phi_rad = round(math.pi/2,5)
     else:
-       phi_rad = round(math.atan(yr/xr),5)
+        phi_rad = round(math.atan(yr/xr),5)
     
     phi_deg = round(phi_rad*180/math.pi,5)
     print("Phi rad:", phi_rad, "\t\tPhi deg:", phi_deg, "\n")
@@ -164,7 +163,7 @@ def detect_circles(image):
     filtered = cv2.bilateralFilter(image, 9, 75, 75)
     
     # Extract contours for circle detection
-    edges = cv2.Canny(image, threshold1=70, threshold2=155)
+    edges = cv2.Canny(filtered, threshold1=70, threshold2=155)
     
     # Detect circles using Hough Circle Transform
     circles = cv2.HoughCircles(
