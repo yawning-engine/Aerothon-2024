@@ -1,22 +1,17 @@
 # import the necessary packages
-from dronekit import connect, VehicleMode, LocationGlobalRelative
-import socket
-import argparse
-import dronekit_sitl
-import pymavlink
-from pymavlink import mavutil
+from dronekit import connect
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import cv2
 import time
 import numpy as np
-import matplotlib.pyplot as plt
 import time
 import math
 
 # Required global variables
 yaw_angle = 0
 img_count = 0
+wp_count = 0
 img_cord_list = list()
 
 # Initialize Picam capture
@@ -24,43 +19,44 @@ width = 640
 height = 480
 center_cord = [int(width/2),int(height/2)]
 
+camera = PiCamera()
+camera.resolution = (width, height)
+camera.iso = 100
+camera.exposure_mode = 'auto'
+#camera.exposMoonpieure_compensation = -3
+#camera.vflip = True
+
+
 # Load the template image of the target and hotspot
-template_path_target1 = 'target_real1.png'  # Change this to your target image's path
-template_path_target2 = 'target_real2.png'  # Change this to your target image's path
+template_path_target1 = 'templates/target_real_full.png'  # Change this to your target image's path
+template_path_target2 = 'templates/target_real_smol.png'  # Change this to your target image's path
 
 template_target1 = cv2.imread(template_path_target1, cv2.IMREAD_GRAYSCALE)
 template_target2 = cv2.imread(template_path_target2, cv2.IMREAD_GRAYSCALE)
 
-template_path_hotspot1 = 'hotspot_real1.png'  # Change this to your hotspot image's path
-template_path_hotspot2 = 'hotspot_real2.png'  # Change this to your hotspot image's path
+template_path_hotspot1 = 'templates/hotspot_real_full.png'  # Change this to your hotspot image's path
+template_path_hotspot2 = 'templates/hotspot_real_smol.png'  # Change this to your hotspot image's path
 template_hotspot1 = cv2.imread(template_path_hotspot1, cv2.IMREAD_GRAYSCALE)
 template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
     
-
-def connectmycopter():
-
-    connection_string = "/dev/serial0"
-    baud_rate = 57600
-    print("Connecting to drone...")
-    f.write("\n Connecting to drone...")
-    vehicle = connect(connection_string, baud=baud_rate, wait_ready=True)
     
-    return vehicle
+def take_picture():
+    
+    rawimg = PiRGBArray(camera, size=(width, height))
+    
+    # allow the camera to warmup
+    time.sleep(2)
 
-        
-def basic_data(vehicle, f):
-
-    print("Version: %s" % vehicle.version)
-    print("Armable: %s" % vehicle.is_armable)
-    print("Vehicle Mode: %s" % vehicle.mode.name)
-    print("Support set attitude from companion: %s" % vehicle.capabilities.set_attitude_target_local_ned)
-    print("Last Heartbeat: %s" % vehicle.last_heartbeat)
-    f.write("Version: %s" % vehicle.version)
-    f.write("\nArmable: %s" % vehicle.is_armable)
-    f.write("\nVehicle Mode: %s" % vehicle.mode.name)
-    f.write("\nSupport set attitude from companion: %s" % vehicle.capabilities.set_attitude_target_local_ned)
-    f.write("\nLast Heartbeat: %s\n" % vehicle.last_heartbeat)
-
+    camera.capture(rawimg, format="bgr")
+    img = rawimg.array
+    
+    print("Image_NO:", img_count)
+    f.write("Image_NO:" + img_count + "\n")
+    
+    cv2.imwrite("Image_NO" + img_count + ".jpg",img)
+    
+    img_count = img_count + 1
+    
     
 def get_yaw(vehicle, f):
 
@@ -128,7 +124,7 @@ def get_coordinates(flt_alt, yaw_angle, circle_x, circle_y, f):
     f.write("Rp (Pixel distance):" + str(Rp) + "\n")
     
     Rd = round(h*math.tan(theta_rad),5) # Rd is real world distance for 50 pixels
-    print("Rd (Real world distance for 50 pixels):",cRd)
+    print("Rd (Real world distance for 50 pixels):",Rd)
     f.write("Rd (Real world distance for 50 pixels):" + str(Rd) + "\n")
     
     d = round((Rp*Rd)/50.0,5) # Real world distance in meters per pixel at height h (flight altitude).
@@ -139,9 +135,9 @@ def get_coordinates(flt_alt, yaw_angle, circle_x, circle_y, f):
     yd = round(abs(d*math.sin(phi_rad)),5) # Real world distance along y axis (NORTH) in meters.
     
     if xr < 0:
-    	xd = xd*-1
+        xd = xd*-1  
     if yr < 0:
-    	yd = yd*-1
+        yd = yd*-1
     
     print("\nX (Distance along East):", xd, "|| Y (Distance along North):", yd, "\n\n\n")
     f.write("\nX (Distance along East):" + str(xd) + "|| Y (Distance along North): "+str(yd)+"\n\n\n")
@@ -201,15 +197,13 @@ def template_matching(template, image):
     
     return max_val
     
+    
 # Returns [xd(float), yd(float), type(string)]
 # xd: Distance to target along East      
 # xd: Distance to target along North      
 # type: Taget type => target / hotspot / no_circles       
 
-def detect(vehicle, camera, f):
-    
-    print("Image NO:", img_count)
-    f.write("Image NO:" + img_count + "\n")
+def detect(vehicle, f):
     
     rawCapture = PiRGBArray(camera, size=(width, height))
     
@@ -218,6 +212,13 @@ def detect(vehicle, camera, f):
 
     camera.capture(rawCapture, format="bgr")
     frame = rawCapture.array
+    
+    print("wp_shot NO:", wp_count)
+    f.write("wp_shot NO:" + wp_count + "\n")
+    
+    cv2.imwrite("wp_shot" + wp_count + ".jpg",frame)
+    
+    wp_count = wp_count + 1
     
     # List to store coordinates of all detected circles in frame
     poi = list()
@@ -309,21 +310,4 @@ def detect(vehicle, camera, f):
         cv2.destroyAllWindows()  # Close any OpenCV windows
 
     return poi
-    
-     
-if __name__== '__main__':
-    
-    f = open("perception.txt", 'w')
-    
-    vehicle = connectmycopter()
-    basic_data(vehicle, f)
-
-    camera = PiCamera()
-    camera.resolution = (width, height)
-    camera.iso = 100
-    camera.exposure_mode = 'auto'
-    #camera.exposMoonpieure_compensation = -3
-    #camera.vflip = True
-    
-    poi = detect(vehicle, camera, f)
-        
+      

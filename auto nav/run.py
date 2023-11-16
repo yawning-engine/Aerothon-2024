@@ -1,11 +1,11 @@
 import drone_controller as drone
-from perception import detect
+# from perception import detect
 import time
 
 file =  open("drone_log.txt","a") 
 
-flight_alt = 30
-target_alt = 20
+flight_alt =15
+target_alt = 10
 
 # field 1-
 # dronekit-sitl copter --home=13.394622,77.731250,0,180
@@ -30,7 +30,7 @@ national_clg=[(12.9509975088598, 77.57268620201272),(12.950826293163624, 77.5726
               ,(12.95079884636169, 77.57291016644415),(12.950951764219674, 77.57290614313101)]
 
 
-arr=drone.grid_navigation(field_2_boundary_points,10)
+arr=drone.grid_navigation(national_clg,10)
 
 vehicle = drone.connect_simulation_drone()
 vehicle.airspeed=0.5
@@ -45,7 +45,7 @@ for i in arr:
     grid_point_loc = drone.LocationGlobalRelative(i[0],i[1],flight_alt)
     print("going to", grid_point_loc)
     drone.goto_wp(vehicle, grid_point_loc, ground_speed=5)
-    
+    '''
     poi = detect(vehicle, )
     if len(poi)==0:
         continue
@@ -77,6 +77,6 @@ for i in arr:
 
             else:
                 print("duplicate detected .......skipping............")
-    
+    '''
 drone.RTL(vehicle)
 
