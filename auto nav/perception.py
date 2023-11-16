@@ -28,14 +28,14 @@ camera.exposure_mode = 'auto'
 
 
 # Load the template image of the target and hotspot
-template_path_target1 = 'target_real1.png'  # Change this to your target image's path
-template_path_target2 = 'target_real2.png'  # Change this to your target image's path
+template_path_target1 = 'templates/target_real_full.png'  # Change this to your target image's path
+template_path_target2 = 'templates/target_real_smol.png'  # Change this to your target image's path
 
 template_target1 = cv2.imread(template_path_target1, cv2.IMREAD_GRAYSCALE)
 template_target2 = cv2.imread(template_path_target2, cv2.IMREAD_GRAYSCALE)
 
-template_path_hotspot1 = 'hotspot_real1.png'  # Change this to your hotspot image's path
-template_path_hotspot2 = 'hotspot_real2.png'  # Change this to your hotspot image's path
+template_path_hotspot1 = 'templates/hotspot_real_full.png'  # Change this to your hotspot image's path
+template_path_hotspot2 = 'templates/hotspot_real_smol.png'  # Change this to your hotspot image's path
 template_hotspot1 = cv2.imread(template_path_hotspot1, cv2.IMREAD_GRAYSCALE)
 template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
     
