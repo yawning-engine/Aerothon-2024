@@ -224,7 +224,7 @@ def its_hotspot(vehicle,gps_loc,f):
     goto_wp(vehicle, gps_loc)
     time.sleep(2)
 
-    # take_picture()
+    # take_picture(f)
     
 
 def its_target(vehicle,gps_loc,f):
@@ -237,7 +237,7 @@ def its_target(vehicle,gps_loc,f):
     goto_wp(vehicle, gps_loc)
     time.sleep(2)
     
-    # take_picture()
+    # take_picture(f)
     actuate_servo(vehicle, "open", f)
     print("target mission successful")
 

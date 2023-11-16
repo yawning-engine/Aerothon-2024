@@ -26,13 +26,13 @@ field_2_boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371),
 bms_points= [(12.941209902836812, 77.5659708787648),(12.941037373375236, 77.56592259900712),
              (12.94096417902213, 77.56628737939842),(12.9411497789471, 77.56631688369477)]
 
-national_clg=[(12.9509975088598, 77.57268620201272),(12.950826293163624, 77.57268351980396)
-              ,(12.95079884636169, 77.57291016644415),(12.950951764219674, 77.57290614313101)]
+national_clg=[(12.950174107989957, 77.57278602793225),(12.94991792826805, 77.57278331748107)
+              ,(12.949923127188585, 77.57311052919093),(12.95019234008033, 77.57309977085406)]
 
 
 arr=drone.grid_navigation(national_clg,10)
 
-vehicle = drone.connect_simulation_drone()
+vehicle = drone.connect_real_drone()
 vehicle.airspeed=0.5
 vehicle.groundspeed=0.5
 
@@ -44,9 +44,9 @@ detected_array = []
 for i in arr:
     grid_point_loc = drone.LocationGlobalRelative(i[0],i[1],flight_alt)
     print("going to", grid_point_loc)
-    drone.goto_wp(vehicle, grid_point_loc, ground_speed=5)
+    drone.goto_wp(vehicle, grid_point_loc, ground_speed=1)
     '''
-    poi = detect(vehicle, )
+    poi = detect(vehicle, file)
     if len(poi)==0:
         continue
     
