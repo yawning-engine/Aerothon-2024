@@ -29,14 +29,14 @@ camera.vflip = True
 
 
 # Load the template image of the target and hotspot
-template_path_target1 = 'templates/target_real_full.png'  # Change this to your target image's path
-template_path_target2 = 'templates/target_real_smol.png'  # Change this to your target image's path
+template_path_target1 = 'templates/target_real_smol.png'  # Change this to your target image's path
+template_path_target2 = 'templates/target_real_full.png'  # Change this to your target image's path
 
 template_target1 = cv2.imread(template_path_target1, cv2.IMREAD_GRAYSCALE)
 template_target2 = cv2.imread(template_path_target2, cv2.IMREAD_GRAYSCALE)
 
-template_path_hotspot1 = 'templates/hotspot_real_full.png'  # Change this to your hotspot image's path
-template_path_hotspot2 = 'templates/hotspot_real_smol.png'  # Change this to your hotspot image's path
+template_path_hotspot1 = 'templates/hotspot_real_smol.png'  # Change this to your hotspot image's path
+template_path_hotspot2 = 'templates/hotspot_real_full.png'  # Change this to your hotspot image's path
 template_hotspot1 = cv2.imread(template_path_hotspot1, cv2.IMREAD_GRAYSCALE)
 template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
     
@@ -44,6 +44,7 @@ template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
 def take_picture(f):
     
     global img_count
+    
     rawimg = PiRGBArray(camera, size=(width, height))
     
     # allow the camera to warmup
@@ -80,8 +81,8 @@ def get_alt(vehicle, f):
     return h
 
 
-def coordinate_rotation(x_cart, y_cart, f):
-                 
+def coordinate_rotation(yaw_angle, x_cart, y_cart, f):
+   
    # Rotation of point wrt to drone heading
    # Origin at 0,0 required points at x_cart,y_cart rotated point at xr,yr
    
@@ -104,6 +105,8 @@ def coordinate_rotation(x_cart, y_cart, f):
    
 def get_coordinates(flt_alt, yaw_angle, circle_x, circle_y, f):
 
+    global flt_alt
+    
     h = flt_alt
     
     x_cart = circle_x - center_cord[0]
@@ -217,6 +220,10 @@ def template_matching(template, image):
 
 def detect(vehicle, f):
     
+    global wp_count
+    global yaw_angle
+    global flt_alt
+    
     rawCapture = PiRGBArray(camera, size=(width, height))
     
     # allow the camera to warmup
@@ -233,7 +240,7 @@ def detect(vehicle, f):
     wp_count = wp_count + 1
     
     # List to store coordinates of all detected circles in frame
-    poi = list()
+    poi = []
     
     try:
         # Detect circles in the frame
@@ -242,8 +249,6 @@ def detect(vehicle, f):
         if detected_circles is None:
             print("\nNo Circles Found\n")
             f.write("\nNo Circles Found\n\n")
-            
-            poi.append([0, 0, "no_circles"])
                   
             return poi
         
@@ -262,57 +267,55 @@ def detect(vehicle, f):
             match_hotspot1 = template_matching(template_hotspot1, cropped)
             match_hotspot2 = template_matching(template_hotspot2, cropped)
         
-            if max(match_target1,match_target2,match_hotspot1,match_hotspot2) >= 0.3:
+            if max(match_target1,match_target2,match_hotspot1,match_hotspot2) >= 0.2:
                 
                 if max(match_target1,match_target2) > max(match_hotspot1,match_hotspot2):
-                    target_type = "Target"
+                    target_type = "target"
                     text_color = (0, 255, 0)  # Green color
                 else:
-                    target_type = "Hotspot"
+                    target_type = "hotspot"
                     text_color = (0, 0, 255)  # Red color
-            else:
-                target_type = "Unknown"
-                text_color = (148, 7, 173) # Purple color
                 
-            print(i, ". Target_1 corr:", match_target1)
-            print(i, ". Target_2 corr:", match_target2)
+                print(i, ". Target_1 corr:", match_target1)
+                print(i, ". Target_2 corr:", match_target2)
             
-            print(i, ". Hotspot_1 corr:", match_hotspot1)
-            print(i, ". Hotspot_2 corr:", match_hotspot2)
+                print(i, ". Hotspot_1 corr:", match_hotspot1)
+                print(i, ". Hotspot_2 corr:", match_hotspot2)
             
-            f.write(str(i) + ". Target_1 corr:" + str(match_target1) + "\n")
-            f.write(str(i) + ". Target_2 corr:" + str(match_target2) + "\n")
+                f.write(str(i) + ". Target_1 corr:" + str(match_target1) + "\n")
+                f.write(str(i) + ". Target_2 corr:" + str(match_target2) + "\n")
             
-            f.write(str(i) + ". Hotspot_1 corr:" + str(match_hotspot1) + "\n")
-            f.write(str(i) + ". Hotspot_2 corr:" + str(match_hotspot2) + "\n")
+                f.write(str(i) + ". Hotspot_1 corr:" + str(match_hotspot1) + "\n")
+                f.write(str(i) + ". Hotspot_2 corr:" + str(match_hotspot2) + "\n")
             
-            # Calculate the position for the target type text
-            circle_center = detected_circles[0][i][:2]
-            circle_radius = detected_circles[0][i][2]
-            circle_center = np.int64(circle_center)
-            circle_radius = np.int64(circle_radius)
+                # Calculate the position for the target type text
+                circle_center = detected_circles[0][i][:2]
+                circle_radius = detected_circles[0][i][2]
+                circle_center = np.int64(circle_center)
+                circle_radius = np.int64(circle_radius)
                 
-            text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
+                text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
             
-            print("\nTarget Type:", target_type, i)
-            print("Pixel Coordinates", "X:", circle_center[0], "Y:", circle_center[1])
-            f.write("\nTarget Type:" + str(target_type) + str(i) + "\n")
-            f.write("Pixel Coordinates: " + "X:" + str(circle_center[0]) + " Y:" + str(circle_center[1]) + "\n")
+                print("\nTarget Type:", target_type, i)
+                print("Pixel Coordinates", "X:", circle_center[0], "Y:", circle_center[1])
+                f.write("\nTarget Type:" + str(target_type) + str(i) + "\n")
+                f.write("Pixel Coordinates: " + "X:" + str(circle_center[0]) + " Y:" + str(circle_center[1]) + "\n")
         
-            xd,yd = get_coordinates(flt_alt, yaw_angle, circle_center[0], circle_center[1], f)
+                xd,yd = get_coordinates(flt_alt, yaw_angle, circle_center[0], circle_center[1], f)
                 
-            # Append all detections to an array
-            poi.append([xd,yd,target_type])
+                # Append all detections to an array
                 
-            line_thickness = 2
+                poi.append([xd,yd,target_type])
+                
+                line_thickness = 2
             
-            cv2.line(frame, (0,center_cord[1]), (width, center_cord[1]), (0, 255, 0), thickness=line_thickness)
-            cv2.line(frame, (center_cord[0], 0), (center_cord[0], height), (0, 255, 0), thickness=line_thickness)
+                cv2.line(frame, (0,center_cord[1]), (width, center_cord[1]), (0, 255, 0), thickness=line_thickness)
+                cv2.line(frame, (center_cord[0], 0), (center_cord[0], height), (0, 255, 0), thickness=line_thickness)
 
-            # Add text indicating target type
-            cv2.putText(frame, target_type+str(i), text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
-            # Draw circles 
-            cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
+                # Add text indicating target type
+                cv2.putText(frame, target_type+str(i), text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
+                # Draw circles 
+                cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
                 
         cv2.destroyAllWindows()
     
