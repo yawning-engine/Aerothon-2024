@@ -23,33 +23,23 @@ field_1_boundary_points = [(13.394727, 77.7311024), (13.393622, 77.7309197),
 field_2_boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371),
                            (13.393385, 77.7318823), (13.39454, 77.7320772)]
 
-bms_points_drift= [(12.941157663780162, 77.5659762145219),(12.941008696467064, 77.5659359665737),
-             (12.940969487945662, 77.56628468686313),(12.941126330217395, 77.56629538256388)]
 
-bms_points = [(12.941196901925672, 77.5659762285262),(12.941006073867879, 77.565949406435968),
-              (12.940977344282619, 77.56625517151875),(12.941144600546245, 77.56628202178035)]
+arr=drone.grid_navigation(field_2_boundary_points,15)
 
-national_clg=[(12.950192443726669, 77.57267429129706),(12.949852625101393, 77.5726796557151)
-              ,(12.949857824812549, 77.57303375038539),(12.950228983297505, 77.57300697670405)]
-
-# custom_locs = [(12.941105460631404, 77.56614384175194)]
-custom_locs = [(12.941014006288324, 77.56593995182327), (12.940995700620116, 77.56626186477287)]
-arr=drone.grid_navigation(bms_points,6)
+vehicle = drone.connect_simulation_drone()
 
 # vehicle = drone.connect_real_drone()
 
-vehicle = drone.connect_real_drone()
+vehicle.airspeed=2
+vehicle.groundspeed=2
 
-vehicle.airspeed=0.5
-vehicle.groundspeed=0.5
-
-drone.arm_and_takeoff(vehicle,10)
+drone.arm_and_takeoff(vehicle,30)
 file.write("Take off location , pos="+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
 
 detected_array = []
 target_detected = False
 
-for i in custom_locs:
+for i in field_2_boundary_points:
     grid_point_loc = drone.LocationGlobalRelative(i[0],i[1],flight_alt)
     print("going to", grid_point_loc)
     drone.goto_wp(vehicle, grid_point_loc, ground_speed=2)

@@ -455,11 +455,11 @@ if __name__== '__main__':
     i = 0
     camera = PiCamera()
     
-    for i in range(0,30):
+    for i in range(0,40):
         poi = detect(yaw_angle, f,i,camera)
         print("sleeping")
         f.write("\n\nsleeping\n\n")
-        time.sleep(2)
+        time.sleep(8)
         
     #land_copter(vehicle, f)
     #time.sleep(3)
