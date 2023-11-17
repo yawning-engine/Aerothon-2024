@@ -23,26 +23,26 @@ field_1_boundary_points = [(13.394727, 77.7311024), (13.393622, 77.7309197),
 field_2_boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371),
                            (13.393385, 77.7318823), (13.39454, 77.7320772)]
 
-
-arr=drone.grid_navigation(field_2_boundary_points,15)
+custom_loc = [(13.410484, 77.698377)]
+arr=drone.grid_navigation(field_1_boundary_points,15)
 
 vehicle = drone.connect_simulation_drone()
 
 # vehicle = drone.connect_real_drone()
 
-vehicle.airspeed=2
-vehicle.groundspeed=2
+vehicle.airspeed = 0.5
+vehicle.groundspeed = 0.5
 
-drone.arm_and_takeoff(vehicle,30)
+drone.arm_and_takeoff(vehicle,5)
 file.write("Take off location , pos="+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
 
 detected_array = []
 target_detected = False
 
-for i in field_2_boundary_points:
+for i in custom_loc:
     grid_point_loc = drone.LocationGlobalRelative(i[0],i[1],flight_alt)
     print("going to", grid_point_loc)
-    drone.goto_wp(vehicle, grid_point_loc, ground_speed=2)
+    drone.goto_wp(vehicle, grid_point_loc, ground_speed=0.5)
     time.sleep(2)
     
     try:

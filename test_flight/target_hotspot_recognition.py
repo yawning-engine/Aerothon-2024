@@ -239,9 +239,9 @@ def get_coordinates(yaw_angle, f, circle_x, circle_y):
     yd = round(abs(d*math.sin(phi_rad)),5) # Real world distance along y axis (NORTH) in meters.
     
     if xr < 0:
-    	xd = xd*-1
+        xd = xd*-1
     if yr < 0:
-    	yd = yd*-1
+        yd = yd*-1
     print("\nX (Distance along East):",xd,"|| Y (Distance along North):",yd,"\n\n\n")
     f.write("\nX (Distance along East): "+str(xd)+" || Y (Distance along North): "+str(yd)+"\n\n\n")
     
