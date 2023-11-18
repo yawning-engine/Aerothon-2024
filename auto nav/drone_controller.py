@@ -58,7 +58,7 @@ def goto_wp(vehicle, wp, f=f,ground_speed=4):
     print("\nGround Speed:%f"%vehicle.groundspeed)
     f.write("\nGround Speed:%f\n"%vehicle.groundspeed)
     if distance_to_wp(vehicle, wp)>40:
-        ground_speed = 4
+        ground_speed = 5
     vehicle.simple_goto(wp, groundspeed=ground_speed)
     
     while distance_to_wp(vehicle, wp) > 1:
