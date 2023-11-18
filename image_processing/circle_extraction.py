@@ -2,6 +2,76 @@ import cv2
 import numpy as np
 import time
 import matplotlib.pyplot as plt
+import math
+
+yaw_angle = -2.96706
+flt_alt = 20
+
+def coordinate_rotation(x_cart, y_cart):
+                 
+   # Rotation of point wrt to drone heading
+   # Origin at 0,0 required points at x_cart,y_cart rotated point at xr,yr
+   
+   # Delta is current heading of drone (YAW angle W.R.T North), replace with 0 for testing.
+   delta_rad = -(yaw_angle) # Offset angle in Radians
+   delta_deg = delta_rad*180/math.pi
+   
+   xc,yc = w2,h2
+                    
+   xr = int(((x_cart) * math.cos(delta_rad)) - ((y_cart) * math.sin(delta_rad)));
+   yr = int(((x_cart) * math.sin(delta_rad)) + ((y_cart) * math.cos(delta_rad)));
+   
+   print("Rotated Coordinates:", "x:", xr, "y:", yr, "\n")
+   print("Delta rad:", delta_rad, "\t\tDelta deg:", delta_deg)
+      
+   return (xr,yr)
+   
+   
+def get_coordinates(circle_x, circle_y):
+
+    h = flt_alt
+    
+    x_cart = circle_x - w2
+    y_cart = h2 - circle_y
+    
+    print("Current Altitude:", h)
+    print("Cartesian Coordinates:", "x:", str(x_cart), "y:", str(y_cart))
+    
+    xr,yr = coordinate_rotation(x_cart, y_cart)
+    
+    theta_rad = round(math.atan(10.3/109),5)
+    theta_deg = round(theta_rad*180/math.pi,5)
+    
+    print("Theta rad:", theta_rad, "\t\tTheta deg:", theta_deg)
+    
+    if x_cart == 0:
+        phi_rad = round(math.pi/2,5)
+    else:
+       phi_rad = round(math.atan(yr/xr),5)
+    
+    phi_deg = round(phi_rad*180/math.pi,5)
+    print("Phi rad:", phi_rad, "\t\tPhi deg:", phi_deg, "\n")
+    
+    Rp = round(math.sqrt(math.pow(xr,2)+math.pow(yr,2)),5) # Rp is pixel distance
+    print("Rp (Pixel distance):", Rp)
+    
+    Rd = round(h*math.tan(theta_rad),5) # Rd is real world distance for 50 pixels
+    print("Rd (Real world distance for 50 pixels):",Rd)
+    
+    d = round((Rp*Rd)/50.0,5) # Real world distance in meters per pixel at height h (flight altitude).
+    print("D (Real world Distance to point):", d)
+    
+    xd = round(abs(d*math.cos(phi_rad)),5) # Real world distance along x axis (EAST) in meters.
+    yd = round(abs(d*math.sin(phi_rad)),5) # Real world distance along y axis (NORTH) in meters.
+    
+    if xr < 0:
+        xd = xd*-1  
+    if yr < 0:
+        yd = yd*-1
+    
+    print("\nX (Distance along East):", xd, "|| Y (Distance along North):", yd, "\n\n\n")
+    
+    return (xd,yd)
 
 
 def detect_circles(image):
@@ -11,9 +81,9 @@ def detect_circles(image):
     
     # Apply bilateral filtering to reduce noise and improve circle detection
     filtered = cv2.bilateralFilter(image, 9, 75, 75)
-    cv2.imshow('Blurred', filtered)
+    #cv2.imshow('Blurred', filtered)
     edges = cv2.Canny(filtered, threshold1=70, threshold2=155)
-    cv2.imshow('EDGE', edges)
+    #cv2.imshow('EDGE', edges)
     #cv2.waitKey(0)
     
     # Detect circles using Hough Circle Transform
@@ -82,11 +152,12 @@ template_path_hotspot2 = 'hotspot_real_full.png'  # Change this to your hotspot 
 template_hotspot1 = cv2.imread(template_path_hotspot1, cv2.IMREAD_GRAYSCALE)
 template_hotspot2 = cv2.imread(template_path_hotspot2, cv2.IMREAD_GRAYSCALE)
 
-frame = cv2.imread('2new_temp30m_2.jpg', 1)
+frame = cv2.imread('new_temptemplate2.jpg', 1)
 height = int(frame.shape[0])
 width = int(frame.shape[1])
-print("Shape of you?... naah image bruh:",width, height)
-
+h2 = int(height/2)
+w2 = int(width/2)
+        
 #frame = cv2.resize(img, (width, height), interpolation = cv2.INTER_LINEAR)
 
 try:
@@ -105,7 +176,7 @@ try:
         match_hotspot1 = template_matching(template_hotspot1, cropped)
         match_hotspot2 = template_matching(template_hotspot2, cropped)
         
-        if max(match_target1,match_target2,match_hotspot1,match_hotspot2) >= 0.2:
+        if max(match_target1,match_target2,match_hotspot1,match_hotspot2) >= 0.4:
             print(i,". Target_smol corr: ",match_target1)
             print(i,". Target_full corr: ",match_target2)
             
@@ -127,10 +198,10 @@ try:
         circle_radius = detected_circles[0][i][2]
         #print(circle_center," ",circle_radius)
         text_position = (circle_center[0] - 40, circle_center[1] + circle_radius + 10)
+        
+        xd,yd = get_coordinates(circle_center[0], circle_center[1])
+            
                 
-                
-        h2 = int(height/2)
-        w2 = int(width/2)
         line_thickness = 2
             
         cv2.line(frame, (0,h2), (width, h2), (0, 255, 0), thickness=line_thickness)
@@ -146,7 +217,7 @@ try:
         filename = f'Cropped_Circle_{i + 1}_{target_type}.png'
         cv2.imwrite(filename, cropped)
                 
-        cv2.imshow(f'Cropped Circle {i + 1}', cropped)
+        #cv2.imshow(f'Cropped Circle {i + 1}', cropped)
             
             
     # Display the frame with circles

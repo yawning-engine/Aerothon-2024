@@ -186,7 +186,7 @@ template_target2 = cv2.imread(template_path_target2, cv2.IMREAD_GRAYSCALE)
 template_path_hotspot = 'hotspot_real.png'  # Change this to your hotspot image's path
 template_hotspot = cv2.imread(template_path_hotspot, cv2.IMREAD_GRAYSCALE)
 
-img = cv2.imread('tar_hot_1.png', 1)
+img = cv2.imread('tar_hot_2.png', 1)
 
 height = int(img.shape[0]*0.5)
 width = int(img.shape[1]*0.5)
