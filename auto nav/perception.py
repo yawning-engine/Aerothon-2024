@@ -25,7 +25,7 @@ camera.resolution = (width, height)
 camera.iso = 100
 camera.exposure_mode = 'auto'
 #camera.exposMoonpieure_compensation = -3
-camera.vflip = True
+camera.vflip = False
 
 
 # Load the template image of the target and hotspot
@@ -190,7 +190,7 @@ def crop_circles(image, circles):
         
         if cropped.shape[0] >= 10 and cropped.shape[1] >=10:
             cropped_images.append(cropped)
-    
+    print("cropped")
     return cropped_images
 
 
@@ -206,7 +206,7 @@ def template_matching(template, image):
         
     result = cv2.matchTemplate(image_gray, template, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-    
+    print("matched")
     return max_val
     
     
@@ -230,9 +230,9 @@ def detect(vehicle, f):
     frame = rawCapture.array
     
     print("wp_shot NO:", wp_count)
-    f.write("wp_shot NO:" + wp_count + "\n")
+    f.write("wp_shot NO:" + str(wp_count) + "\n")
     
-    cv2.imwrite("wp_shot" + wp_count + ".jpg",frame)
+    cv2.imwrite("wp_shot" + str(wp_count) + ".jpg",frame)
     
     wp_count = wp_count + 1
     
@@ -264,7 +264,7 @@ def detect(vehicle, f):
             match_hotspot1 = template_matching(template_hotspot1, cropped)
             match_hotspot2 = template_matching(template_hotspot2, cropped)
         
-            if max(match_target1,match_target2,match_hotspot1,match_hotspot2) >= 0.2:
+            if max(match_target1,match_target2,match_hotspot1,match_hotspot2) >= 0.4:
                 
                 if max(match_target1,match_target2) > max(match_hotspot1,match_hotspot2):
                     target_type = "target"
@@ -313,6 +313,7 @@ def detect(vehicle, f):
                 cv2.putText(frame, target_type+str(i), text_position, cv2.FONT_HERSHEY_SIMPLEX, 0.5, text_color, 2)
                 # Draw circles 
                 cv2.circle(frame, (circle_center[0],circle_center[1]), circle_radius, (0, 255, 0), 4)
+                cv2.imwrite("wp_frame" + str(wp_count) + ".jpg",frame)
                 
         cv2.destroyAllWindows()
     
