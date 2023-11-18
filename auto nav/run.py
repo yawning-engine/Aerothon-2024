@@ -2,7 +2,7 @@ import drone_controller as drone
 # from perception import detect
 import time
 
-f =  open("drone_log.txt","a") 
+f =  open("drone_log.txt","w") 
 
 flight_alt = 30
 target_alt = 20
@@ -35,6 +35,8 @@ vehicle.groundspeed = 0.5
 
 drone.arm_and_takeoff(vehicle,20)
 f.write("Take off location , pos="+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
+drone.arm_and_takeoff(vehicle,20)
+f.write("Take off location , pos="+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
 
 detected_array = []
 target_detected = False
@@ -46,14 +48,15 @@ for i in arr:
     time.sleep(1)
     '''
     try:
-        poi = detect(vehicle, file)
-        file.write("detected things -"+str(poi)+"\n")
+        poi = detect(vehicle, f)
+        f.write("detected things -"+str(poi)+"\n")
+        print("detected")
         if len(poi) == 0:
             continue
         
         elif(len(poi) > 0):
             for points in poi:
-                N,E,type = points
+                E,N,type = points
                 if type.lower() == "target" and not target_detected:
                     gps_loc = drone.get_relative_gps_location(grid_point_loc, N, E, target_alt)
 
@@ -68,44 +71,44 @@ for i in arr:
                     ####### first detection of hotspot########
                     if type.lower() == "target"  and not target_detected:
                         
-                        file.write("Target detected at -"+str(gps_loc)+"\n")
+                        f.write("Target detected at -"+str(gps_loc)+"\n")
                         
-                        drone.its_target(vehicle, gps_loc, file)
+                        drone.its_target(vehicle, gps_loc, f)
                         detected_array.append(gps_loc)
                         target_detected = True
-                        file.write("target detected val changed to-"+str(target_detected)+"\n")
-                        file.write("Target dropped at -"+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
+                        f.write("target detected val changed to-"+str(target_detected)+"\n")
+                        f.write("Target dropped at -"+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
                 
                     ###### false detection of hotspot as target##################
                     
 
                     if type.lower() == "target"  and  target_detected:
 
-                        file.write("hotspot detected at -"+str(gps_loc))
+                        f.write("hotspot detected at -"+str(gps_loc))
                             
-                        drone.its_hotspot(vehicle, gps_loc, file)
+                        drone.its_hotspot(vehicle, gps_loc, f)
                         detected_array.append(gps_loc)
 
-                        file.write("hotspot captured at -"+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
-                        file.write("false detection of above hotspot as target"+"\n")
+                        f.write("hotspot captured at -"+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
+                        f.write("false detection of above hotspot as target"+"\n")
 
 
                     ########truly detected hotspot##########
 
                     if type.lower() == "hotspot":
 
-                        file.write("Hotspot detected at -"+str(gps_loc)+"\n")
+                        f.write("Hotspot detected at -"+str(gps_loc)+"\n")
 
-                        drone.its_hotspot(vehicle,gps_loc,file)
+                        drone.its_hotspot(vehicle,gps_loc,f)
                         detected_array.append(gps_loc)
 
-                        file.write("Hotspot captured at-"+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
+                        f.write("Hotspot captured at-"+str(drone.get_gps_location(vehicle,0,0,0))+"\n")
 
                 else:
                     print("duplicate detected .......skipping............")
     except Exception as e:
         print("error occured during detection-"+str(e))
-        file.write("error occured during detection-"+str(e)+"\n")
+        f.write("error occured during detection-"+str(e)+"\n")
         continue
     '''
 
