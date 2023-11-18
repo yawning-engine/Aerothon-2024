@@ -25,7 +25,7 @@ camera.resolution = (width, height)
 camera.iso = 100
 camera.exposure_mode = 'auto'
 #camera.exposMoonpieure_compensation = -3
-camera.vflip = True
+camera.vflip = False
 
 
 # Load the template image of the target and hotspot
@@ -230,9 +230,9 @@ def detect(vehicle, f):
     frame = rawCapture.array
     
     print("wp_shot NO:", wp_count)
-    f.write("wp_shot NO:" + wp_count + "\n")
+    f.write("wp_shot NO:" + str(wp_count) + "\n")
     
-    cv2.imwrite("wp_shot" + wp_count + ".jpg",frame)
+    cv2.imwrite("wp_shot" + str(wp_count) + ".jpg",frame)
     
     wp_count = wp_count + 1
     
