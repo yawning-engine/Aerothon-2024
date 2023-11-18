@@ -1,5 +1,5 @@
 import drone_controller as drone
-# from perception import detect
+from perception import detect
 import time
 
 f =  open("drone_log.txt","w") 
@@ -26,9 +26,9 @@ field_1_boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371),
 custom_loc = [(13.410502262701508, 77.69841723282588)]
 arr=drone.grid_navigation(field_1_boundary_points,20)
 
-vehicle = drone.connect_simulation_drone()
+# vehicle = drone.connect_simulation_drone()
 
-# vehicle = drone.connect_real_drone()
+vehicle = drone.connect_real_drone()
 
 vehicle.airspeed = 0.5
 vehicle.groundspeed = 0.5
@@ -44,9 +44,9 @@ target_detected = False
 for i in arr:
     grid_point_loc = drone.LocationGlobalRelative(i[0],i[1],flight_alt)
     print("going to", grid_point_loc)
-    drone.goto_wp(vehicle, grid_point_loc, ground_speed=3)
+    # drone.goto_wp(vehicle, grid_point_loc, ground_speed=1)
     time.sleep(1)
-    '''
+    
     try:
         poi = detect(vehicle, f)
         f.write("detected things -"+str(poi)+"\n")
@@ -110,7 +110,7 @@ for i in arr:
         print("error occured during detection-"+str(e))
         f.write("error occured during detection-"+str(e)+"\n")
         continue
-    '''
+    
 
 drone.RTL(vehicle)
 
