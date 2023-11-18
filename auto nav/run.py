@@ -23,7 +23,7 @@ field_1_boundary_points = [(13.394727, 77.7311024), (13.393622, 77.7309197),
 field_2_boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371),
                            (13.393385, 77.7318823), (13.39454, 77.7320772)]
 
-custom_loc = [(13.410484, 77.698377)]
+custom_loc = [(13.410502262701508, 77.69841723282588)]
 arr=drone.grid_navigation(field_1_boundary_points,15)
 
 vehicle = drone.connect_real_drone()
