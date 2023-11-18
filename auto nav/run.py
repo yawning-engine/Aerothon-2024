@@ -1,11 +1,11 @@
 import drone_controller as drone
-# from perception import detect
+from perception import detect
 import time
 
 f =  open("drone_log.txt","w") 
 
-flight_alt = 30
-target_alt = 20
+flight_alt = 20
+target_alt = 10
 hotspot_alt = 10
 # field 1-
 # dronekit-sitl copter --home=13.394622,77.731250,0,180
@@ -26,9 +26,9 @@ field_1_boundary_points = [(13.394622, 77.7316004), (13.393506, 77.7314371),
 custom_loc = [(13.410502262701508, 77.69841723282588)]
 arr=drone.grid_navigation(field_1_boundary_points,20)
 
-vehicle = drone.connect_simulation_drone()
+# vehicle = drone.connect_simulation_drone()
 
-# vehicle = drone.connect_real_drone()
+vehicle = drone.connect_real_drone()
 
 vehicle.airspeed = 0.5
 vehicle.groundspeed = 0.5
@@ -41,7 +41,7 @@ f.write("Take off location , pos="+str(drone.get_gps_location(vehicle,0,0,0))+"\
 detected_array = []
 target_detected = False
 
-for i in arr:
+for i in custom_loc:
     grid_point_loc = drone.LocationGlobalRelative(i[0],i[1],flight_alt)
     print("going to", grid_point_loc)
     drone.goto_wp(vehicle, grid_point_loc, ground_speed=3)
