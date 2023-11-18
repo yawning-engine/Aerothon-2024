@@ -74,9 +74,10 @@ def coordinate_rotation(x_cart, y_cart, f):
    # Origin at 0,0 required points at x_cart,y_cart rotated point at xr,yr
    
    # Delta is current heading of drone (YAW angle W.R.T North), replace with 0 for testing.
-   delta_rad = yaw_angle # Offset angle in Radians
+   print("Drone yaw:",yaw_angle)
+   delta_rad = -(yaw_angle) # Offset angle in Radians
    delta_deg = delta_rad*180/math.pi
-   
+   print("coord rot:", yaw_angle, "Deg:", delta_deg)
    xc,yc = center_cord[0],center_cord[1]
                     
    xr = int(((x_cart) * math.cos(delta_rad)) - ((y_cart) * math.sin(delta_rad)));
@@ -249,7 +250,7 @@ def detect(vehicle, f):
             match_hotspot1 = template_matching(template_hotspot1, cropped)
             match_hotspot2 = template_matching(template_hotspot2, cropped)
         
-            if max(match_target1,match_target2,match_hotspot1,match_hotspot2) >= 0.3:
+            if max(match_target1,match_target2,match_hotspot1,match_hotspot2) >= 0.35:
                 
                 if max(match_target1,match_target2) > max(match_hotspot1,match_hotspot2):
                     target_type = "Target"
