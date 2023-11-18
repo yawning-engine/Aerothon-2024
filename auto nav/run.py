@@ -46,7 +46,7 @@ for i in arr:
     print("going to", grid_point_loc)
     drone.goto_wp(vehicle, grid_point_loc, ground_speed=3)
     time.sleep(1)
-    '''
+    
     try:
         poi = detect(vehicle, f)
         f.write("detected things -"+str(poi)+"\n")
@@ -56,20 +56,20 @@ for i in arr:
         
         elif(len(poi) > 0):
             for points in poi:
-                E,N,type = points
-                if type.lower() == "target" and not target_detected:
+                E,N,t = points
+                if t.lower() == "target" and not target_detected:
                     gps_loc = drone.get_relative_gps_location(grid_point_loc, N, E, target_alt)
 
-                elif type.lower() == "target" and target_detected:
+                elif t.lower() == "target" and target_detected:
                     gps_loc = drone.get_relative_gps_location(grid_point_loc, N, E, hotspot_alt)
 
-                elif type.lower() == "hotspot":
+                elif t.lower() == "hotspot":
                     gps_loc = drone.get_relative_gps_location(grid_point_loc, N, E, hotspot_alt)
 
                 if( drone.is_not_duplicate(gps_loc, detected_array) ):
                     
                     ####### first detection of hotspot########
-                    if type.lower() == "target"  and not target_detected:
+                    if t.lower() == "target"  and not target_detected:
                         
                         f.write("Target detected at -"+str(gps_loc)+"\n")
                         
@@ -82,7 +82,7 @@ for i in arr:
                     ###### false detection of hotspot as target##################
                     
 
-                    if type.lower() == "target"  and  target_detected:
+                    if t.lower() == "target"  and  target_detected:
 
                         f.write("hotspot detected at -"+str(gps_loc))
                             
@@ -95,7 +95,7 @@ for i in arr:
 
                     ########truly detected hotspot##########
 
-                    if type.lower() == "hotspot":
+                    if t.lower() == "hotspot":
 
                         f.write("Hotspot detected at -"+str(gps_loc)+"\n")
 
@@ -110,7 +110,7 @@ for i in arr:
         print("error occured during detection-"+str(e))
         f.write("error occured during detection-"+str(e)+"\n")
         continue
-    '''
+    
 
 drone.RTL(vehicle)
 
