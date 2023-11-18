@@ -6,7 +6,7 @@ from pymavlink import mavutil
 from perception import take_picture
 
 
-f = open("drone_log.txt", 'w')
+f = open("drone_log_controller.txt", 'a')
 sitl = None
 def connect_simulation_drone():
     
@@ -71,6 +71,8 @@ def goto_wp(vehicle, wp, f=f,ground_speed=4):
             f.write("\nWaypoint %s Reached"%str(wp))
             break
         time.sleep(0.3)
+    
+    # condition_yaw(vehicle,f=f)
     return None
 
 
